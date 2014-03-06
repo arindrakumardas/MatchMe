@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/ing_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Starter"
+        android:textSize="30sp" />
+
+    <ScrollView
+	    android:layout_width="match_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_alignLeft="@+id/ing_sum"
+	    android:layout_below="@+id/ing_sum">
+        <TextView
+	        android:id="@+id/selected_ingredients_summary"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Some descriptive text here..." />
+    </ScrollView>
+
+</RelativeLayout>
