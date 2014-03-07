@@ -8,32 +8,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+    <ImageView
+        android:id="@+id/load_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/load_image" />
+
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="left"
+        android:layout_above="@+id/load_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
         android:text="@string/welcome"
         android:textColor="#000000"
         android:textSize="24sp" />
-    
-    <TextView
-        android:id="@+id/example_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/welcome_text"
-        android:gravity="left"
-        android:text="@string/start_string"
-        android:textColor="#000000"
-        android:textSize="18sp" />
-    
-    <Button
-        android:id="@+id/start_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/example_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="116dp"
-        android:text="@string/startbutton" />
 
 </RelativeLayout>

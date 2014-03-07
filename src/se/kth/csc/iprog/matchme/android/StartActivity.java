@@ -2,16 +2,13 @@ package se.kth.csc.iprog.matchme.android;
 
 import se.kth.csc.iprog.matchme.android.view.StartView;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.app.Activity;
 import android.content.Intent;
 
-public class MainActivity extends Activity {
-	
-	Handler handler = new Handler();
+public class StartActivity extends Activity {
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,20 +17,10 @@ public class MainActivity extends Activity {
     	
     	// Set the view for the main activity screen
     	// it must come before any call to findViewById method
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start_view);
         
     	// Creating the view class instance
-    	//ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id));
-
-        // From the Dinner package
-        // setContentView(R.layout.activity_main);
-        
-        handler.postDelayed(new Runnable() { //Do this after 2 seconds.
-            public void run() {
-        		Intent i = new Intent(MainActivity.this, StartActivity.class);
-        		startActivity(i);
-            }
-        }, 2000);
+    	StartView startView = new StartView(findViewById(R.id.start_game));
     }
 
 }
