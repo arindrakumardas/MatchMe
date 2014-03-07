@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"	>
+        
+    <Button
+		android:id="@+id/back_btn"
+	    android:layout_width="50dip"
+	    android:layout_height="50dip"
+	    android:background="@drawable/backbtn"	/>
+    <TextView
+        android:id="@+id/high_scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/back_btn"
+        
+        android:layout_toEndOf="@id/back_btn"
+        android:gravity="center"
+        
+        android:text="@string/high_scores_title"
+        android:textColor="#7D0552"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <TableLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true" >
+	    <TableRow>
+	        <TextView
+	            android:id="@+id/name_title"
+	            android:gravity="left"
+	            android:padding="10dip"	
+	            android:text="@string/name_cell"
+	            android:textStyle="bold"	/>
+	        <TextView
+	            android:id="@+id/score_title"
+	            android:gravity="right"
+	            android:padding="10dip"
+	            android:text="@string/score_cell"
+	            android:textStyle="bold"	/>
+	    </TableRow>
+	    <TableRow>
+	        <TextView
+	            android:id="@+id/player_1"
+	            android:gravity="left"
+	            android:padding="10dip"
+	            android:text="@string/name_cell"	/>
+	        <TextView
+	            android:id="@+id/score_1"
+	            android:gravity="right"
+	            android:padding="10dip"	
+	            android:text="@string/score_cell"	/>
+	    </TableRow>
+	    <TableRow>
+	        <TextView
+	            android:id="@+id/player_2"
+	            android:gravity="left"
+	            android:padding="10dip"
+	            android:text="@string/name_cell"	/>
+	        <TextView
+	            android:id="@+id/score_2"
+	            android:gravity="right"
+	            android:padding="10dip"
+	            android:text="@string/score_cell"	/>
+	    </TableRow>
+	    <TableRow>
+	        <TextView
+	            android:id="@+id/player_3"
+	            android:gravity="left"
+	            android:padding="10dip"
+	            android:text="@string/name_cell"	/>
+	        <TextView
+	            android:id="@+id/score_3"
+	            android:gravity="right"
+	            android:padding="10dip"
+	            android:text="@string/score_cell"	/>
+	    </TableRow>
+	    <TableRow>
+	        <TextView
+	            android:id="@+id/player_4"
+	            android:gravity="left"
+	            android:padding="10dip"
+	            android:text="@string/name_cell"
+	            	/>
+	        <TextView
+	            android:id="@+id/score_4"
+	            android:gravity="right"
+	            android:padding="10dip"
+	            android:text="@string/score_cell"	/>
+	    </TableRow>
+	    <TableRow>
+	        <TextView
+	            android:id="@+id/player_5"
+	            android:gravity="left"
+	            android:padding="10dip"
+	            android:text="@string/name_cell"	/>
+	        <TextView
+	            android:id="@+id/score_5"
+	            android:gravity="right"
+	            android:padding="10dip"
+	            android:text="@string/score_cell"	/>
+	    </TableRow>
+    </TableLayout>
+
+    
+
+</RelativeLayout>
