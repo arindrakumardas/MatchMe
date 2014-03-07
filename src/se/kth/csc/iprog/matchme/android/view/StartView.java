@@ -20,16 +20,8 @@ public class StartView {
 //		example.setText("Hello world");
 
 		// Setup the rest of the view layout
-    	//Button in activity_main view
-    	startButton = (Button) view.findViewById(R.id.start_game);
-    	startButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				//TODO: Assign this to move to the next view!
-				//Intent i = new Intent(MainActivity.this, MenuActivity.class);
-	    		//startActivity(i);
-			}
-    	});
+		
+		//Nothing to do here.
 	}
 
 }
