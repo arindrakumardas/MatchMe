@@ -13,36 +13,27 @@
         android:layout_height="50dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/volume_on"
-        android:contentDescription="@string/desc" />
+        android:contentDescription="@string/desc"
+        android:src="@drawable/volume_on" />
 
-        <Button
-            android:id="@+id/start_game"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignLeft="@+id/matchmelogo"
-            android:layout_below="@+id/matchmelogo"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/startgame_button" />
+    <Button
+        android:id="@+id/start_game"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/volume"
+        android:layout_below="@+id/volume"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/startgame_button" />
 
-        <Button
-            android:id="@+id/view_highscore"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignRight="@+id/matchmelogo"
-            android:layout_alignTop="@+id/start_game"
-            android:layout_marginRight="33dp"
-            android:layout_marginTop="56dp"
-            android:background="@drawable/highscore_button" />
-
-        <ImageView
-            android:id="@+id/matchmelogo"
-            android:layout_width="460dp"
-            android:layout_height="200dp"
-            android:layout_alignLeft="@+id/volume"
-            android:layout_alignTop="@+id/volume"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/desc"
-            android:src="@drawable/matchMeLogo" />
+    <Button
+        android:id="@+id/view_highscore"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/start_game"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="17dp"
+        android:layout_toRightOf="@+id/start_game"
+        android:background="@drawable/highscore_button" />
 
 </RelativeLayout>
