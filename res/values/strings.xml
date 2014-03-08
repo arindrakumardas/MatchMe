@@ -13,14 +13,12 @@
     <string name="start_game">Start Game</string>
     <string name="view_highscores">View high scores</string>
     <string name="welcome">Welcome to Match Me!</string>
-<<<<<<< HEAD
     <string name="desc">desc</string>
     <string name="timeleft">Time left</string>
     <string name="score">Score</string>
     <string name="timeleftvalue">00:24</string>
     <string name="scorevalue">673</string>
     <string name="level">Level 5</string>
-=======
     <string name="one">1</string>
     <string name="two">2</string>
     <string name="three">3</string>
@@ -36,7 +34,7 @@
     <string name="thirteen">13</string>
     <string name="fourteen">14</string>
     <string name="fifteen">15</string>
->>>>>>> FETCH_HEAD
+    <string name="loading">Loading &#8230;</string>
 	
 
 </resources>

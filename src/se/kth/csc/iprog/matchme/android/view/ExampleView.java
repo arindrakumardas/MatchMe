@@ -1,8 +1,7 @@
 package se.kth.csc.iprog.matchme.android.view;
 
-import se.kth.csc.iprog.matchme.android.R;
+
 import android.view.View;
-import android.widget.TextView;
 
 public class ExampleView {
 
