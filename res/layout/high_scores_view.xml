@@ -14,10 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/back_btn"
-        
         android:layout_toEndOf="@id/back_btn"
         android:gravity="center"
-        
         android:text="@string/high_scores_title"
         android:textColor="#7D0552"
         android:textSize="24sp"
