@@ -12,6 +12,12 @@
     <string name="start_game">Start Game</string>
     <string name="view_highscores">View high scores</string>
     <string name="welcome">Welcome to Match Me!</string>
+    <string name="desc">desc</string>
+    <string name="timeleft">Time left</string>
+    <string name="score">Score</string>
+    <string name="timeleftvalue">00:24</string>
+    <string name="scorevalue">673</string>
+    <string name="level">Level 5</string>
 	
 
 </resources>
