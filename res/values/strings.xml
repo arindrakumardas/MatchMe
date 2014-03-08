@@ -6,18 +6,37 @@
     <string name="game_name">Match Me</string>
     <string name="hello_world">Hello world!</string>
     <string name="high_scores_title">High Scores</string>
+    <string name="levels_title">Level </string>
     <string name="load_image">Loading image</string>
     <string name="name_cell">Name</string>
     <string name="score_cell">Score</string>
     <string name="start_game">Start Game</string>
     <string name="view_highscores">View high scores</string>
     <string name="welcome">Welcome to Match Me!</string>
+<<<<<<< HEAD
     <string name="desc">desc</string>
     <string name="timeleft">Time left</string>
     <string name="score">Score</string>
     <string name="timeleftvalue">00:24</string>
     <string name="scorevalue">673</string>
     <string name="level">Level 5</string>
+=======
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="ten">10</string>
+    <string name="eleven">11</string>
+    <string name="twelve">12</string>
+    <string name="thirteen">13</string>
+    <string name="fourteen">14</string>
+    <string name="fifteen">15</string>
+>>>>>>> FETCH_HEAD
 	
 
 </resources>
