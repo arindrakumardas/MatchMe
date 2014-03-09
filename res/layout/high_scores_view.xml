@@ -18,6 +18,7 @@
 	            android:gravity="left"
 	            android:padding="10dp"
 	            android:text="@string/name_cell"
+	             android:textColor="#345803"
 	            android:textStyle="bold" />
 
 	        <TextView
@@ -25,6 +26,7 @@
 	            android:gravity="center"
 	            android:padding="10dp"
 	            android:text="@string/score_cell"
+	             android:textColor="#345803"
 	            android:textStyle="bold"	/>
 	    </TableRow>
 	    <TableRow>
@@ -32,61 +34,71 @@
 	            android:id="@+id/player_1"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="Joe"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/Joe"	/>
 	        <TextView
 	            android:id="@+id/score_1"
 	            android:gravity="right"
 	            android:padding="10dip"	
-	            android:text="700"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/700"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_2"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="John"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/John"	/>
 	        <TextView
 	            android:id="@+id/score_2"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="680"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/680"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_3"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="Jennifer"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/Jennifer"	/>
 	        <TextView
 	            android:id="@+id/score_3"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="675"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/675"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_4"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="Rose"
+	            android:textColor="#67922E"
+	            android:text="@string/Rose"
 	            	/>
 	        <TextView
 	            android:id="@+id/score_4"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="550"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/550"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_5"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="Jack"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/Jack"	/>
 	        <TextView
 	            android:id="@+id/score_5"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="250"	/>
+	            android:textColor="#67922E"
+	            android:text="@string/250"	/>
 	    </TableRow>
     </TableLayout>
 
