@@ -3,38 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_level"
-    android:orientation="vertical"	>
-        
-    <Button
-		android:id="@+id/back_btn"
-	    android:layout_width="50dip"
-	    android:layout_height="50dip"
-	    android:background="@drawable/backbtn"	/>
-    <TextView
-        android:id="@+id/high_scores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/back_btn"
-        android:layout_toEndOf="@id/back_btn"
-        android:gravity="center"
-        android:text="@string/high_scores_title"
-        android:textColor="#7D0552"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+    android:orientation="vertical" >
     <TableLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_centerInParent="true" >
+        android:layout_centerInParent="true" android:id="@+id/tableLayout1">
 	    <TableRow>
+
 	        <TextView
 	            android:id="@+id/name_title"
 	            android:gravity="left"
-	            android:padding="10dip"	
+	            android:padding="10dip"
 	            android:text="@string/name_cell"
-	            android:textStyle="bold"	/>
+	            android:textStyle="bold" />
+
 	        <TextView
 	            android:id="@+id/score_title"
-	            android:gravity="right"
+	            android:gravity="center"
 	            android:padding="10dip"
 	            android:text="@string/score_cell"
 	            android:textStyle="bold"	/>
@@ -102,6 +87,27 @@
 	    </TableRow>
     </TableLayout>
 
-    
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/backbtn" />
+
+    <TextView
+        android:id="@+id/high_scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/back_btn"
+        android:layout_alignLeft="@+id/tableLayout1"
+        android:layout_toEndOf="@id/back_btn"
+        android:gravity="center"
+        android:text="@string/high_scores_title"
+        android:textColor="#FF9F06"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
