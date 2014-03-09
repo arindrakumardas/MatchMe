@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/timeleft"
-        android:textColor="#000000"
+        android:textColor="#345803"
         android:textSize="14sp" />
     
     <TextView
@@ -23,7 +23,7 @@
         android:text="@string/timeleftvalue"
         android:layout_below="@+id/time_left"
         android:textColor="#000000"
-        android:textSize="14sp" />
+        android:textSize="24sp" />
 
      <TextView
          android:id="@+id/score"
@@ -34,7 +34,7 @@
          android:layout_alignParentRight="true"
          android:layout_marginRight="33dp"
          android:text="@string/score"
-         android:textColor="#000000"
+         android:textColor="#345803"
          android:textSize="14sp" />
 
          <TextView
@@ -46,27 +46,26 @@
              android:layout_alignTop="@+id/time_left_value"
              android:text="@string/scorevalue"
              android:textColor="#000000"
-             android:textSize="14sp" />
+             android:textSize="24sp" />
 
          <TextView
              android:id="@+id/level"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_above="@+id/score_value"
-             android:layout_marginLeft="54dp"
-             android:layout_toRightOf="@+id/time_left"
+             android:layout_alignBaseline="@+id/score"
+             android:layout_alignBottom="@+id/score"
+             android:layout_centerHorizontal="true"
              android:text="@string/level"
-             android:textColor="#000000"
+             android:textColor="#345803"
              android:textSize="14sp" />
 
          <ImageView
-             android:id="@+id/volume"
-             android:layout_width="50dp"
-             android:layout_height="50dp"
-             android:layout_alignLeft="@+id/level"
-             android:layout_alignRight="@+id/level"
+             android:id="@+id/pause_button"
+             android:layout_width="70dp"
+             android:layout_height="70dp"
              android:layout_alignTop="@+id/score_value"
+             android:layout_centerHorizontal="true"
              android:contentDescription="@string/desc"
-             android:src="@drawable/pause" />
+             android:src="@drawable/pause_button" />
 
 </RelativeLayout>
