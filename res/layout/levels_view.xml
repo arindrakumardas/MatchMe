@@ -74,7 +74,7 @@
         android:layout_alignLeft="@+id/level5_grayed_button"
         android:layout_toEndOf="@id/back_btn"
         android:text="@string/levels_title"
-        android:textColor="#FF9F06"
+        android:textColor="#007F00"
         android:textSize="40sp"
         android:textStyle="bold" />
 
