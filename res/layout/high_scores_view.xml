@@ -13,14 +13,14 @@
 	        <TextView
 	            android:id="@+id/name_title"
 	            android:gravity="left"
-	            android:padding="10dip"
+	            android:padding="10dp"
 	            android:text="@string/name_cell"
 	            android:textStyle="bold" />
 
 	        <TextView
 	            android:id="@+id/score_title"
 	            android:gravity="center"
-	            android:padding="10dip"
+	            android:padding="10dp"
 	            android:text="@string/score_cell"
 	            android:textStyle="bold"	/>
 	    </TableRow>
@@ -29,72 +29,72 @@
 	            android:id="@+id/player_1"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="@string/name_cell"	/>
+	            android:text="Joe"	/>
 	        <TextView
 	            android:id="@+id/score_1"
 	            android:gravity="right"
 	            android:padding="10dip"	
-	            android:text="@string/score_cell"	/>
+	            android:text="700"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_2"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="@string/name_cell"	/>
+	            android:text="John"	/>
 	        <TextView
 	            android:id="@+id/score_2"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="@string/score_cell"	/>
+	            android:text="680"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_3"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="@string/name_cell"	/>
+	            android:text="Jennifer"	/>
 	        <TextView
 	            android:id="@+id/score_3"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="@string/score_cell"	/>
+	            android:text="675"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_4"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="@string/name_cell"
+	            android:text="Rose"
 	            	/>
 	        <TextView
 	            android:id="@+id/score_4"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="@string/score_cell"	/>
+	            android:text="550"	/>
 	    </TableRow>
 	    <TableRow>
 	        <TextView
 	            android:id="@+id/player_5"
 	            android:gravity="left"
 	            android:padding="10dip"
-	            android:text="@string/name_cell"	/>
+	            android:text="Jack"	/>
 	        <TextView
 	            android:id="@+id/score_5"
 	            android:gravity="right"
 	            android:padding="10dip"
-	            android:text="@string/score_cell"	/>
+	            android:text="250"	/>
 	    </TableRow>
     </TableLayout>
 
     <Button
         android:id="@+id/back_btn"
-        android:layout_width="50dip"
-        android:layout_height="50dip"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/tableLayout1"
+        android:layout_marginBottom="18dp"
+        android:layout_marginRight="14dp"
+        android:layout_toLeftOf="@+id/tableLayout1"
         android:background="@drawable/backbtn" />
 
     <TextView
@@ -102,12 +102,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/back_btn"
-        android:layout_alignLeft="@+id/tableLayout1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="36dp"
         android:layout_toEndOf="@id/back_btn"
         android:gravity="center"
         android:text="@string/high_scores_title"
         android:textColor="#FF9F06"
-        android:textSize="24sp"
+        android:textSize="40sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
