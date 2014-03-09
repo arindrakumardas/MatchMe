@@ -5,26 +5,11 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
-
-        <Button
-            android:id="@+id/back_btn"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignBaseline="@+id/refresh_button"
-            android:layout_alignBottom="@+id/refresh_button"
-            android:layout_marginLeft="23dp"
-            android:layout_toRightOf="@+id/refresh_button"
-            android:background="@drawable/backbtn" />
-
-        <Button
-            android:id="@+id/play_button"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/play_button" />
-
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF"
+    android:alpha=".70">
+    
+    
         <Button
             android:id="@+id/refresh_button"
             android:layout_width="70dp"
@@ -34,5 +19,25 @@
             android:layout_marginLeft="18dp"
             android:layout_toRightOf="@+id/play_button"
             android:background="@drawable/refresh_button" />
+
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignBaseline="@+id/refresh_button"
+            android:layout_alignBottom="@+id/refresh_button"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/refresh_button"
+            android:background="@drawable/backbtn" />
+
+        <Button
+            android:id="@+id/play_button"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/play_button" />
+
+
 
 </RelativeLayout>
