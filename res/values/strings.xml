@@ -16,7 +16,7 @@
     <string name="desc">desc</string>
     <string name="timeleft">Time left</string>
     <string name="score">Score</string>
-    <string name="timeleftvalue">00:24</string>
+    <string name="timeleftvalue">00:30</string>
     <string name="scorevalue">673</string>
     <string name="level">Level 2</string>
     <string name="one">1</string>
@@ -25,6 +25,13 @@
     <string name="four">4</string>
     <string name="five">5</string>
     <string name="loading">Loading &#8230;</string>
+    <string name="Joe">Joe</string>
+    <string name="John">John</string>
+    <string name="Jennifer">Jennifer</string>
+    <string name="score1">700</string>
+    <string name="score2">685</string>
+    <string name="score3">600</string>
+    <string />
 	
 
 </resources>

@@ -13,6 +13,13 @@
         android:layout_centerInParent="true" android:id="@+id/tableLayout1">
 	    <TableRow>
 
+	         <ImageView
+		        android:id="@+id/blankstarfish"
+		        android:layout_width="60dp"
+		        android:layout_height="30dp"
+		        android:contentDescription="@string/desc"
+		         />
+	        
 	        <TextView
 	            android:id="@+id/name_title"
 	            android:gravity="left"
@@ -30,6 +37,15 @@
 	            android:textStyle="bold"	/>
 	    </TableRow>
 	    <TableRow>
+	        
+	        
+	        <ImageView
+		        android:id="@+id/goldenstarfish"
+		        android:layout_width="40dp"
+		        android:layout_height="40dp"
+		        android:contentDescription="@string/desc"
+		        android:src="@drawable/goldenstarfish" />
+	        
 	        <TextView
 	            android:id="@+id/player_1"
 	            android:gravity="left"
@@ -41,9 +57,17 @@
 	            android:gravity="right"
 	            android:padding="10dip"	
 	            android:textColor="#67922E"
-	            android:text="@string/700"	/>
+	            android:text="@string/score1"	/>
 	    </TableRow>
 	    <TableRow>
+	        
+	           <ImageView
+		        android:id="@+id/silverstarfish"
+		        android:layout_width="40dp"
+		        android:layout_height="40dp"
+		        android:contentDescription="@string/desc"
+		        android:src="@drawable/silvestarfish" />
+	        
 	        <TextView
 	            android:id="@+id/player_2"
 	            android:gravity="left"
@@ -55,9 +79,17 @@
 	            android:gravity="right"
 	            android:padding="10dip"
 	            android:textColor="#67922E"
-	            android:text="@string/680"	/>
+	            android:text="@string/score2"	/>
 	    </TableRow>
 	    <TableRow>
+	        
+	           <ImageView
+		        android:id="@+id/bronzestarfish"
+		        android:layout_width="40dp"
+		        android:layout_height="40dp"
+		        android:contentDescription="@string/desc"
+		        android:src="@drawable/bronzestarfish" />
+	        
 	        <TextView
 	            android:id="@+id/player_3"
 	            android:gravity="left"
@@ -69,36 +101,7 @@
 	            android:gravity="right"
 	            android:padding="10dip"
 	            android:textColor="#67922E"
-	            android:text="@string/675"	/>
-	    </TableRow>
-	    <TableRow>
-	        <TextView
-	            android:id="@+id/player_4"
-	            android:gravity="left"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/Rose"
-	            	/>
-	        <TextView
-	            android:id="@+id/score_4"
-	            android:gravity="right"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/550"	/>
-	    </TableRow>
-	    <TableRow>
-	        <TextView
-	            android:id="@+id/player_5"
-	            android:gravity="left"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/Jack"	/>
-	        <TextView
-	            android:id="@+id/score_5"
-	            android:gravity="right"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/250"	/>
+	            android:text="@string/score3"	/>
 	    </TableRow>
     </TableLayout>
 

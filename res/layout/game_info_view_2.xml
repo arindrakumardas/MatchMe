@@ -84,20 +84,12 @@
           android:layout_alignParentLeft="true"
           android:layout_below="@+id/game_drop_view_include"
           layout="@layout/game_drag_view" />
-        
-      <!--  <ImageView
-           android:id="@+id/popup_background"
-           android:layout_width="300dp"
-           android:layout_height="600dp"
-           android:layout_alignLeft="@+id/time_left_value"
-           android:layout_centerVertical="true"
-           android:contentDescription="@string/desc"
-           android:src="@drawable/popup_background" /> -->
-       
-     <include
-          android:id="@+id/pause_dialog_view_include"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          layout="@layout/pause_dialog_view" />
       
+      
+       <include
+          android:id="@+id/pause_dialog_view_include"
+          android:layout_width="300dp"
+          android:layout_height="500dp"
+          layout="@layout/pause_dialog_view" />
+
 </RelativeLayout>
