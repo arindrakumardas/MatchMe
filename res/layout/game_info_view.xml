@@ -68,11 +68,14 @@
              android:contentDescription="@string/desc"
              android:src="@drawable/pause_button" />
 
-         <Space
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_below="@+id/pause_button"
-             android:layout_marginTop="26dp" />
+         <include
+             android:id="@+id/game_drop_view_include"
+             layout="@layout/game_drop_view"
+              />
+
+         <include
+             android:id="@+id/game_drag_view_include"
+             android:layout_below="@+id/game_drop_view_include"
+             layout="@layout/game_drag_view" />
 
 </RelativeLayout>
