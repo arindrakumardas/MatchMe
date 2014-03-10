@@ -8,14 +8,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background" >
 
-    <ImageView
+    <Button
         android:id="@+id/volume"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:contentDescription="@string/desc"
-        android:src="@drawable/volume_on" />
+        android:background="@drawable/volume_on" />
 
     <Button
         android:id="@+id/start_game"
