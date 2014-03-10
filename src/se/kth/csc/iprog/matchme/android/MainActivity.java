@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
     	
     	// Set the view for the main activity screen
     	// it must come before any call to findViewById method
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.load_view);
         
     	// Creating the view class instance
     	//ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id));
