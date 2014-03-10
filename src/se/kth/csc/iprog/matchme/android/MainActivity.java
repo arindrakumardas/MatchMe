@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
     	
     	// Set the view for the main activity screen
     	// it must come before any call to findViewById method
-        setContentView(R.layout.load_view);
+        setContentView(R.layout.activity_main);
         
     	// Creating the view class instance
     	//ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id));
@@ -24,12 +24,7 @@ public class MainActivity extends Activity {
         // From the Dinner package
         // setContentView(R.layout.activity_main);
         
-        handler.postDelayed(new Runnable() { //Do this after 2 seconds.
-            public void run() {
-        		Intent i = new Intent(MainActivity.this, StartActivity.class);
-        		startActivity(i);
-            }
-        }, 2000);
+
     }
 
 }
