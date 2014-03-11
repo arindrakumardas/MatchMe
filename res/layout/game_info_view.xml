@@ -73,7 +73,12 @@
              android:layout_width="400dp"
              android:layout_height="250dp"
              android:layout_marginTop="70dp"
+<<<<<<< HEAD
              layout="@layout/game_drop_view"/>
+=======
+             layout="@layout/game_drop_view_level_5" 
+             />
+>>>>>>> origin/Levels-settings
  
 
       <include
