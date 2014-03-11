@@ -65,7 +65,7 @@ public class StartActivity extends Activity {
 					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 					mPhoneIsSilent = true;
 				}
-				//toggleUI();
+				toggleUI();
 			}
 		});
 	}
@@ -74,7 +74,7 @@ public class StartActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		checkIfPhoneIsSilent();
-		//toggleUI();
+		toggleUI();
 	}
 
 	private void checkIfPhoneIsSilent() {
@@ -87,17 +87,18 @@ public class StartActivity extends Activity {
 	}
 
 	// Toggles the UI images from silent to normal and vice-versa
-//	private void toggleUI() {
-//		ImageView imageView = (ImageView) findViewById(R.id.volume);
-//		Drawable soundIcon;
-//
-//		if (mPhoneIsSilent) {
-//			soundIcon = getResources().getDrawable(R.drawable.volume_off);
-//		} else {
-//			soundIcon = getResources().getDrawable(R.drawable.volume_on);
-//		}
-//		imageView.setImageDrawable(soundIcon);
-//
-//	}
+	private void toggleUI() {
+		Button imageView = (Button) findViewById(R.id.volume);
+		Drawable soundIcon;
+
+		if (mPhoneIsSilent) {
+			soundIcon = getResources().getDrawable(R.drawable.volume_off);
+		} else {
+			soundIcon = getResources().getDrawable(R.drawable.volume_on);
+		}
+		//Using deprecated method to support minSDKlevel below 16. Maybe change minSDKlevel in manifest and use setBackground instead?
+		imageView.setBackgroundDrawable(soundIcon);
+
+	}
 
 }
