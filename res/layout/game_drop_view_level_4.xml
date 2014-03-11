@@ -6,35 +6,40 @@
 
             <ImageView
                 android:id="@+id/level_4_shadow_1"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_marginBottom="56dp"
+                android:background="@drawable/medusa_shadows"
                 android:contentDescription="@string/desc"/>
 
-            <ImageView
-                android:id="@+id/level_4_shadow_2"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="134dp"
-                android:contentDescription="@string/desc" />
-
-            <ImageView
-                android:id="@+id/level_4_shadow_3"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="46dp"
-                android:contentDescription="@string/desc" />
              <ImageView
-                android:id="@+id/level_4_shadow_4"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="46dp"
-                android:contentDescription="@string/desc" />
+                 android:id="@+id/level_4_shadow_3"
+                 android:layout_width="120dp"
+                 android:layout_height="120dp"
+                 android:layout_alignParentTop="true"
+                 android:layout_marginTop="21dp"
+                 android:layout_toRightOf="@+id/level_4_shadow_1"
+                 android:background="@drawable/medusa_shadows"
+                 android:contentDescription="@string/desc" />
+
+             <ImageView
+                 android:id="@+id/level_4_shadow_2"
+                 android:layout_width="120dp"
+                 android:layout_height="120dp"
+                 android:layout_below="@+id/level_4_shadow_3"
+                 android:layout_toRightOf="@+id/level_4_shadow_1"
+                 android:background="@drawable/medusa_shadows"
+                 android:contentDescription="@string/desc" />
+
+             <ImageView
+                 android:id="@+id/level_4_shadow_4"
+                 android:layout_width="120dp"
+                 android:layout_height="120dp"
+                 android:layout_alignBottom="@+id/level_4_shadow_2"
+                 android:layout_alignParentLeft="true"
+                 android:layout_marginBottom="34dp"
+                 android:layout_marginLeft="21dp"
+                 android:background="@drawable/medusa_shadows"
+                 android:contentDescription="@string/desc" />
  
 </RelativeLayout>
