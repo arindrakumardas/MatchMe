@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.matchme.android;
 
+import se.kth.csc.iprog.matchme.android.controller.StartController;
 import se.kth.csc.iprog.matchme.android.view.StartView;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -32,15 +33,16 @@ public class StartActivity extends Activity {
 		// Creating the view class instance
 		StartView startView = new StartView(findViewById(R.id.start_view));
 		//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
+		StartController startController = new StartController(startView);
 
 		//Buttons in start_view
 		Button startButton = (Button) findViewById(R.id.start_game);
 		startButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				//TODO: Assign this to move to the next view!
-				//Intent i = new Intent(MainActivity.this, MenuActivity.class);
-				//startActivity(i);
+				// Move to the next view!
+				Intent i = new Intent(StartActivity.this, LevelActivity.class);
+				startActivity(i);
 			}
 		});
 
@@ -48,9 +50,9 @@ public class StartActivity extends Activity {
 		highScoreBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				//TODO: Assign this to move to the next view!
-				//				Intent i = new Intent(MainActivity.this, LevelActivity.class);
-				//	    		startActivity(i);
+				//Move to the next view!
+				Intent i = new Intent(StartActivity.this, HighscoreActivity.class);
+				startActivity(i);
 			}
 		});
 
