@@ -73,7 +73,7 @@
              android:layout_width="400dp"
              android:layout_height="250dp"
              android:layout_marginTop="70dp"
-             layout="@layout/game_drop_view" 
+             layout="@layout/game_drop_view_level_2" 
              />
  
 
@@ -83,7 +83,7 @@
           android:layout_height="300dp"
           android:layout_alignParentLeft="true"
           android:layout_below="@+id/game_drop_view_include"
-          layout="@layout/game_drag_view" />
+          layout="@layout/game_drag_view_level_1" />
       
       
        <include

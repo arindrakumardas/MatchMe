@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#82D3F0">
+
+              <ImageView
+                  android:id="@+id/level_2_image_4"
+                  android:layout_width="70dp"
+                  android:layout_height="70dp"
+                  android:layout_alignParentTop="true"
+                  android:layout_marginTop="24dp"
+                  android:layout_toRightOf="@+id/level_2_image_3"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/octopus" />
+
+              <ImageView
+                  android:id="@+id/level_2_image_3"
+                  android:layout_width="70dp"
+                  android:layout_height="70dp"
+                  android:layout_alignTop="@+id/level_2_image_4"
+                  android:layout_toRightOf="@+id/level_2_image_2"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/medusa" />
+
+              <ImageView
+                  android:id="@+id/level_2_image_2"
+                  android:layout_width="70dp"
+                  android:layout_height="70dp"
+                  android:layout_alignParentLeft="true"
+                  android:layout_alignTop="@+id/level_2_image_3"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/seahorse" />
+
+              <ImageView
+                  android:id="@+id/level_2_image_1"
+                  android:layout_width="70dp"
+                  android:layout_height="70dp"
+                  android:layout_alignTop="@+id/level_2_image_4"
+                  android:layout_toRightOf="@+id/level_2_image_4"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/dolphin" />
+    
+</RelativeLayout>
