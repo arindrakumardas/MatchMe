@@ -12,71 +12,71 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 
 public class StartActivity extends Activity {
-	
+
 	private AudioManager mAudioManager;
 	private boolean mPhoneIsSilent;
-	
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        // Default call to load previous state
-    	super.onCreate(savedInstanceState);
-    	
-    	// get info for audio manager
-    	mAudioManager = (AudioManager)getSystemService(AUDIO_SERVICE);
-    	checkIfPhoneIsSilent();
-    	
-    	// Set the view for the main activity screen
-    	// it must come before any call to findViewById method
-        setContentView(R.layout.start_view);
-        
-    	// Creating the view class instance
-    	StartView startView = new StartView(findViewById(R.layout.start_view));
-    	//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
 
-    	//Buttons in start_view
-    	Button startButton = (Button) findViewById(R.id.start_game);
-    	startButton.setOnClickListener(new OnClickListener() {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// Default call to load previous state
+		super.onCreate(savedInstanceState);
+
+		// Set the view for the main activity screen
+		// it must come before any call to findViewById method
+		setContentView(R.layout.start_view);
+
+		// get info for audio manager
+		mAudioManager = (AudioManager)getSystemService(AUDIO_SERVICE);
+		checkIfPhoneIsSilent();
+
+		// Creating the view class instance
+		StartView startView = new StartView(findViewById(R.id.start_view));
+		//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
+
+		//Buttons in start_view
+		Button startButton = (Button) findViewById(R.id.start_game);
+		startButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				//TODO: Assign this to move to the next view!
 				//Intent i = new Intent(MainActivity.this, MenuActivity.class);
-	    		//startActivity(i);
+				//startActivity(i);
 			}
-    	});
-    	
-    	Button highScoreBtn = (Button) findViewById(R.id.view_highscore);
-    	highScoreBtn.setOnClickListener(new OnClickListener() {
+		});
+
+		Button highScoreBtn = (Button) findViewById(R.id.view_highscore);
+		highScoreBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				//TODO: Assign this to move to the next view!
-//				Intent i = new Intent(MainActivity.this, LevelActivity.class);
-//	    		startActivity(i);
+				//				Intent i = new Intent(MainActivity.this, LevelActivity.class);
+				//	    		startActivity(i);
 			}
-    	});
-    	
-    	Button toggleSoundBtn = (Button) findViewById(R.id.volume);
-    	toggleSoundBtn.setOnClickListener(new OnClickListener(){
-    		@Override
-    		public void onClick(View v) {
-    			if (mPhoneIsSilent) {
-    				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-    				mPhoneIsSilent = false;
-    			} else {
-    				mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-    				mPhoneIsSilent = true;
-    			}
-    			toggleUI();
-    		}
-    	});
-    }
+		});
 
-    @Override
-    protected void onResume() {
-    	super.onResume();
-    	checkIfPhoneIsSilent();
-    	toggleUI();
-    }
-    
+		Button toggleSoundBtn = (Button) findViewById(R.id.volume);
+		toggleSoundBtn.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				if (mPhoneIsSilent) {
+					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+					mPhoneIsSilent = false;
+				} else {
+					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+					mPhoneIsSilent = true;
+				}
+				//toggleUI();
+			}
+		});
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		checkIfPhoneIsSilent();
+		//toggleUI();
+	}
+
 	private void checkIfPhoneIsSilent() {
 		int ringerMode = mAudioManager.getRingerMode();
 		if (ringerMode == AudioManager.RINGER_MODE_SILENT) {
@@ -85,19 +85,19 @@ public class StartActivity extends Activity {
 			mPhoneIsSilent = false;
 		}
 	}
-	
+
 	// Toggles the UI images from silent to normal and vice-versa
-	private void toggleUI() {
-		ImageView imageView = (ImageView) findViewById(R.id.volume);
-		Drawable soundIcon;
-		
-		if (mPhoneIsSilent) {
-			soundIcon = getResources().getDrawable(R.drawable.volume_off);
-		} else {
-			soundIcon = getResources().getDrawable(R.drawable.volume_on);
-		}
-		imageView.setImageDrawable(soundIcon);
-		
-	}
+//	private void toggleUI() {
+//		ImageView imageView = (ImageView) findViewById(R.id.volume);
+//		Drawable soundIcon;
+//
+//		if (mPhoneIsSilent) {
+//			soundIcon = getResources().getDrawable(R.drawable.volume_off);
+//		} else {
+//			soundIcon = getResources().getDrawable(R.drawable.volume_on);
+//		}
+//		imageView.setImageDrawable(soundIcon);
+//
+//	}
 
 }
