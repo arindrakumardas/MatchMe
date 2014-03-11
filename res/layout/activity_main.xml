@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,27 +7,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#00FFFF"
     tools:context=".MainActivity" >
 
-    <ImageView
-        android:id="@+id/load_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/load_image" />
+    <Button
+        android:id="@+id/volume"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/desc"
+        android:background="@drawable/volume_on" />
 
+    <Button
+        android:id="@+id/start_game"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/volume"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="112dp"
+        android:background="@drawable/startgame_button" />
 
-        <TextView
-            android:id="@+id/welcome_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="39dp"
-            android:gravity="center"
-            android:text="@string/welcome"
-            android:textColor="#000000"
-            android:textSize="24sp" />
+    <Button
+        android:id="@+id/view_highscore"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/start_game"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/highscore_button" />
+
 
 </RelativeLayout>
