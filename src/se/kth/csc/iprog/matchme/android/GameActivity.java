@@ -10,7 +10,7 @@ public class GameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_info_view);
+        setContentView(R.layout.game_view);
         
         //TODO: Add code for switching screens and starting a view and a controller.
  
