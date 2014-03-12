@@ -15,16 +15,25 @@ public class LevelActivity extends Activity {
         setContentView(R.layout.levels_view);
         
         //TODO: Add code for switching screens and starting a view and a controller.
- 
-        Button level1_button = (Button) findViewById(R.id.level1_button);
-        level1_button.setOnClickListener(new OnClickListener() {
+        Button backbtn = (Button) findViewById(R.id.back_btn);
+        backbtn.setOnClickListener(new OnClickListener() {
       			@Override
       			public void onClick(View arg0) {
       				//Move to the next view!
-      				Intent i = new Intent(LevelActivity.this, GameActivity.class);
+      				Intent i = new Intent(LevelActivity.this, StartActivity.class);
       				startActivity(i);
       			}
-      		});   
+      		}); 
+        
+//        Button level1_button = (Button) findViewById(R.id.level1_button);
+//        level1_button.setOnClickListener(new OnClickListener() {
+//      			@Override
+//      			public void onClick(View arg0) {
+//      				//Move to the next view!
+//      				Intent i = new Intent(LevelActivity.this, GameActivity.class);
+//      				startActivity(i);
+//      			}
+//      		});   
         
     }
  
