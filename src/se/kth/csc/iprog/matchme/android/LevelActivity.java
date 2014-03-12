@@ -16,8 +16,8 @@ public class LevelActivity extends Activity {
         
         //TODO: Add code for switching screens and starting a view and a controller.
  
-        Button level1btn = (Button) findViewById(R.id.level1_button);
-        level1btn.setOnClickListener(new OnClickListener() {
+        Button level1_button = (Button) findViewById(R.id.level1_button);
+        level1_button.setOnClickListener(new OnClickListener() {
       			@Override
       			public void onClick(View arg0) {
       				//Move to the next view!

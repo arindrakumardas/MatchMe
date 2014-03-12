@@ -13,7 +13,7 @@ public class PauseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_view);
+        setContentView(R.layout.pause_dialog_view);
         
         //TODO: Add code for switching screens and starting a view and a controller.
  
