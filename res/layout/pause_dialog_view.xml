@@ -12,27 +12,27 @@
     
     
         <Button
-            android:id="@+id/refresh_button"
+            android:id="@+id/restart_btn"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignBaseline="@+id/play_button"
-            android:layout_alignBottom="@+id/play_button"
+            android:layout_alignBaseline="@+id/play_btn"
+            android:layout_alignBottom="@+id/play_btn"
             android:layout_marginLeft="18dp"
-            android:layout_toRightOf="@+id/play_button"
+            android:layout_toRightOf="@+id/play_btn"
             android:background="@drawable/refresh_button" />
 
         <Button
             android:id="@+id/back_btn"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignBaseline="@+id/refresh_button"
-            android:layout_alignBottom="@+id/refresh_button"
+            android:layout_alignBaseline="@+id/restart_btn"
+            android:layout_alignBottom="@+id/restart_btn"
             android:layout_marginLeft="18dp"
-            android:layout_toRightOf="@+id/refresh_button"
+            android:layout_toRightOf="@+id/restart_btn"
             android:background="@drawable/backbtn" />
 
         <Button
-            android:id="@+id/play_button"
+            android:id="@+id/play_btn"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_alignParentLeft="true"
