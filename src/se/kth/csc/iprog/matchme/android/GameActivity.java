@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
  
 public class GameActivity extends Activity {
  
@@ -16,6 +17,14 @@ public class GameActivity extends Activity {
         
         //TODO: Add code for switching screens and starting a view and a controller.
  
+        TextView txtName = (TextView) findViewById(R.id.level_value);
+        
+        Intent i = getIntent();
+        // Receiving the Data
+        String level = i.getStringExtra("level_value");
+        txtName.setText(level);
+        
+        
         Button pausebtn = (Button) findViewById(R.id.pause_btn);
         pausebtn.setOnClickListener(new OnClickListener() {
       			@Override

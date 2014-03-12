@@ -15,7 +15,6 @@
         android:layout_alignLeft="@+id/level3_grayed_button"
         android:layout_below="@+id/back_btn"
         android:background="@drawable/level1"
-        android:onClick="launchClick"
         android:contentDescription="@string/desc" /> 
 
     <Button
@@ -24,7 +23,6 @@
         android:layout_height="70dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-         android:onClick="launchClick"
         android:background="@drawable/backbtn" />
 
     <Button
@@ -36,7 +34,6 @@
         android:layout_marginTop="37dp"
         android:layout_toRightOf="@+id/level1_button"
         android:background="@drawable/level2"
-         android:onClick="launchClick"
         android:contentDescription="@string/desc" />
 
     <Button
@@ -47,7 +44,6 @@
         android:layout_below="@+id/level2_button"
         android:layout_marginLeft="35dp"
         android:background="@drawable/level3_grayed"
-         android:onClick="launchClick"
         android:contentDescription="@string/desc" />
 
     <Button
@@ -58,7 +54,6 @@
         android:layout_alignTop="@+id/level3_grayed_button"
         android:layout_marginTop="28dp"
         android:background="@drawable/level4_grayed"
-         android:onClick="launchClick"
         android:contentDescription="@string/desc" />
 
     <Button
@@ -68,7 +63,6 @@
         android:layout_below="@+id/level4_grayed_button"
         android:layout_centerHorizontal="true"
         android:background="@drawable/level5_grayed"
-         android:onClick="launchClick"
         android:contentDescription="@string/desc" />
 
     <TextView

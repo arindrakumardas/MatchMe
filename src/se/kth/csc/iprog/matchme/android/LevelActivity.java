@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
  
 public class LevelActivity extends Activity {
  
@@ -15,44 +16,30 @@ public class LevelActivity extends Activity {
         setContentView(R.layout.levels_view);
         
         //TODO: Add code for switching screens and starting a view and a controller.
-//        Button backbtn = (Button) findViewById(R.id.back_btn);
-//        backbtn.setOnClickListener(new OnClickListener() {
-//      			@Override
-//      			public void onClick(View arg0) {
-//      				//Move to the next view!
-//      				Intent i = new Intent(LevelActivity.this, StartActivity.class);
-//      				startActivity(i);
-//      			}
-//      		}); 
-//        
-//        Button level1_button = (Button) findViewById(R.id.back_btn);
-//        level1_button.setOnClickListener(new OnClickListener() {
-//      			@Override
-//      			public void onClick(View arg0) {
-//      				//Move to the next view!
-//      				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-//      				startActivity(i);
-//      			}
-//      		});   
-//        
+        Button backbtn = (Button) findViewById(R.id.back_btn);
+        backbtn.setOnClickListener(new OnClickListener() {
+      			@Override
+      			public void onClick(View arg0) {
+      				//Move to the next view!
+      				Intent i = new Intent(LevelActivity.this, StartActivity.class);
+      				startActivity(i);
+      			}
+      		}); 
+        
+        Button level1_button = (Button) findViewById(R.id.level1_button);
+        level1_button.setOnClickListener(new OnClickListener() {
+      			@Override
+      			public void onClick(View arg0) {
+      				//Move to the next view!
+      				Intent i = new Intent(LevelActivity.this, GameActivity.class);
+                    i.putExtra("level_value", "1");		
+      	          startActivity(i);
+      			}
+      		}); 
+        
     }
- 
-    
-    public void launchClick(View v) {
-        Intent intent = null;
 
-        switch(v.getId()) {
-        case R.id.back_btn:
-            intent = new Intent(LevelActivity.this, StartActivity.class);
-            break;
 
-        case R.id.level1_button:
-            intent = new Intent(LevelActivity.this, GameActivity.class);
-            break;
 
-        // etc, etc
-        }
-        startActivityForResult(intent, 0);
-    };
     
 }
