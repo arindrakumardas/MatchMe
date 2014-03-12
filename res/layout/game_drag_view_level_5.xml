@@ -8,93 +8,91 @@
     
      <ImageView
        android:id="@+id/level_5_image_1"
-       android:layout_width="50dp"
-       android:layout_height="50dp"
+       android:layout_width="60dp"
+       android:layout_height="60dp"
        android:layout_alignParentLeft="true"
        android:layout_alignParentTop="true"
        android:contentDescription="@string/desc"
        android:src="@drawable/medusa" />
 
-         <ImageView
-             android:id="@+id/level_5_image_6"
-             android:layout_width="50dp"
-             android:layout_height="50dp"
-             android:layout_alignTop="@+id/level_5_image_4"
-             android:layout_toRightOf="@+id/level_5_image_4"
-             android:contentDescription="@string/desc"
-             android:src="@drawable/medusa" />
-
-          <ImageView
-              android:id="@+id/level_5_image_7"
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:layout_alignParentTop="true"
-              android:layout_toRightOf="@+id/level_5_image_5"
-              android:contentDescription="@string/desc"
-              android:src="@drawable/medusa" />
-
-            <ImageView
-                android:id="@+id/level_5_image_8"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignTop="@+id/level_5_image_6"
-                android:layout_toRightOf="@+id/level_5_image_6"
-                android:contentDescription="@string/desc"
-                android:src="@drawable/medusa" />
-
               <ImageView
-                  android:id="@+id/level_5_image_9"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:layout_alignParentTop="true"
-                  android:layout_toRightOf="@+id/level_5_image_7"
-                  android:contentDescription="@string/desc"
-                  android:src="@drawable/medusa" />
-
-              <ImageView
-                  android:id="@+id/level_5_image_3"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:layout_above="@+id/level_5_image_4"
-                  android:layout_marginLeft="16dp"
-                  android:layout_toRightOf="@+id/level_5_image_1"
-                  android:contentDescription="@string/desc"
-                  android:src="@drawable/medusa" />
-
-              <ImageView
-                  android:id="@+id/level_5_image_2"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:layout_alignParentLeft="true"
-                  android:layout_below="@+id/level_5_image_1"
-                  android:layout_marginLeft="31dp"
+                  android:id="@+id/level_5_image_10"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
+                  android:layout_below="@+id/level_5_image_9"
+                  android:layout_toRightOf="@+id/level_5_image_8"
                   android:contentDescription="@string/desc"
                   android:src="@drawable/medusa" />
 
               <ImageView
                   android:id="@+id/level_5_image_5"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
                   android:layout_above="@+id/level_5_image_6"
-                  android:layout_toRightOf="@+id/level_5_image_3"
+                  android:layout_centerHorizontal="true"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/medusa" />
+
+              <ImageView
+                  android:id="@+id/level_5_image_7"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
+                  android:layout_above="@+id/level_5_image_6"
+                  android:layout_toRightOf="@+id/level_5_image_5"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/medusa" />
+
+              <ImageView
+                  android:id="@+id/level_5_image_9"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
+                  android:layout_alignBottom="@+id/level_5_image_7"
+                  android:layout_toRightOf="@+id/level_5_image_7"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/medusa" />
+
+              <ImageView
+                  android:id="@+id/level_5_image_8"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
+                  android:layout_below="@+id/level_5_image_5"
+                  android:layout_toRightOf="@+id/level_5_image_6"
                   android:contentDescription="@string/desc"
                   android:src="@drawable/medusa" />
 
               <ImageView
                   android:id="@+id/level_5_image_4"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
                   android:layout_alignTop="@+id/level_5_image_2"
-                  android:layout_toRightOf="@+id/level_5_image_2"
+                  android:layout_toRightOf="@+id/level_5_image_1"
                   android:contentDescription="@string/desc"
                   android:src="@drawable/medusa" />
 
               <ImageView
-                  android:id="@+id/level_5_image_10"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:layout_below="@+id/level_5_image_9"
-                  android:layout_toRightOf="@+id/level_5_image_8"
+                  android:id="@+id/level_5_image_6"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
+                  android:layout_alignTop="@+id/level_5_image_4"
+                  android:layout_toRightOf="@+id/level_5_image_4"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/medusa" />
+
+              <ImageView
+                  android:id="@+id/level_5_image_2"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
+                  android:layout_below="@+id/level_5_image_1"
+                  android:layout_toLeftOf="@+id/level_5_image_3"
+                  android:contentDescription="@string/desc"
+                  android:src="@drawable/medusa" />
+
+              <ImageView
+                  android:id="@+id/level_5_image_3"
+                  android:layout_width="60dp"
+                  android:layout_height="60dp"
+                  android:layout_alignParentTop="true"
+                  android:layout_toLeftOf="@+id/level_5_image_5"
                   android:contentDescription="@string/desc"
                   android:src="@drawable/medusa" />
     

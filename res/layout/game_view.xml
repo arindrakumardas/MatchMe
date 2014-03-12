@@ -31,14 +31,15 @@
              android:layout_marginTop="50dp"
              layout="@layout/game_drop_view_level_1" />
  
-
       <include
           android:id="@+id/game_drag_view_include"
           android:layout_width="400dp"
           android:layout_height="300dp"
+          android:layout_alignParentBottom="true"
           android:layout_alignParentLeft="true"
+          android:layout_alignRight="@+id/game_drop_view_include"
           android:layout_below="@+id/game_drop_view_include"
-          layout="@layout/game_drag_view_level_1" />
+          layout="@layout/game_drag_view_level_5" />
 
       <Button
           android:id="@+id/pause_btn"
