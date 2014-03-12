@@ -22,7 +22,7 @@ public class GameActivity extends Activity {
       			@Override
       			public void onClick(View arg0) {
       				//Move to the next view!
-      				Intent i = new Intent(GameActivity.this, StartActivity.class);
+      				Intent i = new Intent(GameActivity.this, PauseActivity.class);
       				startActivity(i);
       			}
       		});  
