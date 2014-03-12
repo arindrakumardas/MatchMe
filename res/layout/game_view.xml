@@ -30,7 +30,7 @@
              android:layout_width="400dp"
              android:layout_height="270dp"
              android:layout_marginTop="50dp"
-             layout="@layout/game_drop_view_level_5" />
+             layout="@layout/game_drop_view_level_1" />
  
 
       <include
@@ -39,7 +39,7 @@
           android:layout_height="300dp"
           android:layout_alignParentLeft="true"
           android:layout_below="@+id/game_drop_view_include"
-          layout="@layout/game_drag_view_level_5" />
+          layout="@layout/game_drag_view_level_1" />
 
       <ImageView
           android:id="@+id/pause_btn"
