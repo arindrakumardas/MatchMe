@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
  
 public class GameActivity extends Activity {
  
@@ -14,6 +17,16 @@ public class GameActivity extends Activity {
         
         //TODO: Add code for switching screens and starting a view and a controller.
  
+        Button pausebtn = (Button) findViewById(R.id.pause_btn);
+        pausebtn.setOnClickListener(new OnClickListener() {
+      			@Override
+      			public void onClick(View arg0) {
+      				//Move to the next view!
+      				Intent i = new Intent(GameActivity.this, StartActivity.class);
+      				startActivity(i);
+      			}
+      		});  
+        
     }
  
 }

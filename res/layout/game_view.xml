@@ -42,7 +42,7 @@
           layout="@layout/game_drag_view_level_5" />
 
       <ImageView
-          android:id="@+id/pause_button"
+          android:id="@+id/pause_btn"
           android:layout_width="40dp"
           android:layout_height="60dp"
           android:layout_alignBottom="@+id/level"
