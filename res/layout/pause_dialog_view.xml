@@ -25,10 +25,10 @@
             android:id="@+id/back_btn"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_alignBaseline="@+id/refresh_btn"
-            android:layout_alignBottom="@+id/refresh_btn"
+            android:layout_alignBaseline="@+id/restart_btn"
+            android:layout_alignBottom="@+id/restart_btn"
             android:layout_marginLeft="18dp"
-            android:layout_toRightOf="@+id/refresh_btn"
+            android:layout_toRightOf="@+id/restart_btn"
             android:background="@drawable/backbtn" />
 
         <Button
