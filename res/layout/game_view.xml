@@ -19,7 +19,6 @@
         android:id="@+id/time_left_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/timeleftvalue"
         android:layout_below="@+id/time_left"
         android:textColor="#000000"
         android:textSize="24sp" />
