@@ -4,18 +4,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_level" >
 
-       <TextView
-           android:id="@+id/game_end_msg"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentLeft="true"
-           android:layout_alignParentTop="true"
-           android:layout_marginLeft="52dp"
-           android:layout_marginTop="121dp"
-           android:text="@string/end_msg"
-           android:textColor="#345803"
-           android:textSize="24sp" />
-
          <Button
              android:id="@+id/continue_btn"
              android:layout_width="100dp"
@@ -33,9 +21,20 @@
              android:layout_height="100dp"
              android:layout_alignParentLeft="true"
              android:layout_below="@+id/game_end_msg"
-             android:layout_marginLeft="29dp"
-             android:layout_marginTop="79dp"
+             android:layout_marginLeft="32dp"
+             android:layout_marginTop="16dp"
              android:background="@drawable/backbtn"
              android:contentDescription="@string/desc" />
+
+         <TextView
+             android:id="@+id/game_end_msg"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:layout_alignParentTop="true"
+             android:layout_marginTop="96dp"
+             android:text="@string/end_msg"
+             android:textColor="#345803"
+             android:textSize="24sp" />
     
 </RelativeLayout>
