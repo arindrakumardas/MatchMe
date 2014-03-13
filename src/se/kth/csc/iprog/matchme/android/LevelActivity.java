@@ -31,7 +31,8 @@ public class LevelActivity extends Activity {
       			public void onClick(View arg0) {
       				//Move to the next view!
       				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-                    i.putExtra("level_value", "1");		
+                    i.putExtra("level_value", "1");	
+                    i.putExtra("game_drop_view_include", "game_drop_view_level_1");	
       	          startActivity(i);
       			}
       		}); 
