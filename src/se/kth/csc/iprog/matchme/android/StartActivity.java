@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 
 public class StartActivity extends Activity {
 
@@ -21,7 +22,10 @@ public class StartActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// Default call to load previous state
 		super.onCreate(savedInstanceState);
-
+		//Play sound
+		final MediaPlayer mPlay = MediaPlayer.create(this, R.raw.audio_file);
+		mPlay.start();
+		
 		// Set the view for the main activity screen
 		// it must come before any call to findViewById method
 		setContentView(R.layout.start_view);
@@ -63,6 +67,7 @@ public class StartActivity extends Activity {
 				if (mPhoneIsSilent) {
 					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 					mPhoneIsSilent = false;
+					mPlay.start();
 				} else {
 					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 					mPhoneIsSilent = true;
