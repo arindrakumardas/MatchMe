@@ -18,12 +18,16 @@ public class GameActivity extends Activity {
         
         //TODO: Add code for switching screens and starting a view and a controller.
  
-        TextView txtName = (TextView) findViewById(R.id.level_value);
+        TextView levelName = (TextView) findViewById(R.id.level_value);
+        View game_drop_view_include = (View) findViewById(R.id.game_drop_view_include);
         
         Intent i = getIntent();
         // Receiving the Data
         String level = i.getStringExtra("level_value");
-        txtName.setText(level);
+        String game_drop = i.getStringExtra("game_drop_view_include");
+        
+        levelName.setText(level);
+        game_drop_view_include.setTag(game_drop);
         
         // implements CountdownTimer
         
