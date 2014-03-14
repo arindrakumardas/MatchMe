@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-<<<<<<< HEAD
+import android.widget.ViewFlipper;
 
 public class GameActivity extends Activity {
 
@@ -28,17 +28,22 @@ public class GameActivity extends Activity {
 		setContentView(R.layout.game_view);
 
 		//TODO: Add code for switching screens and starting a view and a controller.
-
 		TextView levelName = (TextView) findViewById(R.id.level_value);
-
-		Intent intent = getIntent();
-		// Receiving the Data
-		String level = intent.getStringExtra("level_value");
-		String game_drop = intent.getStringExtra("game_drop_view_include");
+        ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
+        ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
+        
+        Intent intent = getIntent();
+        // Receiving the Data
+        String level = intent.getStringExtra("level_value");
+        
+        levelName.setText(level);
+        int vflevel = Integer.parseInt(level);
+        vf_drop.setDisplayedChild(vflevel-1);
+        vf_drag.setDisplayedChild(vflevel-1);
 		
 		//Load the correct level
-		RelativeLayout game_drop_view_include = (RelativeLayout) findViewById(R.id.game_drop_view_include);
-		RelativeLayout game_drag_view_include = (RelativeLayout) findViewById(R.id.game_drag_view_include);
+		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
+		RelativeLayout game_drag_view_include = (RelativeLayout) vf_drag.getChildAt(vf_drag.getDisplayedChild());
 		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
 			View current = game_drop_view_include.getChildAt(i);
@@ -50,8 +55,6 @@ public class GameActivity extends Activity {
 			current.setOnTouchListener(new MyTouchListener());
 		}
 
-		levelName.setText(level);
-		game_drop_view_include.setTag(game_drop);
 
 		// implements CountdownTimer
 		CountDownTimer cdt = new CountDownTimer(30000, 1000) {
@@ -142,62 +145,5 @@ public class GameActivity extends Activity {
 			return true;
 		}
 	}
-
-=======
-import android.widget.ViewFlipper;
- 
-public class GameActivity extends Activity {
- 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_view);
-        
-        //TODO: Add code for switching screens and starting a view and a controller.
-        
-        
-        
-        TextView levelName = (TextView) findViewById(R.id.level_value);
-        ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
-        ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
-        
-        Intent i = getIntent();
-        // Receiving the Data
-        String level = i.getStringExtra("level_value");
-        
-        levelName.setText(level);
-        int vflevel = Integer.parseInt(level);
-        vf_drop.setDisplayedChild(vflevel-1);
-        vf_drag.setDisplayedChild(vflevel-1);
-        
-        // implements CountdownTimer
-        
-        new CountDownTimer(30000, 1000) {
-        	TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
-
-            public void onTick(long millisUntilFinished) {
-            	timeLeft.setText("" + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-            	// TODO: set intent to next screen
-            	Intent i = new Intent(GameActivity.this, PauseActivity.class);
-  				startActivity(i);
-            }
-         }.start();
-
-        
-        Button pausebtn = (Button) findViewById(R.id.pause_btn);
-        pausebtn.setOnClickListener(new OnClickListener() {
-      			@Override
-      			public void onClick(View arg0) {
-      				//Move to the next view!
-      				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-      				startActivity(i);
-      			}
-      		});  
-        
-    }
- 
->>>>>>> level-branch
+	
 }
