@@ -2,7 +2,6 @@ package se.kth.csc.iprog.matchme.android;
 
 import android.app.Activity;
 import android.content.ClipData;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -37,6 +36,7 @@ public class StartActivity extends Activity {
 		// Creating the view class instance
 		StartView startView = new StartView(findViewById(R.id.start_view));
 		//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
+		// I think we need to delete the following line:
 		StartController startController = new StartController(startView);
 
 		//Buttons in start_view

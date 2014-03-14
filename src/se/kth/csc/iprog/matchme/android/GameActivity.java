@@ -3,7 +3,6 @@ package se.kth.csc.iprog.matchme.android;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.DragEvent;
@@ -13,7 +12,6 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -65,12 +63,12 @@ public class GameActivity extends Activity {
 				timeLeft.setText("" + millisUntilFinished / 1000);
 			}
 
-public void onFinish() {
-	// TODO: set intent to next screen
-	Intent i = new Intent(GameActivity.this, EndActivity.class);
-		startActivity(i);
-}
-}.start();
+			public void onFinish() {
+			// 	TODO: set intent to next screen
+			Intent i = new Intent(GameActivity.this, EndActivity.class);
+			startActivity(i);
+			}
+		}.start();
 
 
 		Button pausebtn = (Button) findViewById(R.id.pause_btn);
