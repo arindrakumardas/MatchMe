@@ -34,7 +34,8 @@ public class EndActivity extends Activity {
       			@Override
       			public void onClick(View arg0) {
       				//Move to the next view!
-      				finish();
+      				Intent i = new Intent(EndActivity.this, GameActivity.class);
+      				startActivity(i);
       			}
       		});  
         
