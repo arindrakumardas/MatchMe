@@ -26,14 +26,14 @@
 
       <include
              android:id="@+id/game_drop_view_include"
-             android:layout_width="400dp"
+             android:layout_width="match_parent"
              android:layout_height="270dp"
              android:layout_marginTop="50dp"
              layout="@layout/game_drop_view_level_3" />
  
       <include
           android:id="@+id/game_drag_view_include"
-          android:layout_width="400dp"
+          android:layout_width="match_parent"
           android:layout_height="300dp"
           android:layout_alignParentBottom="true"
           android:layout_alignParentLeft="true"
