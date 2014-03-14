@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ViewFlipper;
  
 public class LevelActivity extends Activity {
  
@@ -25,6 +26,8 @@ public class LevelActivity extends Activity {
       			}
       		}); 
         
+        
+        
         Button level1_button = (Button) findViewById(R.id.level1_button);
         level1_button.setOnClickListener(new OnClickListener() {
       			@Override
@@ -32,7 +35,6 @@ public class LevelActivity extends Activity {
       				//Move to the next view!
       				Intent i = new Intent(LevelActivity.this, GameActivity.class);
                     i.putExtra("level_value", "1");	
-                    i.putExtra("game_drop_view_include", "game_drop_view_level_1");	
       	          startActivity(i);
       			}
       		}); 
@@ -43,7 +45,7 @@ public class LevelActivity extends Activity {
       			public void onClick(View arg0) {
       				//Move to the next view!
       				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-                    i.putExtra("level_value", "2");		
+                    i.putExtra("level_value", "2");	
       	          startActivity(i);
       			}
       		}); 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
  
 public class GameActivity extends Activity {
  
@@ -17,17 +18,21 @@ public class GameActivity extends Activity {
         setContentView(R.layout.game_view);
         
         //TODO: Add code for switching screens and starting a view and a controller.
- 
+        
+        
+        
         TextView levelName = (TextView) findViewById(R.id.level_value);
-        View game_drop_view_include = (View) findViewById(R.id.game_drop_view_include);
+        ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
+        ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
         
         Intent i = getIntent();
         // Receiving the Data
         String level = i.getStringExtra("level_value");
-        String game_drop = i.getStringExtra("game_drop_view_include");
         
         levelName.setText(level);
-        game_drop_view_include.setTag(game_drop);
+        int vflevel = Integer.parseInt(level);
+        vf_drop.setDisplayedChild(vflevel-1);
+        vf_drag.setDisplayedChild(vflevel-1);
         
         // implements CountdownTimer
         
