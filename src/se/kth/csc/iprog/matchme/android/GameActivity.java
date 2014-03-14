@@ -45,7 +45,7 @@ public class GameActivity extends Activity {
 
             public void onFinish() {
             	// TODO: set intent to next screen
-            	Intent i = new Intent(GameActivity.this, PauseActivity.class);
+            	Intent i = new Intent(GameActivity.this, EndActivity.class);
   				startActivity(i);
             }
          }.start();
