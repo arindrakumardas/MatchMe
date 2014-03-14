@@ -22,7 +22,7 @@ public class PauseActivity extends Activity {
       			@Override
       			public void onClick(View arg0) {
       				//Move to the next view!
-      				Intent i = new Intent(PauseActivity.this, GameActivity.class);
+      				Intent i = new Intent(PauseActivity.this, LevelActivity.class);
       				startActivity(i);
       			}
       		});  
@@ -42,8 +42,7 @@ public class PauseActivity extends Activity {
       			@Override
       			public void onClick(View arg0) {
       				//Move to the next view!
-      				Intent i = new Intent(PauseActivity.this, GameActivity.class);
-      				startActivity(i);
+      				finish();
       			}
       		});  
         
