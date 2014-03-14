@@ -7,103 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/background_level" >
-    <TableLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_centerInParent="true" android:id="@+id/tableLayout1">
-	    <TableRow>
-
-	         <ImageView
-		        android:id="@+id/blankstarfish"
-		        android:layout_width="60dp"
-		        android:layout_height="30dp"
-		        android:contentDescription="@string/desc"
-		         />
-	        
-	        <TextView
-	            android:id="@+id/name_title"
-	            android:gravity="left"
-	            android:padding="10dp"
-	            android:text="@string/name_cell"
-	            android:textColor="#345803"
-	            android:textStyle="bold" />
-
-	        <TextView
-	            android:id="@+id/score_title"
-	            android:gravity="center"
-	            android:padding="10dp"
-	            android:text="@string/score_cell"
-	             android:textColor="#345803"
-	            android:textStyle="bold"	/>
-	    </TableRow>
-	    <TableRow>
-	        
-	        
-	        <ImageView
-		        android:id="@+id/goldenstarfish"
-		        android:layout_width="40dp"
-		        android:layout_height="40dp"
-		        android:contentDescription="@string/desc"
-		        android:src="@drawable/goldenstarfish" />
-	        
-	        <TextView
-	            android:id="@+id/player_1"
-	            android:gravity="left"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/Joe"	/>
-	        <TextView
-	            android:id="@+id/score_1"
-	            android:gravity="right"
-	            android:padding="10dip"	
-	            android:textColor="#67922E"
-	            android:text="@string/score1"	/>
-	    </TableRow>
-	    <TableRow>
-	        
-	           <ImageView
-		        android:id="@+id/silverstarfish"
-		        android:layout_width="40dp"
-		        android:layout_height="40dp"
-		        android:contentDescription="@string/desc"
-		        android:src="@drawable/silvestarfish" />
-	        
-	        <TextView
-	            android:id="@+id/player_2"
-	            android:gravity="left"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/John"	/>
-	        <TextView
-	            android:id="@+id/score_2"
-	            android:gravity="right"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/score2"	/>
-	    </TableRow>
-	    <TableRow>
-	        
-	           <ImageView
-		        android:id="@+id/bronzestarfish"
-		        android:layout_width="40dp"
-		        android:layout_height="40dp"
-		        android:contentDescription="@string/desc"
-		        android:src="@drawable/bronzestarfish" />
-	        
-	        <TextView
-	            android:id="@+id/player_3"
-	            android:gravity="left"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/Jennifer"	/>
-	        <TextView
-	            android:id="@+id/score_3"
-	            android:gravity="right"
-	            android:padding="10dip"
-	            android:textColor="#67922E"
-	            android:text="@string/score3"	/>
-	    </TableRow>
-    </TableLayout>
+  
 
     <Button
         android:id="@+id/back_btn"
@@ -118,13 +22,10 @@
             android:id="@+id/high_scores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/tableLayout1"
-            android:layout_alignParentRight="true"
             android:layout_toEndOf="@id/back_btn"
             android:text="@string/high_scores_title"
             android:textColor="#007F00"
             android:textSize="40sp"
-            android:textStyle="bold" 
-            android:layout_marginLeft="30dp"/>
+            android:textStyle="bold" />
 
 </RelativeLayout>
