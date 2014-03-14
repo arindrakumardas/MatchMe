@@ -50,16 +50,7 @@ public class StartActivity extends Activity {
 			}
 		});
 
-		Button highScoreBtn = (Button) findViewById(R.id.view_highscore);
-		highScoreBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				//Move to the next view!
-				Intent i = new Intent(StartActivity.this, HighscoreActivity.class);
-				startActivity(i);
-			}
-		});
-
+		
 		Button toggleSoundBtn = (Button) findViewById(R.id.volume);
 		toggleSoundBtn.setOnClickListener(new OnClickListener(){
 			@Override

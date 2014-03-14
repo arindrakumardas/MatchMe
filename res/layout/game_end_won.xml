@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_level" >
+
+         <Button
+             android:id="@+id/continue_btn"
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:layout_alignBaseline="@+id/home_btn"
+             android:layout_alignBottom="@+id/home_btn"
+             android:layout_alignParentRight="true"
+             android:layout_marginRight="46dp"
+             android:background="@drawable/play_button"
+             android:contentDescription="@string/desc" />
+
+         <Button
+             android:id="@+id/home_btn"
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:layout_alignLeft="@+id/game_end_msg"
+             android:layout_alignParentBottom="true"
+             android:layout_marginBottom="64dp"
+             android:layout_marginLeft="14dp"
+             android:background="@drawable/backbtn"
+             android:contentDescription="@string/desc" />
+         
+            <TextView
+              android:id="@+id/score"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentTop="true"
+              android:layout_alignRight="@+id/scorevalue"
+              android:layout_marginTop="18dp"
+              android:text="@string/score"
+              android:textColor="#345803"
+              android:textSize="19sp" />
+
+          <TextView
+              android:id="@+id/scorevalue"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignLeft="@+id/home_btn"
+              android:layout_below="@+id/score"
+              android:text="@string/scorevalue"
+              android:textColor="#345803"
+              android:textSize="19sp" />
+
+          <TextView
+              android:id="@+id/best_score"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_above="@+id/scorevalue"
+              android:layout_alignRight="@+id/game_end_msg"
+              android:text="@string/bestscore"
+              android:textColor="#345803"
+              android:textSize="19sp" />
+          <TextView
+             android:id="@+id/bestscorevalue"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignBaseline="@+id/scorevalue"
+             android:layout_alignBottom="@+id/scorevalue"
+             android:layout_alignRight="@+id/best_score"
+             android:text="@string/bestscorevalue"
+             android:textColor="#345803"
+             android:textSize="19sp" />
+
+         <TextView
+             android:id="@+id/game_end_msg"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_above="@+id/continue_btn"
+             android:layout_centerHorizontal="true"
+             android:layout_marginBottom="125dp"
+             android:text="@string/end_msg_won"
+             android:textColor="#FF9F06"
+             android:textSize="28sp" />
+
+         <ImageView
+             android:id="@+id/goldenstarfish"
+             android:layout_width="30dp"
+             android:layout_height="30dp"
+             android:layout_alignLeft="@+id/continue_btn"
+             android:layout_alignTop="@+id/best_score"
+             android:contentDescription="@string/desc"
+             android:src="@drawable/goldenstarfish" />
+    
+</RelativeLayout>
