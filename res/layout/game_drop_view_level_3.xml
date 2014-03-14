@@ -12,7 +12,8 @@
                 android:layout_marginLeft="31dp"
                 android:layout_toRightOf="@+id/level_3_shadow_1"
                 android:background="@drawable/medusa_shadows"
-                android:contentDescription="@string/desc" />
+                android:contentDescription="@string/desc"
+                android:tag="3" />
 
             <ImageView
                 android:id="@+id/level_3_shadow_1"
@@ -21,7 +22,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/medusa_shadows"
-                android:contentDescription="@string/desc" />
+                android:contentDescription="@string/desc"
+                android:tag="1" />
 
             <ImageView
                 android:id="@+id/level_3_shadow_2"
@@ -31,6 +33,7 @@
                 android:layout_below="@+id/level_3_shadow_3"
                 android:layout_marginLeft="74dp"
                 android:background="@drawable/medusa_shadows"
-                android:contentDescription="@string/desc" />
+                android:contentDescription="@string/desc"
+                android:tag="2" />
  
 </RelativeLayout>
