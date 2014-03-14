@@ -57,19 +57,20 @@ public class GameActivity extends Activity {
 
 
 		// implements CountdownTimer
-		CountDownTimer cdt = new CountDownTimer(30000, 1000) {
+		new CountDownTimer(30000, 1000) {
 			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
+            
 			public void onTick(long millisUntilFinished) {
 				timeLeft.setText("" + millisUntilFinished / 1000);
 			}
 
-			public void onFinish() {
-				// TODO: set intent to next screen
-				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-				startActivity(i);
-			}
-		}.start();
+public void onFinish() {
+	// TODO: set intent to next screen
+	Intent i = new Intent(GameActivity.this, EndActivity.class);
+		startActivity(i);
+}
+}.start();
 
 
 		Button pausebtn = (Button) findViewById(R.id.pause_btn);
