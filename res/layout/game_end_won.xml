@@ -56,6 +56,16 @@
               android:text="@string/bestscore"
               android:textColor="#345803"
               android:textSize="19sp" />
+          <TextView
+             android:id="@+id/bestscorevalue"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignBaseline="@+id/scorevalue"
+             android:layout_alignBottom="@+id/scorevalue"
+             android:layout_alignRight="@+id/best_score"
+             android:text="@string/bestscorevalue"
+             android:textColor="#345803"
+             android:textSize="19sp" />
 
          <TextView
              android:id="@+id/game_end_msg"
@@ -66,17 +76,15 @@
              android:layout_marginBottom="125dp"
              android:text="@string/end_msg_won"
              android:textColor="#FF9F06"
-             android:textSize="24sp" />
+             android:textSize="28sp" />
 
-         <TextView
-             android:id="@+id/bestscorevalue"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignBaseline="@+id/scorevalue"
-             android:layout_alignBottom="@+id/scorevalue"
-             android:layout_alignRight="@+id/best_score"
-             android:text="@string/bestscorevalue"
-             android:textColor="#345803"
-             android:textSize="19sp" />
+         <ImageView
+             android:id="@+id/goldenstarfish"
+             android:layout_width="30dp"
+             android:layout_height="30dp"
+             android:layout_alignLeft="@+id/continue_btn"
+             android:layout_alignTop="@+id/best_score"
+             android:contentDescription="@string/desc"
+             android:src="@drawable/goldenstarfish" />
     
 </RelativeLayout>
