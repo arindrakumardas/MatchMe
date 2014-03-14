@@ -4,14 +4,9 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Match Me</string>
     <string name="game_name">Match Me</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="high_scores_title">High Scores</string>
     <string name="levels_title">Level </string>
     <string name="load_image">Loading image</string>
-    <string name="name_cell">Name</string>
-    <string name="score_cell">Score</string>
     <string name="start_game">Start Game</string>
-    <string name="view_highscores">View high scores</string>
     <string name="welcome">Welcome to Match Me!</string>
     <string name="desc">desc</string>
     <string name="timeleft">Time left</string>
@@ -25,16 +20,11 @@
     <string name="four">4</string>
     <string name="five">5</string>
     <string name="loading">Loading &#8230;</string>
-    <string name="Joe">Joe</string>
-    <string name="John">John</string>
-    <string name="Jennifer">Jennifer</string>
-    <string name="score1">700</string>
-    <string name="score2">685</string>
-    <string name="score3">600</string>
     <string name="levelvalue">2</string>
     <string name="end_msg_won">Congratulations!! You won!!</string>
     <string name="end_msg_lose">Game Over Try again</string>
     <string name="bestscore">Best Score</string>
+    <string name="bestscorevalue">800</string>
     
 	
 
