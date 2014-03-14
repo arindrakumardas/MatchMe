@@ -56,9 +56,18 @@ public class GameActivity extends Activity {
 		}
 
 
+<<<<<<< HEAD
 		// implements CountdownTimer
 		CountDownTimer cdt = new CountDownTimer(30000, 1000) {
 			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+=======
+            public void onFinish() {
+            	// TODO: set intent to next screen
+            	Intent i = new Intent(GameActivity.this, EndActivity.class);
+  				startActivity(i);
+            }
+         }.start();
+>>>>>>> origin/level-branch
 
 			public void onTick(long millisUntilFinished) {
 				timeLeft.setText("" + millisUntilFinished / 1000);
