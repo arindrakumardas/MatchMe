@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class EndActivity extends Activity {
  
@@ -13,6 +14,19 @@ public class EndActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_end_view);
+        
+       
+
+		//TODO: Score algorithm
+        int baseScoreValue = 50;
+        int timeLeftValue = 20; // Needs to be match with countdowntimer
+		TextView scorevalue = (TextView) findViewById(R.id.scorevalue);
+		int score = baseScoreValue * timeLeftValue ; 
+		String strI = String.valueOf(score);
+		scorevalue.setText(strI);
+		
+		
+        
         
         //TODO: Add code for switching screens and starting a view and a controller.
          
