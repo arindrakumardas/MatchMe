@@ -24,7 +24,7 @@ public class StartActivity extends Activity {
 		//Play sound
 		final MediaPlayer mPlay = MediaPlayer.create(this, R.raw.audio_file);
 		mPlay.start();
-		
+
 		// Set the view for the main activity screen
 		// it must come before any call to findViewById method
 		setContentView(R.layout.start_view);
@@ -50,7 +50,7 @@ public class StartActivity extends Activity {
 			}
 		});
 
-		
+
 		Button toggleSoundBtn = (Button) findViewById(R.id.volume);
 		toggleSoundBtn.setOnClickListener(new OnClickListener(){
 			@Override

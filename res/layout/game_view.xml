@@ -49,11 +49,9 @@
         <include
             android:id="@+id/game_drop_view_include_5"
             layout="@layout/game_drop_view_level_5" />
-        
     </ViewFlipper>
-    
-    
-     <ViewFlipper
+
+    <ViewFlipper
         android:id="@+id/game_drag_view_include"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -81,9 +79,7 @@
         <include
             android:id="@+id/game_drag_view_include_5"
             layout="@layout/game_drag_view_level_5" />
-        
     </ViewFlipper>
-
 
     <Button
         android:id="@+id/pause_btn"

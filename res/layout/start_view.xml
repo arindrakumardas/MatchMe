@@ -3,11 +3,11 @@
     android:id="@+id/start_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin" 
-    android:background="@drawable/background" >
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
     <Button
         android:id="@+id/volume"
@@ -15,8 +15,8 @@
         android:layout_height="50dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        android:contentDescription="@string/desc"
-        android:background="@drawable/volume_on" />
+        android:background="@drawable/volume_on"
+        android:contentDescription="@string/desc" />
 
     <Button
         android:id="@+id/start_game"

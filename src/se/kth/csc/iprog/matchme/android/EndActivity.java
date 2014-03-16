@@ -9,47 +9,48 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class EndActivity extends Activity {
- 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_end_view);
-        
-       
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.game_end_view);
 
 		//TODO: Score algorithm
-        int baseScoreValue = 50;
-        int timeLeftValue = 20; // Needs to be match with countdowntimer
+		int baseScoreValue = 50;
+		int timeLeftValue = 20; // Needs to be match with countdowntimer
 		TextView scorevalue = (TextView) findViewById(R.id.scorevalue);
 		int score = baseScoreValue * timeLeftValue ; 
 		String strI = String.valueOf(score);
 		scorevalue.setText(strI);
+
+
+		//TODO: Add code for switching screens and starting a view and a controller.
+
+
+		// Back to home Button
 		
+		Button backbtn = (Button) findViewById(R.id.back_btn);
+		backbtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				//Move to the next view!
+				Intent i = new Intent(EndActivity.this, StartActivity.class);
+				startActivity(i);
+			}
+		});  
+
 		
-        
-        
-        //TODO: Add code for switching screens and starting a view and a controller.
-         
-     
-        Button backbtn = (Button) findViewById(R.id.back_btn);
-        backbtn.setOnClickListener(new OnClickListener() {
-      			@Override
-      			public void onClick(View arg0) {
-      				//Move to the next view!
-      				Intent i = new Intent(EndActivity.this, StartActivity.class);
-      				startActivity(i);
-      			}
-      		});  
-        
-        Button playbtn = (Button) findViewById(R.id.play_btn);
-        playbtn.setOnClickListener(new OnClickListener() {
-      			@Override
-      			public void onClick(View arg0) {
-      				//Move to the next view!
-      				Intent i = new Intent(EndActivity.this, GameActivity.class);
-      				startActivity(i);
-      			}
-      		});  
-        
-    }
+		// Resume Button
+		
+		Button playbtn = (Button) findViewById(R.id.play_btn);
+		playbtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				//Move to the next view!
+				Intent i = new Intent(EndActivity.this, GameActivity.class);
+				startActivity(i);
+			}
+		});  
+
+	}
 }
