@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="@string/timeleft"
         android:textColor="#345803"
-        android:textSize="14sp" />
+        android:textSize="14sp" 
+        android:typeface="sans"/>
 
     <TextView
         android:id="@+id/time_left_value"
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/time_left"
         android:textColor="#345803"
-        android:textSize="24sp" />
+        android:textSize="24sp" 
+        android:typeface="sans"/>
 
     <ViewFlipper
         android:id="@+id/game_drop_view_include"
@@ -103,7 +105,8 @@
         android:layout_toRightOf="@+id/pause_btn"
         android:text="@string/levelvalue"
         android:textColor="#345803"
-        android:textSize="14sp" />
+        android:textSize="14sp" 
+        android:typeface="sans"/>
 
     <TextView
         android:id="@+id/level"
@@ -113,7 +116,8 @@
         android:layout_alignLeft="@+id/pause_btn"
         android:text="@string/level"
         android:textColor="#345803"
-        android:textSize="14sp" />
+        android:textSize="14sp" 
+        android:typeface="sans"/>
 
     <TextView
         android:id="@+id/best_score"
@@ -124,6 +128,7 @@
         android:layout_alignRight="@+id/game_drop_view_include"
         android:text="@string/bestscore"
         android:textColor="#345803"
-        android:textSize="14sp" />
+        android:textSize="14sp" 
+        android:typeface="sans"/>
 
 </RelativeLayout>

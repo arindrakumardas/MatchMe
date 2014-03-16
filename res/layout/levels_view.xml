@@ -76,6 +76,7 @@
         android:text="@string/levels_title"
         android:textColor="#007F00"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold" 
+        android:typeface="sans"/>
 
 </RelativeLayout>
