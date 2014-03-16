@@ -21,8 +21,8 @@
     <string name="five">5</string>
     <string name="loading">Loading &#8230;</string>
     <string name="levelvalue">2</string>
-    <string name="end_msg_won">Congratulations!! You won!!</string>
-    <string name="end_msg_lose">Game Over Try again</string>
+    <string name="end_msg_won">Congratulations!! \n You won!!</string>
+    <string name="end_msg_lose">Game Over \n Try again</string>
     <string name="bestscore">Best Score</string>
     <string name="bestscorevalue">800</string>
     
