@@ -29,11 +29,7 @@
         android:text="@string/loading"
         android:textColor="#FF9F06"
         android:textSize="24sp"
-<<<<<<< HEAD
-        android:textStyle="bold" />
-=======
         android:textStyle="bold" 
         android:typeface="sans"/>
->>>>>>> FETCH_HEAD
 
 </RelativeLayout>
