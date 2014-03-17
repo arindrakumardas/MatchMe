@@ -18,11 +18,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+
+
 public class GameActivity extends Activity {
+	
+	//protected static final int REQUEST_CODE = 1;
+	private static long countDownInterval = 1000;
+	long millisInFuture = 30000;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
+		Intent timer = getIntent();
+        millisInFuture = timer.getIntExtra("resumeTime", 30000);
+        
 
 		//TODO: Add code for switching screens and starting a view and a controller.
 		TextView levelName = (TextView) findViewById(R.id.level_value);
@@ -55,34 +65,37 @@ public class GameActivity extends Activity {
 		}
 
 
-		// implements CountdownTimer
-		new CountDownTimer(30000, 1000) {
-			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+// implements CountdownTimer
+        
+        final CountDownTimer cdt = new CountDownTimer(millisInFuture, countDownInterval) {
+        	TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
+            public void onTick(long millisUntilFinished) {
+            	timeLeft.setText("" + millisUntilFinished / 1000);
+            	millisInFuture = millisUntilFinished;
+            }
 
-			public void onTick(long millisUntilFinished) {
-				timeLeft.setText("" + millisUntilFinished / 1000);
-			}
-
-			public void onFinish() {
-				// 	TODO: set intent to next screen
-				Intent i = new Intent(GameActivity.this, EndActivity.class);
-				startActivity(i);
-			}
-		}.start();
-
-
-		// Pause Button
-		
-		Button pausebtn = (Button) findViewById(R.id.pause_btn);
-		pausebtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				//Move to the next view!
-				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-				startActivity(i);
-			}
-		});  
+            public void onFinish() {
+            	// TODO: set intent to next screen
+            	Intent i = new Intent(GameActivity.this, PauseActivity.class);
+            	i.putExtra("resumeTime", 30000);
+  				startActivity(i);
+            }
+         }.start();
+         
+         Button pausebtn = (Button) findViewById(R.id.pause_btn);
+         pausebtn.setOnClickListener(new OnClickListener() {
+      			@Override
+      			public void onClick(View arg0) {
+      				cdt.cancel();
+       		        //Move to the next view!
+      				Intent i = new Intent(GameActivity.this, PauseActivity.class);
+      				i.putExtra("resumeTime", (int) (millisInFuture));
+      				startActivity(i);
+      				
+      				finish(); // finish the current activity
+      			}
+      		});  
 
 	}
 
@@ -148,9 +161,5 @@ public class GameActivity extends Activity {
 		}
 	}
 
-	protected static final int REQUEST_CODE = 1;
-	private static long countDownInterval = 1000;
-	long millisInFuture = 30000;
     
-        }
 }
