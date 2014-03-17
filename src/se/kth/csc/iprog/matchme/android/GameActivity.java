@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 public class GameActivity extends Activity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -149,4 +148,9 @@ public class GameActivity extends Activity {
 		}
 	}
 
+	protected static final int REQUEST_CODE = 1;
+	private static long countDownInterval = 1000;
+	long millisInFuture = 30000;
+    
+        }
 }
