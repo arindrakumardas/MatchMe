@@ -14,7 +14,7 @@ public class PauseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pause_dialog_view);
 		Intent intent = getIntent();
-		final String resumeTime = intent.getStringExtra("resumeTime");
+		final int resumeTime = intent.getIntExtra("resumeTime", 30000);
 		
 		Button playBtn = (Button) findViewById(R.id.play_btn);
 		playBtn.setOnClickListener(new OnClickListener() {
@@ -23,8 +23,8 @@ public class PauseActivity extends Activity {
 				//Move to the next view!
 				Intent i = new Intent(PauseActivity.this, GameActivity.class);
 				i.putExtra("resumeTime", resumeTime);
-				setResult(RESULT_OK, i);
 				startActivity(i);
+				finish(); // finish the current activity
 			}
 		});
 		
@@ -35,8 +35,8 @@ public class PauseActivity extends Activity {
     				//Move to the next view!
     				Intent i = new Intent(PauseActivity.this, GameActivity.class);
     				i.putExtra("resumeTime", 30000);
-    				setResult(RESULT_OK, i);
     				startActivity(i);
+    				finish(); // finish the current activity 
     			}
     		});
 		
@@ -47,6 +47,7 @@ public class PauseActivity extends Activity {
     				//Move to the next view!
     				Intent i = new Intent(PauseActivity.this, StartActivity.class);
     				startActivity(i);
+    				finish(); // finish the current activity
     			}
     		}); 
 	}

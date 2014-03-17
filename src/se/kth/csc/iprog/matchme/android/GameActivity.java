@@ -12,12 +12,15 @@ import android.widget.TextView;
 public class GameActivity extends Activity {
  
 	protected static final int REQUEST_CODE = 1;
+	private static long countDownInterval = 1000;
 	long millisInFuture = 30000;
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_view);
+        Intent timer = getIntent();
+        millisInFuture = timer.getIntExtra("resumeTime", 30000);
         
         //TODO: Add code for switching screens and starting a view and a controller.
  
@@ -30,16 +33,18 @@ public class GameActivity extends Activity {
         
         // implements CountdownTimer
         
-        final CountDownTimer cdt = new CountDownTimer(millisInFuture, 1000) {
+        final CountDownTimer cdt = new CountDownTimer(millisInFuture, countDownInterval) {
         	TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
             public void onTick(long millisUntilFinished) {
             	timeLeft.setText("" + millisUntilFinished / 1000);
+            	millisInFuture = millisUntilFinished;
             }
 
             public void onFinish() {
             	// TODO: set intent to next screen
             	Intent i = new Intent(GameActivity.this, PauseActivity.class);
+            	i.putExtra("resumeTime", 30000);
   				startActivity(i);
             }
          }.start();
@@ -49,23 +54,13 @@ public class GameActivity extends Activity {
       			@Override
       			public void onClick(View arg0) {
       				cdt.cancel();
-      				String timeLeft = getText(R.id.time_left_value).toString();
-      				/* THIS CAUSES THE CRASH: */
-      		        int resumeTime = Integer.valueOf(timeLeft);
-
-      		        //Move to the next view!
+       		        //Move to the next view!
       				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-      				i.putExtra("resumeTime", resumeTime);
-      				startActivityForResult(i, REQUEST_CODE);
+      				i.putExtra("resumeTime", (int) (millisInFuture));
+      				startActivity(i);
+      				
+      				finish(); // finish the current activity
       			}
       		});  
         }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	if (requestCode == REQUEST_CODE && resultCode == PauseActivity.RESULT_OK) {
-    		String savedTime = data.getExtras().getString("resumeTime");
-    		millisInFuture = Long.valueOf(savedTime);
-    	}
-   	}
 }
