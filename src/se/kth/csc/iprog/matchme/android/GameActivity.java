@@ -13,7 +13,8 @@ public class GameActivity extends Activity {
  
 	protected static final int REQUEST_CODE = 1;
 	long millisInFuture = 30000;
-    @Override
+    
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_view);
@@ -51,17 +52,14 @@ public class GameActivity extends Activity {
       				String timeLeft = getText(R.id.time_left_value).toString();
       				/* THIS CAUSES THE CRASH: */
       		        int resumeTime = Integer.valueOf(timeLeft);
-      				//Move to the next view!
+
+      		        //Move to the next view!
       				Intent i = new Intent(GameActivity.this, PauseActivity.class);
       				i.putExtra("resumeTime", resumeTime);
       				startActivityForResult(i, REQUEST_CODE);
       			}
       		});  
         }
-//      Intent intent = getIntent();
-//      String resumeTime = intent.getStringExtra("resumeTime");
-      /* THE PROBLEM IS RIGHT HERE: */
-//      millisInFuture = Long.valueOf(resumeTime);
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
