@@ -1,6 +1,5 @@
 package se.kth.csc.iprog.matchme.android;
 
-import se.kth.csc.iprog.matchme.android.controller.StartController;
 import se.kth.csc.iprog.matchme.android.view.StartView;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -37,8 +36,8 @@ public class StartActivity extends Activity {
 		StartView startView = new StartView(findViewById(R.id.start_view));
 		//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
 		// I think we need to delete the following line:
-		StartController startController = new StartController(startView);
-
+/*		StartController startController = new StartController(startView);		*/
+		
 		//Buttons in start_view
 		Button startButton = (Button) findViewById(R.id.start_game);
 		startButton.setOnClickListener(new OnClickListener() {

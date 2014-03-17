@@ -22,16 +22,14 @@ import android.widget.ViewFlipper;
 
 public class GameActivity extends Activity {
 	
-	protected static final int REQUEST_CODE = 1;
 	private static long countDownInterval = 1000;
-	long millisInFuture = 30000;
+	long millisInFuture;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
 		Intent intent = getIntent();
-        millisInFuture = intent.getIntExtra("resumeTime", 30000);
         
 
 		//TODO: Add code for switching screens and starting a view and a controller.
@@ -70,10 +68,9 @@ public class GameActivity extends Activity {
 			View current = game_drag_view_include.getChildAt(i);
 			current.setOnTouchListener(new MyTouchListener());
 		}
-
-
-// implements CountdownTimer
-        
+		
+		// Implements CountdownTimer
+		millisInFuture = intent.getIntExtra("resumeTime", 30000);
         final CountDownTimer cdt = new CountDownTimer(millisInFuture, countDownInterval) {
         	TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
@@ -83,27 +80,28 @@ public class GameActivity extends Activity {
             }
 
             public void onFinish() {
-            	// TODO: set intent to next screen
-            	Intent i = new Intent(GameActivity.this, PauseActivity.class);
+            	// // Display screen after finishing a level
+            	Intent i = new Intent(GameActivity.this, EndActivity.class);
             	i.putExtra("resumeTime", 30000);
   				startActivity(i);
             }
          }.start();
          
+         // Pause Button
          Button pausebtn = (Button) findViewById(R.id.pause_btn);
          pausebtn.setOnClickListener(new OnClickListener() {
       			@Override
       			public void onClick(View arg0) {
       				cdt.cancel();
-       		        //Move to the next view!
+      				
+    				// Show paused screen options
       				Intent i = new Intent(GameActivity.this, PauseActivity.class);
       				i.putExtra("resumeTime", (int) (millisInFuture));
       				startActivity(i);
       				
-      				finish(); // finish the current activity
+      				finish(); // finish current activity
       			}
       		});  
-
 	}
 
 	private final class MyTouchListener implements OnTouchListener {
@@ -167,6 +165,5 @@ public class GameActivity extends Activity {
 			return true;
 		}
 	}
-
-    
+   
 }

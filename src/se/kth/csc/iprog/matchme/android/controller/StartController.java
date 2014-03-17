@@ -1,4 +1,4 @@
-package se.kth.csc.iprog.matchme.android.controller;
+/*package se.kth.csc.iprog.matchme.android.controller;
 
 
 import se.kth.csc.iprog.matchme.android.view.StartView;
@@ -16,3 +16,4 @@ public class StartController {
 	}
 
 }
+*/
