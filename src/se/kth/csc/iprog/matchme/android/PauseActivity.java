@@ -50,52 +50,5 @@ public class PauseActivity extends Activity {
     				finish(); // finish the current activity
     			}
     		}); 
-	}
-	
-	
-	
-/* *** Old Code here *** */
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.pause_dialog_view);
-//        
-//        //TODO: Add code for switching screens and starting a view and a controller.
-// 
-//        Intent intent = getIntent();
-//        
-//        Button refreshbtn = (Button) findViewById(R.id.restart_btn);
-//        refreshbtn.setOnClickListener(new OnClickListener() {
-//      			@Override
-//      			public void onClick(View arg0) {
-//      				//Move to the next view!
-//      				Intent i = new Intent(PauseActivity.this, GameActivity.class);
-//      				i.putExtra("resumeTime", 30000);
-//      				setResult(RESULT_OK, i);
-//      				startActivity(i);
-//      			}
-//      		});  
-//        
-//        Button backbtn = (Button) findViewById(R.id.back_btn);
-//        backbtn.setOnClickListener(new OnClickListener() {
-//      			@Override
-//      			public void onClick(View arg0) {
-//      				//Move to the next view!
-//      				Intent i = new Intent(PauseActivity.this, StartActivity.class);
-//      				startActivity(i);
-//      			}
-//      		});  
-//        
-//        Button playbtn = (Button) findViewById(R.id.play_btn);
-//        playbtn.setOnClickListener(new OnClickListener() {
-//      			@Override
-//      			public void onClick(View arg0) {
-//      				//Move to the next view!
-//      				Intent i = new Intent(PauseActivity.this, GameActivity.class);
-//      				startActivity(i);
-//      			}
-//      		});  
-//        
-//    }
-// 	
+	} 	
 }
