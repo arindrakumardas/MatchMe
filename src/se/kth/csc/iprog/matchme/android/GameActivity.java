@@ -46,9 +46,9 @@ public class GameActivity extends Activity {
 
 		// Setting the Data
 		levelName.setText(level);
-		int vflevel = Integer.parseInt(level);
-		vf_drop.setDisplayedChild(vflevel-1);
-		vf_drag.setDisplayedChild(vflevel-1);
+//		int vflevel = Integer.parseInt(level);
+//		vf_drop.setDisplayedChild(vflevel-1);
+//		vf_drag.setDisplayedChild(vflevel-1);
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
