@@ -11,6 +11,8 @@ import android.widget.TextView;
  
 public class GameActivity extends Activity {
  
+	protected static final int REQUEST_CODE = 1;
+	long millisInFuture = 30000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class GameActivity extends Activity {
         
         // implements CountdownTimer
         
-        new CountDownTimer(30000, 1000) {
+        final CountDownTimer cdt = new CountDownTimer(millisInFuture, 1000) {
         	TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
             public void onTick(long millisUntilFinished) {
@@ -40,18 +42,32 @@ public class GameActivity extends Activity {
   				startActivity(i);
             }
          }.start();
-
-        
-        Button pausebtn = (Button) findViewById(R.id.pause_btn);
-        pausebtn.setOnClickListener(new OnClickListener() {
+         
+         Button pausebtn = (Button) findViewById(R.id.pause_btn);
+         pausebtn.setOnClickListener(new OnClickListener() {
       			@Override
       			public void onClick(View arg0) {
+      				cdt.cancel();
+      				String timeLeft = getText(R.id.time_left_value).toString();
+      				/* THIS CAUSES THE CRASH: */
+      		        int resumeTime = Integer.valueOf(timeLeft);
       				//Move to the next view!
       				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-      				startActivity(i);
+      				i.putExtra("resumeTime", resumeTime);
+      				startActivityForResult(i, REQUEST_CODE);
       			}
       		});  
-        
-    }
- 
+        }
+//      Intent intent = getIntent();
+//      String resumeTime = intent.getStringExtra("resumeTime");
+      /* THE PROBLEM IS RIGHT HERE: */
+//      millisInFuture = Long.valueOf(resumeTime);
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	if (requestCode == REQUEST_CODE && resultCode == PauseActivity.RESULT_OK) {
+    		String savedTime = data.getExtras().getString("resumeTime");
+    		millisInFuture = Long.valueOf(savedTime);
+    	}
+   	}
 }

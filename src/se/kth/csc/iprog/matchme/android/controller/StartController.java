@@ -2,7 +2,6 @@ package se.kth.csc.iprog.matchme.android.controller;
 
 
 import se.kth.csc.iprog.matchme.android.view.StartView;
-import android.view.View;
 import android.widget.Button;
 
 public class StartController {
