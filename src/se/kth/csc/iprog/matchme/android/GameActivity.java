@@ -30,8 +30,8 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
-		Intent timer = getIntent();
-        millisInFuture = timer.getIntExtra("resumeTime", 30000);
+		Intent intent = getIntent();
+        millisInFuture = intent.getIntExtra("resumeTime", 30000);
         
 
 		//TODO: Add code for switching screens and starting a view and a controller.
@@ -39,16 +39,23 @@ public class GameActivity extends Activity {
 		ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
 
-		Intent intent = getIntent();
-		
 		// Receiving the Data
 		String level = intent.getStringExtra("level_value");
 
 		// Setting the Data
 		levelName.setText(level);
-//		int vflevel = Integer.parseInt(level);
-//		vf_drop.setDisplayedChild(vflevel-1);
-//		vf_drag.setDisplayedChild(vflevel-1);
+		
+		int vflevel = 0;
+
+		try {
+			vflevel = Integer.parseInt(level);
+		} catch(NumberFormatException nfe) {
+		  // Handle parse error.
+		}
+		
+		//int vflevel = Integer.parseInt(level);
+		vf_drop.setDisplayedChild(vflevel-1);
+		vf_drag.setDisplayedChild(vflevel-1);
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
