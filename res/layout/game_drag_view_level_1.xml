@@ -13,8 +13,7 @@
         android:layout_marginLeft="14dp"
         android:layout_toRightOf="@+id/level_1_image_1"
         android:src="@drawable/medusa"
-        android:contentDescription="@string/desc"
-        android:tag="2" />
+        android:contentDescription="@string/desc"/>
 
     <ImageView
         android:id="@+id/level_1_image_1"
@@ -24,7 +23,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="14dp"
         android:src="@drawable/medusa"
-        android:contentDescription="@string/desc"
-        android:tag="1" />
+        android:contentDescription="@string/desc" />
 
 </RelativeLayout>

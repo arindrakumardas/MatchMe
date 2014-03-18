@@ -11,8 +11,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:background="@drawable/medusa_shadows"
-        android:contentDescription="@string/desc"
-        android:tag="1" />
+        android:contentDescription="@string/desc" />
 
 </RelativeLayout>
