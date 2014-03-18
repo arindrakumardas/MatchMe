@@ -25,6 +25,7 @@ public class PauseActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
+				
 				Intent i = new Intent(PauseActivity.this, GameActivity.class);
 				i.putExtra("resumeTime", resumeTime);		// start timer from where stopped
 				startActivity(i);
@@ -37,7 +38,7 @@ public class PauseActivity extends Activity {
 		restartBtn.setOnClickListener(new OnClickListener() {
     			@Override
     			public void onClick(View arg0) {
-    				//Move to the next view!
+
     				Intent i = new Intent(PauseActivity.this, GameActivity.class);
     				i.putExtra("resumeTime", 30000);	// reset timer
     				i.putExtra("level_value", level);
@@ -51,7 +52,7 @@ public class PauseActivity extends Activity {
 		backBtn.setOnClickListener(new OnClickListener() {
     			@Override
     			public void onClick(View arg0) {
-    				//Move to the next view!
+
     				Intent i = new Intent(PauseActivity.this, StartActivity.class);
     				startActivity(i);
     				
@@ -59,4 +60,9 @@ public class PauseActivity extends Activity {
     			}
     		}); 
 	} 	
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
 }

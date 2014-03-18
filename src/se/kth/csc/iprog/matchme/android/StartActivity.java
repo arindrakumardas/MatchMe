@@ -56,10 +56,11 @@ public class StartActivity extends Activity {
 			public void onClick(View v) {
 				if (mPhoneIsSilent) {
 					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-					mPhoneIsSilent = false;
 					mPlay.start();
+					mPhoneIsSilent = false;
 				} else {
 					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+					mPlay.pause();
 					mPhoneIsSilent = true;
 				}
 				toggleUI();
@@ -96,6 +97,11 @@ public class StartActivity extends Activity {
 		//Using deprecated method to support minSDKlevel below 16. Maybe change minSDKlevel in manifest and use setBackground instead?
 		imageView.setBackgroundDrawable(soundIcon);
 
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 	}
 
 }

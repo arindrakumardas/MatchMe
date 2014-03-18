@@ -3,15 +3,11 @@ package se.kth.csc.iprog.matchme.android;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 import java.util.Collections;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.DragEvent;
@@ -26,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
@@ -236,6 +231,11 @@ public class GameActivity extends Activity {
 			}
 			return true;
 		}
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 	}
    
 }

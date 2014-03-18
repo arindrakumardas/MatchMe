@@ -18,7 +18,6 @@ public class EndActivity extends Activity {
 		Intent intent = getIntent();
 		final String level = intent.getStringExtra("level_value");
 		
-		
 		//TODO: Score algorithm
 		int baseScoreValue = 50;
 		int timeLeftValue = 20; // Needs to be match with countdowntimer
@@ -27,12 +26,7 @@ public class EndActivity extends Activity {
 		String strI = String.valueOf(score);
 		scorevalue.setText(strI);
 
-
-		//TODO: Add code for switching screens and starting a view and a controller.
-
-
-		// Back to home Button
-		
+		// Home Button
 		Button backbtn = (Button) findViewById(R.id.back_btn);
 		backbtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -45,7 +39,6 @@ public class EndActivity extends Activity {
 
 		
 		// Restart Button
-		
 		Button playbtn = (Button) findViewById(R.id.play_btn);
 		playbtn.setOnClickListener(new OnClickListener() {
 			@Override
@@ -58,6 +51,10 @@ public class EndActivity extends Activity {
 				finish(); // finish current activity 
 			}
 		});
-
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 	}
 }
