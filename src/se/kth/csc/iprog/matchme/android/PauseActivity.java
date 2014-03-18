@@ -17,6 +17,7 @@ public class PauseActivity extends Activity {
 		// Receiving the time data
 		Intent intent = getIntent();
 		final int resumeTime = intent.getIntExtra("resumeTime", 30000);
+		final String level = intent.getStringExtra("level_value");
 		
 		// Play (Resume) Button
 		Button playBtn = (Button) findViewById(R.id.play_btn);
@@ -27,7 +28,6 @@ public class PauseActivity extends Activity {
 				Intent i = new Intent(PauseActivity.this, GameActivity.class);
 				i.putExtra("resumeTime", resumeTime);		// start timer from where stopped
 				startActivity(i);
-				
 				finish(); 		// finish current activity
 			}
 		});
@@ -40,8 +40,8 @@ public class PauseActivity extends Activity {
     				//Move to the next view!
     				Intent i = new Intent(PauseActivity.this, GameActivity.class);
     				i.putExtra("resumeTime", 30000);	// reset timer
+    				i.putExtra("level_value", level);
     				startActivity(i);
-    				
     				finish(); // finish current activity 
     			}
     		});
@@ -55,7 +55,7 @@ public class PauseActivity extends Activity {
     				Intent i = new Intent(PauseActivity.this, StartActivity.class);
     				startActivity(i);
     				
-    				finish(); // finish current activity
+    				//finish(); // finish current activity
     			}
     		}); 
 	} 	

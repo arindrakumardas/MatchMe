@@ -38,7 +38,7 @@ public class GameActivity extends Activity {
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
 
 		// Receiving the Data
-		String level = intent.getStringExtra("level_value");
+		final String level = intent.getStringExtra("level_value");
 
 		// Setting the Data
 		levelName.setText(level);
@@ -97,6 +97,7 @@ public class GameActivity extends Activity {
     				// Show paused screen options
       				Intent i = new Intent(GameActivity.this, PauseActivity.class);
       				i.putExtra("resumeTime", (int) (millisInFuture));
+      				i.putExtra("level_value", level);
       				startActivity(i);
       				
       				finish(); // finish current activity
