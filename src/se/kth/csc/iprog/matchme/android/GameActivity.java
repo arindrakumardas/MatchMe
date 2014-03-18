@@ -136,6 +136,7 @@ public class GameActivity extends Activity {
             	i.putExtra("resumeTime", 30000);
             	i.putExtra("level_value", level);
   				startActivity(i);
+  				finish();
             }
          }.start();
          
