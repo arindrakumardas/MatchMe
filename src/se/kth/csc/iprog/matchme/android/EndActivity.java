@@ -15,6 +15,10 @@ public class EndActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_end_view);
 
+		Intent intent = getIntent();
+		final String level = intent.getStringExtra("level_value");
+		
+		
 		//TODO: Score algorithm
 		int baseScoreValue = 50;
 		int timeLeftValue = 20; // Needs to be match with countdowntimer
@@ -40,7 +44,7 @@ public class EndActivity extends Activity {
 		});  
 
 		
-		// Resume Button
+		// Restart Button
 		
 		Button playbtn = (Button) findViewById(R.id.play_btn);
 		playbtn.setOnClickListener(new OnClickListener() {
@@ -48,9 +52,12 @@ public class EndActivity extends Activity {
 			public void onClick(View arg0) {
 				//Move to the next view!
 				Intent i = new Intent(EndActivity.this, GameActivity.class);
+				i.putExtra("resumeTime", 30000);	// reset timer
+				i.putExtra("level_value", level);
 				startActivity(i);
+				finish(); // finish current activity 
 			}
-		});  
+		});
 
 	}
 }

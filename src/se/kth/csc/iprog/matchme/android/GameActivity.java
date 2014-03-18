@@ -28,7 +28,6 @@ import se.kth.csc.iprog.matchme.model.MatchModel;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
 
-
 public class GameActivity extends Activity {
 	
 	private static long countDownInterval = 1000;
@@ -127,6 +126,7 @@ public class GameActivity extends Activity {
             	// // Display screen after finishing a level
             	Intent i = new Intent(GameActivity.this, EndActivity.class);
             	i.putExtra("resumeTime", 30000);
+            	i.putExtra("level_value", level);
   				startActivity(i);
             }
          }.start();
