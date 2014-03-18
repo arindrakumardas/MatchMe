@@ -20,10 +20,9 @@
         android:id="@+id/play_btn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignBaseline="@+id/back_btn"
-        android:layout_alignBottom="@+id/back_btn"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="29dp"
+        android:layout_alignLeft="@+id/yourscore"
+        android:layout_below="@+id/game_end_msg"
+        android:layout_marginTop="47dp"
         android:background="@drawable/play_button"
         android:contentDescription="@string/desc" />
 
@@ -75,9 +74,10 @@
         android:id="@+id/back_btn"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignLeft="@+id/yourscore"
-        android:layout_below="@+id/game_end_msg"
-        android:layout_marginTop="47dp"
+        android:layout_alignBaseline="@+id/play_btn"
+        android:layout_alignBottom="@+id/play_btn"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="29dp"
         android:background="@drawable/backbtn"
         android:contentDescription="@string/desc" />
 
