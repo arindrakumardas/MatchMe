@@ -12,8 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="1" />
+        android:src="@drawable/medusa" />
 
     <ImageView
         android:id="@+id/level_5_image_10"
@@ -31,8 +30,7 @@
         android:layout_above="@+id/level_5_image_6"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="5" />
+        android:src="@drawable/medusa"/>
 
     <ImageView
         android:id="@+id/level_5_image_7"
@@ -68,8 +66,7 @@
         android:layout_alignTop="@+id/level_5_image_2"
         android:layout_toRightOf="@+id/level_5_image_1"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="4" />
+        android:src="@drawable/medusa" />
 
     <ImageView
         android:id="@+id/level_5_image_6"
@@ -87,8 +84,7 @@
         android:layout_below="@+id/level_5_image_1"
         android:layout_toLeftOf="@+id/level_5_image_3"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="2" />
+        android:src="@drawable/medusa"/>
 
     <ImageView
         android:id="@+id/level_5_image_3"
@@ -97,7 +93,6 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/level_5_image_5"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="3" />
+        android:src="@drawable/medusa" />
 
 </RelativeLayout>

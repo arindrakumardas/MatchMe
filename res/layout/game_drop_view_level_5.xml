@@ -12,8 +12,7 @@
         android:layout_below="@+id/level_5_shadow_2"
         android:layout_marginRight="32dp"
         android:background="@drawable/medusa_shadows"
-        android:contentDescription="@string/desc"
-        android:tag="5" />
+        android:contentDescription="@string/desc" />
 
     <ImageView
         android:id="@+id/level_5_shadow_4"
@@ -23,8 +22,7 @@
         android:layout_alignTop="@+id/level_5_shadow_5"
         android:layout_marginLeft="24dp"
         android:background="@drawable/medusa_shadows"
-        android:contentDescription="@string/desc"
-        android:tag="4" />
+        android:contentDescription="@string/desc" />
 
     <ImageView
         android:id="@+id/level_5_shadow_3"
@@ -35,8 +33,7 @@
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="26dp"
         android:background="@drawable/medusa_shadows"
-        android:contentDescription="@string/desc"
-        android:tag="3" />
+        android:contentDescription="@string/desc" />
 
     <ImageView
         android:id="@+id/level_5_shadow_1"
@@ -46,8 +43,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp"
         android:background="@drawable/medusa_shadows"
-        android:contentDescription="@string/desc"
-        android:tag="1" />
+        android:contentDescription="@string/desc"/>
 
     <ImageView
         android:id="@+id/level_5_shadow_2"
@@ -56,7 +52,6 @@
         android:layout_alignLeft="@+id/level_5_shadow_5"
         android:layout_alignTop="@+id/level_5_shadow_3"
         android:background="@drawable/medusa_shadows"
-        android:contentDescription="@string/desc"
-        android:tag="2" />
+        android:contentDescription="@string/desc" />
 
 </RelativeLayout>

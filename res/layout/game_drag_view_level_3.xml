@@ -12,8 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="1" />
+        android:src="@drawable/medusa"/>
 
     <ImageView
         android:id="@+id/level_3_image_5"
@@ -43,8 +42,7 @@
         android:layout_marginLeft="18dp"
         android:layout_toRightOf="@+id/level_3_image_5"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="3" />
+        android:src="@drawable/medusa"/>
 
     <ImageView
         android:id="@+id/level_3_image_2"
@@ -53,8 +51,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/level_3_image_3"
         android:contentDescription="@string/desc"
-        android:src="@drawable/medusa"
-        android:tag="2" />
+        android:src="@drawable/medusa" />
 
     <ImageView
         android:id="@+id/level_3_image_6"
