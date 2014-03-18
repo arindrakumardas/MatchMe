@@ -1,5 +1,11 @@
 package se.kth.csc.iprog.matchme.android;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.Collections;
+
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
@@ -18,6 +24,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import se.kth.csc.iprog.matchme.model.MatchModel;
+import se.kth.csc.iprog.matchme.model.MatchItem;
+
 
 
 public class GameActivity extends Activity {
@@ -32,6 +41,8 @@ public class GameActivity extends Activity {
 		setContentView(R.layout.game_view);
 		Intent timer = getIntent();
         millisInFuture = timer.getIntExtra("resumeTime", 30000);
+        
+        MatchModel model = ((MatchMeApplication) this.getApplication()).getModel();
         
 
 		//TODO: Add code for switching screens and starting a view and a controller.
@@ -49,18 +60,51 @@ public class GameActivity extends Activity {
 		int vflevel = Integer.parseInt(level);
 		vf_drop.setDisplayedChild(vflevel-1);
 		vf_drag.setDisplayedChild(vflevel-1);
+		
+		
+		Set<MatchItem> imageSets = model.getRandomMatchItems(vflevel);
+		
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
 		RelativeLayout game_drag_view_include = (RelativeLayout) vf_drag.getChildAt(vf_drag.getDisplayedChild());
 		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
+		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
+
+
+		Iterator<MatchItem> imgIt = imageSets.iterator();
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
-			View current = game_drop_view_include.getChildAt(i);
+			ImageView current = (ImageView)game_drop_view_include.getChildAt(i);
+		
+			//Get first (X) imageSets here 
+			if(imgIt.hasNext()){
+				MatchItem matchItem = (MatchItem)imgIt.next();
+
+				//Set image to view
+				int imgResId = MatchMeApplication.getImageResId(this, matchItem.GetImgShadow());
+				current.setBackgroundResource(imgResId);
+			}
+				
+			
 			current.setOnDragListener(new MyDragListener());
 		}
-		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
+		
+		//Shuffle the list (only the real images, shadow doesn't need)
+		List<MatchItem> itemList = new ArrayList<MatchItem>(imageSets);
+		Collections.shuffle(itemList); 
+		Iterator<MatchItem> imgIt2 = itemList.iterator();
 		for(int i = 0; i < game_drag_view_include.getChildCount(); i++) {
-			View current = game_drag_view_include.getChildAt(i);
+			ImageView current = (ImageView)game_drag_view_include.getChildAt(i);
+			
+			//Get all and set images
+			if(imgIt2.hasNext()){
+				MatchItem matchItem = (MatchItem)imgIt2.next();
+
+				//Set image to view
+				int imgResId = MatchMeApplication.getImageResId(this, matchItem.GetImgReal());
+				current.setImageResource(imgResId);
+			}
+			
 			current.setOnTouchListener(new MyTouchListener());
 		}
 
