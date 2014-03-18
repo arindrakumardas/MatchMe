@@ -228,7 +228,9 @@ public class GameActivity extends Activity {
 			
 			RelativeLayout layout = (RelativeLayout) vf.getChildAt(vf.getDisplayedChild());
 			for(int i = 0; i < layout.getChildCount(); i++) {
-				if(layout.getChildAt(i).getTag().equals(false)) return false;
+				if(!layout.getChildAt(i).getTag().equals(true)) {
+					return false;
+				}
 			}
 			return true;
 		}
