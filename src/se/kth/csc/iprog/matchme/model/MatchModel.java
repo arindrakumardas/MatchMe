@@ -1,12 +1,79 @@
-//package se.kth.csc.iprog.matchme.model;
-//
-//import java.util.HashSet;
-//import java.util.Observable;
-//import java.util.Set;
-//
-//
-//public class DinnerModel extends Observable implements IDinnerModel{
-//	
+package se.kth.csc.iprog.matchme.model;
+
+import java.util.HashSet;
+import java.util.Observable;
+import java.util.Set;
+import java.util.Random;
+import se.kth.csc.iprog.matchme.model.MatchItem;
+
+
+public class MatchModel extends Observable{
+	Set<MatchItem> matchItems = new HashSet<MatchItem>();
+	int userLevel;
+
+
+	public MatchModel(){
+
+		MatchItem matchItem1 = new MatchItem(1, "crab" , "crab_shadows");
+		MatchItem matchItem2 = new MatchItem(2, "fish" , "fish_shadows");
+		MatchItem matchItem3 = new MatchItem(3, "penguin" , "penguin_shadows");
+		MatchItem matchItem4 = new MatchItem(4, "turtle" , "turtle_shadows");
+		MatchItem matchItem5 = new MatchItem(5, "medusa" , "medusa_shadows");
+		MatchItem matchItem6 = new MatchItem(4, "octopus" , "octopus_shadows");
+		MatchItem matchItem7 = new MatchItem(7, "star" , "star_shadows");
+		MatchItem matchItem8 = new MatchItem(8, "seahorse" , "seahorse_shadows");
+		MatchItem matchItem9 = new MatchItem(9, "shark" , "shark_shadows");
+		MatchItem matchItem10 = new MatchItem(10, "whale" , "whale_shadows");
+		MatchItem matchItem11 = new MatchItem(11, "shrimp" , "shrimp_shadows");
+		MatchItem matchItem12 = new MatchItem(12, "dolphin" , "dolphin_shadows");
+
+		this.matchItems.add(matchItem1);
+		this.matchItems.add(matchItem2);
+		this.matchItems.add(matchItem3);
+		this.matchItems.add(matchItem4);
+		this.matchItems.add(matchItem5);
+		this.matchItems.add(matchItem6);
+		this.matchItems.add(matchItem7);
+		this.matchItems.add(matchItem8);
+		this.matchItems.add(matchItem9);
+		this.matchItems.add(matchItem10);
+		this.matchItems.add(matchItem11);
+		this.matchItems.add(matchItem12);
+
+		this.userLevel = 1;
+	}
+
+
+
+
+	public Set<MatchItem> getRandomMatchItems(int level){
+		int numOfItems = level *2;
+		Set<MatchItem> result = new HashSet<MatchItem>();
+		Random rand = new Random();
+		int size = this.matchItems.size();
+		int randIdx = rand.nextInt(size); 
+
+		do{
+			int i = 0; //index of the hashSet
+			for(MatchItem obj : this.matchItems)
+			{
+				if (i == randIdx ){ //TODO: exclude repeating numbers
+					result.add(obj);
+
+					randIdx = rand.nextInt(size);
+					break;
+				}
+				i++;
+			}
+		}while(result.size() < numOfItems);
+
+
+		return result;
+	}
+}
+
+
+
 //	public static int STARTER = 1, MAIN = 2, DESSERT = 3, GUESTS = 4; //For notifications
 //
 //	Set<Dish> dishes = new HashSet<Dish>();
