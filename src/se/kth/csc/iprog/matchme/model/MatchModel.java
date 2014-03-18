@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.matchme.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Observable;
 import java.util.Set;
@@ -8,12 +9,12 @@ import se.kth.csc.iprog.matchme.model.MatchItem;
 
 
 public class MatchModel extends Observable{
-	Set<MatchItem> matchItems = new HashSet<MatchItem>();
+	ArrayList<MatchItem> matchItems;
 	int userLevel;
 
 
 	public MatchModel(){
-
+		matchItems = new ArrayList<MatchItem>();
 		MatchItem matchItem1 = new MatchItem(1, "crab" , "crab_shadows");
 		MatchItem matchItem2 = new MatchItem(2, "fish" , "fish_shadows");
 		MatchItem matchItem3 = new MatchItem(3, "penguin" , "penguin_shadows");
@@ -46,28 +47,32 @@ public class MatchModel extends Observable{
 
 
 
-	public Set<MatchItem> getRandomMatchItems(int level){
+	public MatchItem[] getRandomMatchItems(int level){
 		int numOfItems = level *2;
-		Set<MatchItem> result = new HashSet<MatchItem>();
+		MatchItem[] result = new MatchItem[numOfItems];
 		Random rand = new Random();
 		int size = this.matchItems.size();
-		int randIdx = rand.nextInt(size); 
-
-		do{
-			int i = 0; //index of the hashSet
-			for(MatchItem obj : this.matchItems)
-			{
-				if (i == randIdx ){ //TODO: exclude repeating numbers
-					result.add(obj);
-
-					randIdx = rand.nextInt(size);
-					break;
-				}
-				i++;
+		boolean[] used = new boolean[size];
+		for(boolean b : used) {
+			b = false;
+		}
+		int k = 0;
+		while(k < numOfItems) {
+			int i = rand.nextInt(size);
+			if(used[i]) {
+				continue; //This number has already been used, roll a new random number.
 			}
-		}while(result.size() < numOfItems);
-
-
+			result[k] = matchItems.get(i);
+			System.err.println("Insert: " + matchItems.get(i));
+			
+			used[i] = true;
+			k++;
+		}
+		ArrayList<MatchItem> printList = new ArrayList<MatchItem>();
+		for(MatchItem item : result) {
+			printList.add(item);
+		}
+		System.err.println(printList);
 		return result;
 	}
 }

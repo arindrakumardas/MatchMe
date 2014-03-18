@@ -3,12 +3,14 @@ package se.kth.csc.iprog.matchme.android;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.Collections;
 
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.DragEvent;
@@ -66,7 +68,7 @@ public class GameActivity extends Activity {
 		vf_drag.setDisplayedChild(vflevel-1);
 		
 		
-		Set<MatchItem> imageSets = model.getRandomMatchItems(vflevel);
+		MatchItem[] images = model.getRandomMatchItems(vflevel);
 		
 
 		//Load the correct level
@@ -75,27 +77,32 @@ public class GameActivity extends Activity {
 		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
 		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
 
-
-		Iterator<MatchItem> imgIt = imageSets.iterator();
+		Random rand = new Random();
+		boolean usedImages[] = new boolean[images.length];
+		for(boolean b : usedImages) {
+			b = false;
+		}
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drop_view_include.getChildAt(i);
 		
 			//Get first (X) imageSets here 
-			if(imgIt.hasNext()){
-				MatchItem matchItem = (MatchItem)imgIt.next();
+				MatchItem matchItem = images[i];
 
 				//Set image to view
-				int imgResId = MatchMeApplication.getImageResId(this, matchItem.GetImgShadow());
-				current.setBackgroundResource(imgResId);
-			}
+				int imgResId = MatchMeApplication.getImageResId(this, matchItem.getImgShadow());
+				current.setImageResource(imgResId);
+				current.setTag(matchItem.getImgReal()); //So we can identify them later and check tags for matches.
 				
 			
 			current.setOnDragListener(new MyDragListener());
 		}
 		
 		//Shuffle the list (only the real images, shadow doesn't need)
-		List<MatchItem> itemList = new ArrayList<MatchItem>(imageSets);
-		Collections.shuffle(itemList); 
+		List<MatchItem> itemList = new ArrayList<MatchItem>();
+		for(MatchItem item : images) {
+			itemList.add(item);
+		}
+		Collections.shuffle(itemList); //Maybe skip, it's already random.
 		Iterator<MatchItem> imgIt2 = itemList.iterator();
 		for(int i = 0; i < game_drag_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drag_view_include.getChildAt(i);
@@ -105,8 +112,9 @@ public class GameActivity extends Activity {
 				MatchItem matchItem = (MatchItem)imgIt2.next();
 
 				//Set image to view
-				int imgResId = MatchMeApplication.getImageResId(this, matchItem.GetImgReal());
+				int imgResId = MatchMeApplication.getImageResId(this, matchItem.getImgReal());
 				current.setImageResource(imgResId);
+				current.setTag(matchItem.getImgReal()); //So we can identify them later and check tags for matches.
 			}
 			
 			current.setOnTouchListener(new MyTouchListener());
@@ -190,8 +198,12 @@ public class GameActivity extends Activity {
 					view.setVisibility(View.INVISIBLE);
 					ImageView dragged = (ImageView) view;
 					ImageView dropped = (ImageView) v;
-					dropped.setBackground(dragged.getDrawable());
+					dropped.setImageResource(MatchMeApplication.getImageResId(view.getContext(), dragged.getTag().toString()));
+//					dropped.setBackground(dragged.getDrawable());
 					v.setTag(true); //symbolizes that the image is matched.
+					if(isWin()) {
+						//You win. Go to endActivity to show this.
+					}
 				} else {
 					view.setVisibility(View.VISIBLE);
 					return false;
@@ -206,6 +218,17 @@ public class GameActivity extends Activity {
 				} //Else it was successful, so keep the view invisible!
 			default:
 				break;
+			}
+			return true;
+		}
+
+		private boolean isWin() {
+			ViewFlipper vf = ((ViewFlipper) findViewById(R.id.game_drop_view_include));
+			//System.err.println("VIEWFLIPPER: " + vf);
+			
+			RelativeLayout layout = (RelativeLayout) vf.getChildAt(vf.getDisplayedChild());
+			for(int i = 0; i < layout.getChildCount(); i++) {
+				if(layout.getChildAt(i).getTag().equals(false)) return false;
 			}
 			return true;
 		}

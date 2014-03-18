@@ -9,22 +9,23 @@ public class MatchItem {
 		this.imgReal = imgReal;
 		this.imgShadow = imgShadow;
 		this.id = id;
-		
 	}
 	
 	//Getters 
-	public int GetId(){
-		return this.id;
-		
+	public int getId(){
+		return id;
 	}
 	
-	public String GetImgShadow(){
-		
-		return this.imgShadow;
+	public String getImgShadow(){
+		return imgShadow;
 	}
 	
-	public String GetImgReal(){
-		
-		return this.imgReal;
+	public String getImgReal(){
+		return imgReal;
+	}
+	
+	@Override
+	public String toString() {
+		return id + ", " + imgReal + ", " + imgShadow;
 	}
 }
