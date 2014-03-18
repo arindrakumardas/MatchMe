@@ -197,8 +197,8 @@ public class GameActivity extends Activity {
 						//You win. Go to endActivity to show this.
 						TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
-						i.putExtra("Win_Time", Integer.parseInt((String) (timeLeft.getText())));
-	      				startActivity(i);
+						i.putExtra("Win_Time", Integer.parseInt(timeLeft.getText().toString()));
+						startActivity(i);
 	      				finish();
 					}
 				} else {

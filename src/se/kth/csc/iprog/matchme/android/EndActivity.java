@@ -17,12 +17,13 @@ public class EndActivity extends Activity {
 
 		Intent intent = getIntent();
 		final String level = intent.getStringExtra("level_value");
+		final int WinTime = intent.getIntExtra("Win_Time", 30000);
+		
 		
 		//TODO: Score algorithm
-		int baseScoreValue = 50;
-		int timeLeftValue = 20; // Needs to be match with countdowntimer
+		int baseScoreValue = 100;
 		TextView scorevalue = (TextView) findViewById(R.id.scorevalue);
-		int score = baseScoreValue * timeLeftValue ; 
+		int score = baseScoreValue * WinTime ; 
 		String strI = String.valueOf(score);
 		scorevalue.setText(strI);
 
