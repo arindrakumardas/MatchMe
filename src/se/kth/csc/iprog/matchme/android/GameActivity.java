@@ -7,6 +7,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.Collections;
 
+import android.R.integer;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
@@ -77,11 +78,6 @@ public class GameActivity extends Activity {
 		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
 		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
 
-		Random rand = new Random();
-		boolean usedImages[] = new boolean[images.length];
-		for(boolean b : usedImages) {
-			b = false;
-		}
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drop_view_include.getChildAt(i);
 		
@@ -204,6 +200,11 @@ public class GameActivity extends Activity {
 					v.setTag(true); //symbolizes that the image is matched.
 					if(isWin()) {
 						//You win. Go to endActivity to show this.
+						TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+						Intent i = new Intent(GameActivity.this, EndActivity.class);
+						i.putExtra("Win_Time", Integer.parseInt((String) (timeLeft.getText())));
+	      				startActivity(i);
+	      				finish();
 					}
 				} else {
 					view.setVisibility(View.VISIBLE);

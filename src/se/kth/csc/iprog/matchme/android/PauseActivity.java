@@ -55,7 +55,7 @@ public class PauseActivity extends Activity {
     				Intent i = new Intent(PauseActivity.this, StartActivity.class);
     				startActivity(i);
     				
-    				//finish(); // finish current activity
+    				finish(); // finish current activity
     			}
     		}); 
 	} 	
