@@ -15,14 +15,14 @@ public class StartActivity extends Activity {
 
 	private AudioManager mAudioManager;
 	private boolean mPhoneIsSilent;
+	public MediaPlayer mPlay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// Default call to load previous state
 		super.onCreate(savedInstanceState);
 		//Play sound
-		final MediaPlayer mPlay = MediaPlayer.create(this, R.raw.audio_file);
-		mPlay.start();
+		mPlay = MediaPlayer.create(this, R.raw.audio_file);
 
 		// Set the view for the main activity screen
 		// it must come before any call to findViewById method
@@ -77,8 +77,10 @@ public class StartActivity extends Activity {
 		int ringerMode = mAudioManager.getRingerMode();
 		if (ringerMode == AudioManager.RINGER_MODE_SILENT) {
 			mPhoneIsSilent = true;
+			mPlay.pause();
 		} else {
 			mPhoneIsSilent = false;
+			mPlay.start();
 		}
 	}
 
@@ -100,6 +102,7 @@ public class StartActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		mPlay.release();
 	}
 
 }

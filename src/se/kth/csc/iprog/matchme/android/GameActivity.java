@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.matchme.android;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Collections;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.DragEvent;
@@ -33,6 +35,7 @@ public class GameActivity extends Activity {
 	int Win_Time = 0;
 	private CountDownTimer cdt;
 	private String level = "1"; //Default level.
+	private MediaPlayer earcon;
 	Intent intent;
 
 	@Override
@@ -41,6 +44,16 @@ public class GameActivity extends Activity {
 		setContentView(R.layout.game_view);
 		intent = getIntent();
 		millisInFuture = 30000;
+		earcon = MediaPlayer.create(this, R.raw.timesup);
+		try {
+			earcon.prepare();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		MatchModel model = ((MatchMeApplication) this.getApplication()).getModel();
 
@@ -123,6 +136,7 @@ public class GameActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				cdt.cancel();
+				earcon.pause();
 				// Show paused screen options
 				Intent i = new Intent(GameActivity.this, PauseActivity.class);
 				i.putExtra("resumeTime", (int) (millisInFuture));
@@ -156,6 +170,7 @@ public class GameActivity extends Activity {
 
 	@Override
 	public void onResume() {
+
 		// Implements CountdownTimer
 //		millisInFuture = intent.getIntExtra("resumeTime", 30000);
 		cdt = new CountDownTimer(millisInFuture, countDownInterval) {
@@ -164,11 +179,15 @@ public class GameActivity extends Activity {
 			public void onTick(long millisUntilFinished) {
 				timeLeft.setText("" + millisUntilFinished / 1000);
 				millisInFuture = millisUntilFinished;
+				if (millisUntilFinished <= 10000) {
+					earcon.start();
+				}
 				System.err.println(timeLeft);
 			}
 
 
 			public void onFinish() {
+				earcon.release();
 				// Display screen after finishing a level
 				Intent i = new Intent(GameActivity.this, EndActivity.class);
 				i.putExtra("resumeTime", 30000);
@@ -177,6 +196,7 @@ public class GameActivity extends Activity {
 				finish();
 			}
 		}.start();
+		
 		super.onResume();
 	}
 
