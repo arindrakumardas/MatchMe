@@ -19,6 +19,9 @@ public class EndActivity extends Activity {
 		final String level = intent.getStringExtra("level_value");
 		final int WinTime = intent.getIntExtra("Win_Time", 0);
 		
+		final String lost = (getResources().getString(R.string.end_msg_lose));
+		final String win = (getResources().getString(R.string.end_msg_won));
+
 		int levelValue = Integer.parseInt(level);
 		
 		
@@ -28,6 +31,16 @@ public class EndActivity extends Activity {
 		int score = baseScoreValue * WinTime * levelValue ; 
 		String strI = String.valueOf(score);
 		scorevalue.setText(strI);
+		
+		if (score==0){
+			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
+			game_end_msg.setText(lost);
+		}
+		else{
+			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
+			game_end_msg.setText(win);
+		}
+
 
 //
 //		if (score > 0){			
