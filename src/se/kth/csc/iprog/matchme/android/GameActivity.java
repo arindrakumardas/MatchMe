@@ -30,6 +30,8 @@ public class GameActivity extends Activity {
 	
 	private static long countDownInterval = 1000;
 	long millisInFuture;
+	int Win_Time = 0;
+	private CountDownTimer cdt;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -113,16 +115,18 @@ public class GameActivity extends Activity {
 		
 		// Implements CountdownTimer
 		millisInFuture = intent.getIntExtra("resumeTime", 30000);
-        final CountDownTimer cdt = new CountDownTimer(millisInFuture, countDownInterval) {
+        cdt = new CountDownTimer(millisInFuture, countDownInterval) {
         	TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
             public void onTick(long millisUntilFinished) {
             	timeLeft.setText("" + millisUntilFinished / 1000);
             	millisInFuture = millisUntilFinished;
+            	System.err.println(timeLeft);
             }
 
+            
             public void onFinish() {
-            	// // Display screen after finishing a level
+            	// Display screen after finishing a level
             	Intent i = new Intent(GameActivity.this, EndActivity.class);
             	i.putExtra("resumeTime", 30000);
             	i.putExtra("level_value", level);
@@ -137,13 +141,12 @@ public class GameActivity extends Activity {
       			@Override
       			public void onClick(View arg0) {
       				cdt.cancel();
-      				
     				// Show paused screen options
       				Intent i = new Intent(GameActivity.this, PauseActivity.class);
       				i.putExtra("resumeTime", (int) (millisInFuture));
       				i.putExtra("level_value", level);
+      				i.putExtra("Win_Time", 0);
       				startActivity(i);
-      				
       				finish(); // finish current activity
       			}
       		});  
@@ -195,10 +198,11 @@ public class GameActivity extends Activity {
 					v.setTag(true); //symbolizes that the image is matched.
 					if(isWin()) {
 						//You win. Go to endActivity to show this.
-						TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+						//TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
-						i.putExtra("Win_Time", Integer.parseInt(timeLeft.getText().toString()));
+						i.putExtra("Win_Time", (int) millisInFuture/1000);//Integer.parseInt(timeLeft.getText().toString()));
 						startActivity(i);
+						cdt.cancel();
 	      				finish();
 					}
 				} else {

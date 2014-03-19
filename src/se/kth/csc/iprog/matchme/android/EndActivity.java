@@ -17,7 +17,7 @@ public class EndActivity extends Activity {
 
 		Intent intent = getIntent();
 		final String level = intent.getStringExtra("level_value");
-		final int WinTime = intent.getIntExtra("Win_Time", 30000);
+		final int WinTime = intent.getIntExtra("Win_Time", 0);
 		
 		
 		//TODO: Score algorithm
