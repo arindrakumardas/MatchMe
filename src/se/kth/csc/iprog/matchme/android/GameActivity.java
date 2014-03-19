@@ -226,9 +226,11 @@ public class GameActivity extends Activity {
 					v.setTag(true); //symbolizes that the image is matched.
 					if(isWin()) {
 						//You win. Go to endActivity to show this.
-						//TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+						Intent intent = getIntent();
+						final String level = intent.getStringExtra("level_value");
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
 						i.putExtra("Win_Time", (int) millisInFuture/1000);//Integer.parseInt(timeLeft.getText().toString()));
+						i.putExtra("level_value", level);
 						startActivity(i);
 						cdt.cancel();
 						finish();
