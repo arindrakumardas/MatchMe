@@ -19,6 +19,7 @@ import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -71,6 +72,7 @@ public class GameActivity extends Activity {
 
 		MatchItem[] images = model.getRandomMatchItems(vflevel);
 
+		
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
@@ -154,8 +156,20 @@ public class GameActivity extends Activity {
 		super.onPause();
 	}
 
+	
 	@Override
 	public void onResume() {
+		
+
+		final ProgressBar mProgressBar;
+		int y=0;
+
+		mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
+		mProgressBar.setProgress(y);
+		  
+		
+		
+		
 		// Implements CountdownTimer
 //		millisInFuture = intent.getIntExtra("resumeTime", 30000);
 		cdt = new CountDownTimer(millisInFuture, countDownInterval) {
@@ -164,6 +178,8 @@ public class GameActivity extends Activity {
 			public void onTick(long millisUntilFinished) {
 				timeLeft.setText("" + millisUntilFinished / 1000);
 				millisInFuture = millisUntilFinished;
+				 y++;
+		            mProgressBar.setProgress(y);
 				System.err.println(timeLeft);
 			}
 
@@ -175,6 +191,8 @@ public class GameActivity extends Activity {
 				i.putExtra("level_value", level);
 				startActivity(i);
 				finish();
+				y++;
+	            mProgressBar.setProgress(y);
 			}
 		}.start();
 		super.onResume();
