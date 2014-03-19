@@ -48,9 +48,7 @@ public class MatchModel extends Observable{
 		Random rand = new Random();
 		int size = this.matchItems.size();
 		boolean[] used = new boolean[size];
-		for(boolean b : used) {
-			b = false;
-		}
+		
 		int k = 0;
 		while(k < numOfItems) {
 			int i = rand.nextInt(size);
