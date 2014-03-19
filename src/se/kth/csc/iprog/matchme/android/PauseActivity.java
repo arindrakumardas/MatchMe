@@ -16,7 +16,6 @@ public class PauseActivity extends Activity {
 		
 		// Receiving the time data
 		Intent intent = getIntent();
-		final int resumeTime = intent.getIntExtra("resumeTime", 30000);
 		final String level = intent.getStringExtra("level_value");
 		
 		Intent returnIntent = new Intent();
