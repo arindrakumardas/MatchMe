@@ -55,11 +55,9 @@ public class StartActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (mPhoneIsSilent) {
-					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 					mPlay.start();
 					mPhoneIsSilent = false;
 				} else {
-					mAudioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 					mPlay.pause();
 					mPhoneIsSilent = true;
 				}
