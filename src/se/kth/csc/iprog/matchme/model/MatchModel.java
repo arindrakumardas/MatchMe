@@ -12,7 +12,7 @@ public class MatchModel extends Observable{
 
 	public MatchModel(){
 		matchItems = new ArrayList<MatchItem>();
-		MatchItem matchItem1 = new MatchItem(1, "crab" , "crab_shadows");
+		MatchItem matchItem1 = new MatchItem(1, "crayfish" , "crayfish_shadows");
 		MatchItem matchItem2 = new MatchItem(2, "fish" , "fish_shadows");
 		MatchItem matchItem3 = new MatchItem(3, "penguin" , "penguin_shadows");
 		MatchItem matchItem4 = new MatchItem(4, "turtle" , "turtle_shadows");
