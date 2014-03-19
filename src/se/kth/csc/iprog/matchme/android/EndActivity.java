@@ -21,6 +21,9 @@ public class EndActivity extends Activity {
 		
 		int levelValue = Integer.parseInt(level);
 		
+		final String lost = (getResources().getString(R.string.end_msg_lose));
+		final String win = (getResources().getString(R.string.end_msg_won));
+
 		
 		//TODO: Score algorithm
 		int baseScoreValue = 100;
@@ -38,7 +41,15 @@ public class EndActivity extends Activity {
 //			
 //		}
 //		
-		
+		if (score==0){
+			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
+			game_end_msg.setText(lost);
+		}
+		else{
+			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
+			game_end_msg.setText(win);
+		}
+
 		// Home Button
 		Button backbtn = (Button) findViewById(R.id.back_btn);
 		backbtn.setOnClickListener(new OnClickListener() {
