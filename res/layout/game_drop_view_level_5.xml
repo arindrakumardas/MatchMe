@@ -11,6 +11,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/level_5_shadow_2"
         android:layout_marginRight="32dp"
+        android:rotation="45"
         android:contentDescription="@string/desc" />
 
     <ImageView
@@ -30,6 +31,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="26dp"
+        android:rotation="15"
         android:contentDescription="@string/desc" />
 
     <ImageView
@@ -47,6 +49,7 @@
         android:layout_height="100dp"
         android:layout_alignLeft="@+id/level_5_shadow_5"
         android:layout_alignTop="@+id/level_5_shadow_3"
+        android:rotation="30"
         android:contentDescription="@string/desc" />
 
 </RelativeLayout>

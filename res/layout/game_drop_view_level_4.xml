@@ -9,6 +9,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginBottom="56dp"
+        android:rotation="30"
         android:contentDescription="@string/desc"/>
 
     <ImageView
@@ -26,6 +27,7 @@
         android:layout_height="120dp"
         android:layout_below="@+id/level_4_shadow_3"
         android:layout_toRightOf="@+id/level_4_shadow_1"
+        android:rotation="60"
         android:contentDescription="@string/desc"/>
 
     <ImageView

@@ -28,6 +28,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/level_3_shadow_3"
         android:layout_marginLeft="74dp"
+        android:rotation="30"
         android:contentDescription="@string/desc"/>
 
 </RelativeLayout>
