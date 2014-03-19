@@ -27,20 +27,23 @@ import se.kth.csc.iprog.matchme.model.MatchItem;
 
 
 public class GameActivity extends Activity {
-	
+
 	private static long countDownInterval = 1000;
 	long millisInFuture;
 	int Win_Time = 0;
 	private CountDownTimer cdt;
-	
+	private String level = "1"; //Default level.
+	Intent intent;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
-		Intent intent = getIntent();
-        
-        MatchModel model = ((MatchMeApplication) this.getApplication()).getModel();
-        
+		intent = getIntent();
+		millisInFuture = 30000;
+
+		MatchModel model = ((MatchMeApplication) this.getApplication()).getModel();
+
 
 		//TODO: Add code for switching screens and starting a view and a controller.
 		TextView levelName = (TextView) findViewById(R.id.level_value);
@@ -48,26 +51,26 @@ public class GameActivity extends Activity {
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
 
 		// Receiving the Data
-		final String level = intent.getStringExtra("level_value");
+		level = intent.getStringExtra("level_value");
 
 		// Setting the Data
 		levelName.setText(level);
-		
+
 		int vflevel = 0;
 
 		try {
 			vflevel = Integer.parseInt(level);
 		} catch(NumberFormatException nfe) {
-		  // Handle parse error.
+			// Handle parse error.
 		}
-		
+
 		//int vflevel = Integer.parseInt(level);
 		vf_drop.setDisplayedChild(vflevel-1);
 		vf_drag.setDisplayedChild(vflevel-1);
-		
-		
+
+
 		MatchItem[] images = model.getRandomMatchItems(vflevel);
-		
+
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
@@ -77,19 +80,19 @@ public class GameActivity extends Activity {
 
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drop_view_include.getChildAt(i);
-		
-			//Get first (X) imageSets here 
-				MatchItem matchItem = images[i];
 
-				//Set image to view
-				int imgResId = MatchMeApplication.getImageResId(this, matchItem.getImgShadow());
-				current.setImageResource(imgResId);
-				current.setTag(matchItem.getImgReal()); //So we can identify them later and check tags for matches.
-				
-			
+			//Get first (X) imageSets here 
+			MatchItem matchItem = images[i];
+
+			//Set image to view
+			int imgResId = MatchMeApplication.getImageResId(this, matchItem.getImgShadow());
+			current.setImageResource(imgResId);
+			current.setTag(matchItem.getImgReal()); //So we can identify them later and check tags for matches.
+
+
 			current.setOnDragListener(new MyDragListener());
 		}
-		
+
 		//Shuffle the list (only the real images, shadow doesn't need)
 		List<MatchItem> itemList = new ArrayList<MatchItem>();
 		for(MatchItem item : images) {
@@ -99,7 +102,7 @@ public class GameActivity extends Activity {
 		Iterator<MatchItem> imgIt2 = itemList.iterator();
 		for(int i = 0; i < game_drag_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drag_view_include.getChildAt(i);
-			
+
 			//Get all and set images
 			if(imgIt2.hasNext()){
 				MatchItem matchItem = (MatchItem)imgIt2.next();
@@ -109,47 +112,72 @@ public class GameActivity extends Activity {
 				current.setImageResource(imgResId);
 				current.setTag(matchItem.getImgReal()); //So we can identify them later and check tags for matches.
 			}
-			
+
 			current.setOnTouchListener(new MyTouchListener());
 		}
-		
+
+
+		// Pause Button
+		Button pausebtn = (Button) findViewById(R.id.pause_btn);
+		pausebtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				cdt.cancel();
+				// Show paused screen options
+				Intent i = new Intent(GameActivity.this, PauseActivity.class);
+				i.putExtra("resumeTime", (int) (millisInFuture));
+				i.putExtra("level_value", level);
+				i.putExtra("Win_Time", 0);
+				startActivityForResult(i, 1);
+				//finish(); // finish current activity
+			}
+		});  
+	}
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		if (requestCode == 1) {
+
+			if(resultCode == RESULT_OK){ //Symbolizes that we should keep running.
+				//Get the time left for the cooldown timer?
+			}
+			if (resultCode == RESULT_CANCELED) { //Symbolizes that we should finish the activity.
+				cdt.cancel(); //Just in case it restarted.
+				finish();
+			}
+		}
+	}
+
+	@Override
+	public void onPause() {
+		cdt.cancel();
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
 		// Implements CountdownTimer
-		millisInFuture = intent.getIntExtra("resumeTime", 30000);
-        cdt = new CountDownTimer(millisInFuture, countDownInterval) {
-        	TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+//		millisInFuture = intent.getIntExtra("resumeTime", 30000);
+		cdt = new CountDownTimer(millisInFuture, countDownInterval) {
+			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
-            public void onTick(long millisUntilFinished) {
-            	timeLeft.setText("" + millisUntilFinished / 1000);
-            	millisInFuture = millisUntilFinished;
-            	System.err.println(timeLeft);
-            }
+			public void onTick(long millisUntilFinished) {
+				timeLeft.setText("" + millisUntilFinished / 1000);
+				millisInFuture = millisUntilFinished;
+				System.err.println(timeLeft);
+			}
 
-            
-            public void onFinish() {
-            	// Display screen after finishing a level
-            	Intent i = new Intent(GameActivity.this, EndActivity.class);
-            	i.putExtra("resumeTime", 30000);
-            	i.putExtra("level_value", level);
-  				startActivity(i);
-  				finish();
-            }
-         }.start();
-         
-         // Pause Button
-         Button pausebtn = (Button) findViewById(R.id.pause_btn);
-         pausebtn.setOnClickListener(new OnClickListener() {
-      			@Override
-      			public void onClick(View arg0) {
-      				cdt.cancel();
-    				// Show paused screen options
-      				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-      				i.putExtra("resumeTime", (int) (millisInFuture));
-      				i.putExtra("level_value", level);
-      				i.putExtra("Win_Time", 0);
-      				startActivity(i);
-      				finish(); // finish current activity
-      			}
-      		});  
+
+			public void onFinish() {
+				// Display screen after finishing a level
+				Intent i = new Intent(GameActivity.this, EndActivity.class);
+				i.putExtra("resumeTime", 30000);
+				i.putExtra("level_value", level);
+				startActivity(i);
+				finish();
+			}
+		}.start();
+		super.onResume();
 	}
 
 	private final class MyTouchListener implements OnTouchListener {
@@ -194,7 +222,7 @@ public class GameActivity extends Activity {
 					ImageView dragged = (ImageView) view;
 					ImageView dropped = (ImageView) v;
 					dropped.setImageResource(MatchMeApplication.getImageResId(view.getContext(), dragged.getTag().toString()));
-//					dropped.setBackground(dragged.getDrawable());
+					//					dropped.setBackground(dragged.getDrawable());
 					v.setTag(true); //symbolizes that the image is matched.
 					if(isWin()) {
 						//You win. Go to endActivity to show this.
@@ -203,7 +231,7 @@ public class GameActivity extends Activity {
 						i.putExtra("Win_Time", (int) millisInFuture/1000);//Integer.parseInt(timeLeft.getText().toString()));
 						startActivity(i);
 						cdt.cancel();
-	      				finish();
+						finish();
 					}
 				} else {
 					view.setVisibility(View.VISIBLE);
@@ -226,7 +254,7 @@ public class GameActivity extends Activity {
 		private boolean isWin() {
 			ViewFlipper vf = ((ViewFlipper) findViewById(R.id.game_drop_view_include));
 			//System.err.println("VIEWFLIPPER: " + vf);
-			
+
 			RelativeLayout layout = (RelativeLayout) vf.getChildAt(vf.getDisplayedChild());
 			for(int i = 0; i < layout.getChildCount(); i++) {
 				if(!layout.getChildAt(i).getTag().equals(true)) {
@@ -236,10 +264,10 @@ public class GameActivity extends Activity {
 			return true;
 		}
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 	}
-   
+
 }

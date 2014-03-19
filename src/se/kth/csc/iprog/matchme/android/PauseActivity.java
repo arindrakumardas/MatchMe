@@ -19,17 +19,22 @@ public class PauseActivity extends Activity {
 		final int resumeTime = intent.getIntExtra("resumeTime", 30000);
 		final String level = intent.getStringExtra("level_value");
 		
+		Intent returnIntent = new Intent();
+		setResult(RESULT_OK, returnIntent); //As default.
+		
 		// Play (Resume) Button
 		Button playBtn = (Button) findViewById(R.id.play_btn);
 		playBtn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				
-				Intent i = new Intent(PauseActivity.this, GameActivity.class);
-				i.putExtra("resumeTime", resumeTime);		// start timer from where stopped
-				startActivity(i);
-				finish(); 		// finish current activity
+				//Simply kill this activity to go back to the game.
+//				Intent i = new Intent(PauseActivity.this, GameActivity.class);
+//				i.putExtra("resumeTime", resumeTime);		// start timer from where stopped
+//				startActivity(i);
+				Intent returnIntent = new Intent();
+				setResult(RESULT_OK, returnIntent);
+				finish(); // finish current activity
 			}
 		});
 		
@@ -37,8 +42,9 @@ public class PauseActivity extends Activity {
 		Button restartBtn = (Button) findViewById(R.id.restart_btn);
 		restartBtn.setOnClickListener(new OnClickListener() {
     			@Override
-    			public void onClick(View arg0) {
-
+    			public void onClick(View arg0) { 
+    				Intent returnIntent = new Intent();
+    				setResult(RESULT_CANCELED, returnIntent);//Kill the previous game, and create a new game on the same level.
     				Intent i = new Intent(PauseActivity.this, GameActivity.class);
     				i.putExtra("resumeTime", 30000);	// reset timer
     				i.putExtra("level_value", level);
@@ -52,11 +58,9 @@ public class PauseActivity extends Activity {
 		backBtn.setOnClickListener(new OnClickListener() {
     			@Override
     			public void onClick(View arg0) {
-
     				Intent i = new Intent(PauseActivity.this, StartActivity.class);
+    				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //Clear the activity stack and start from the StartActivity.
     				startActivity(i);
-    				
-    				finish(); // finish current activity
     			}
     		}); 
 	} 	

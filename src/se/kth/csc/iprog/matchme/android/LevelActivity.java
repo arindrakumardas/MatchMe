@@ -19,9 +19,7 @@ public class LevelActivity extends Activity {
 		backbtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				
-				Intent i = new Intent(LevelActivity.this, StartActivity.class);
-				startActivity(i);
+				finish(); //Kill this activity and go to the parent, which is the StartActivity.
 			}
 		}); 
 
@@ -86,11 +84,6 @@ public class LevelActivity extends Activity {
 			}
 		}); 
 
-	}
-	
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
 	}
 
 }
