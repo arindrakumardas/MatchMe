@@ -14,6 +14,7 @@
         android:text="@string/end_msg_lose"
         android:textColor="#FF9F06"
         android:textSize="28sp"
+    	android:gravity="center"
         android:typeface="sans" />
 
     <Button
@@ -30,12 +31,13 @@
         android:id="@+id/bestscorevalue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="115dp"
-        android:layout_toRightOf="@+id/game_end_msg"
+        android:layout_below="@+id/bestscore"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="10dp"
         android:text="@string/bestscorevalue"
         android:textColor="#345803"
-        android:textSize="19sp" 
+        android:textSize="24sp" 
         android:typeface="sans"/>
 
     <ImageView
@@ -44,7 +46,7 @@
         android:layout_height="100dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="14dp"
+        android:layout_marginRight="27dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/desc"
         android:src="@drawable/best_score" />
@@ -55,7 +57,9 @@
         android:layout_height="100dp"
         android:layout_above="@+id/game_end_msg"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="27dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/desc"
         android:src="@drawable/your_score" />
 
@@ -64,10 +68,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/yourscore"
-        android:layout_toLeftOf="@+id/game_end_msg"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
         android:text="@string/scorevalue"
         android:textColor="#345803"
-        android:textSize="19sp" 
+        android:textSize="24sp" 
         android:typeface="sans"/>
 
     <Button
