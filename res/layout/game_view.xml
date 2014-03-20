@@ -7,25 +7,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
-    
-    <TextView
-        android:id="@+id/time_left_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_left"
-        android:textColor="#345803"
-        android:textSize="24sp" 
-        android:typeface="sans"/>
 
     <ViewFlipper
         android:id="@+id/game_drop_view_include"
         android:layout_width="match_parent"
         android:layout_height="270dp"
         android:layout_marginTop="50dp" >
-
-        <include
-            android:id="@+id/game_drop_view_include_1"
-            layout="@layout/game_drop_view_level_1" />
 
         <include
             android:id="@+id/game_drop_view_include_2"
@@ -74,21 +61,11 @@
             layout="@layout/game_drag_view_level_5" />
     </ViewFlipper>
 
-    <Button
-        android:id="@+id/pause_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/time_left"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/pause_button"
-        android:contentDescription="@string/desc" />
-
     <TextView
         android:id="@+id/time_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:text="@string/timeleft"
         android:textColor="#345803"
         android:textSize="14sp"
         android:typeface="sans" />
@@ -124,9 +101,29 @@
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/time_left"
-        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/time_left"        
+        android:layout_marginTop="50dp"
         android:max="30"
         android:progress="0" />
+
+    <Button
+        android:id="@+id/pause_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/pause_button"
+        android:contentDescription="@string/desc" />
+
+    <TextView
+        android:id="@+id/time_left_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/time_left"
+        android:layout_alignParentTop="true"
+        android:textColor="#345803"
+        android:textSize="12sp"
+        android:typeface="sans" />
+
 
 </RelativeLayout>
