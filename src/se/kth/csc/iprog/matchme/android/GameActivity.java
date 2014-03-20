@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 import se.kth.csc.iprog.matchme.android.view.GameView;
+import se.kth.csc.iprog.matchme.model.Level;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
@@ -40,6 +41,8 @@ public class GameActivity extends Activity {
 	//private MediaPlayer earcon;
 	Intent intent;
 	private MatchModel model;
+	private Level model_level;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,9 @@ public class GameActivity extends Activity {
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model.setTimeLeft(30000);
+		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
+		
+		
 		GameView gameView = new GameView(findViewById(R.id.game_view), model);
 
 //		//TODO: Add code for switching screens and starting a view and a controller.
@@ -194,6 +200,7 @@ public class GameActivity extends Activity {
 				//earcon.release();
 				// Display screen after finishing a level
 				model.setTimeLeft(0);
+				model_level.setStatus(false);
 				Intent i = new Intent(GameActivity.this, EndActivity.class);
 				//The extras should not be needed any more. Simply use the model to get the level and timeLeft.
 				i.putExtra("resumeTime", 30000);
@@ -253,11 +260,11 @@ public class GameActivity extends Activity {
 					v.setTag(true); //symbolizes that the image is matched.
 					if(isWin()) {
 						//You win. Go to endActivity to show this.
-						Intent intent = getIntent();
-						final String level = intent.getStringExtra("level_value");
+						//Intent intent = getIntent();
+						//final String level = intent.getStringExtra("level_value");
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
-						i.putExtra("Win_Time", (int) model.getTimeLeft()/1000);//Integer.parseInt(timeLeft.getText().toString()));
-						i.putExtra("level_value", level);
+						//i.putExtra("Win_Time", (int) model.getTimeLeft()/1000);//Integer.parseInt(timeLeft.getText().toString()));
+						//i.putExtra("level_value", level);
 						startActivity(i);
 						cdt.cancel();
 						finish();
