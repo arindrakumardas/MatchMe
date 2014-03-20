@@ -1,7 +1,6 @@
 package se.kth.csc.iprog.matchme.android;
 
 import se.kth.csc.iprog.matchme.model.Level;
-import se.kth.csc.iprog.matchme.model.LevelsDataSource;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
@@ -25,8 +24,6 @@ public class EndActivity extends Activity {
 		final String lost = (getResources().getString(R.string.end_msg_lose));
 		final String win = (getResources().getString(R.string.end_msg_won));
 		final String pass = (getResources().getString(R.string.end_msg_pass));
-
-		//int levelValue = Integer.parseInt(level);
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
@@ -61,18 +58,6 @@ public class EndActivity extends Activity {
 			}
 		}
 
-	
-
-		//
-		//		if (score > 0){			
-		//			int best_Score = score;
-		//			TextView bestScore = (TextView) findViewById(R.id.bestscore);
-		//			String best_score = String.valueOf(best_Score);
-		//			bestScore.setText(best_score);
-		//			
-		//		}
-		//		
-
 		// Home Button
 		Button backBtn = (Button) findViewById(R.id.back_btn);
 		backBtn.setOnClickListener(new OnClickListener() {
@@ -97,20 +82,14 @@ public class EndActivity extends Activity {
 					model.setCurrentLevel(model.getCurrentLevel()+1);
 					//Move to the next view!
 					Intent i = new Intent(EndActivity.this, GameActivity.class);
-//					i.putExtra("resumeTime", 30000);	// reset timer
-//					i.putExtra("level_value", level+1);
 					startActivity(i);
 					finish(); // finish current activity 	
 				}
 				
 				else{
 					model.setCurrentLevel(model.getCurrentLevel());
-					
-//					int level = model.getCurrentLevel();
 //					//Move to the next view!
 					Intent i = new Intent(EndActivity.this, GameActivity.class);
-//					i.putExtra("resumeTime", 30000);	// reset timer
-//					i.putExtra("level_value", level);
 					startActivity(i);
 					finish(); // finish current activity 	
 				}

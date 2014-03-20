@@ -2,9 +2,7 @@ package se.kth.csc.iprog.matchme.android;
 
 import android.app.Application;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import se.kth.csc.iprog.matchme.model.Level;
-import se.kth.csc.iprog.matchme.model.LevelsDataSource;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 
 public class MatchMeApplication extends Application {

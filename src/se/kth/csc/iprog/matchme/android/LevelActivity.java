@@ -1,12 +1,10 @@
 package se.kth.csc.iprog.matchme.android;
 
 
-import se.kth.csc.iprog.matchme.model.Level;
 import se.kth.csc.iprog.matchme.model.LevelsDataSource;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,8 +15,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 	private LevelsDataSource datasource;
 	private MatchModel model;
 
-	private Level model_level;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,8 +23,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 		model = ((MatchMeApplication) getApplication()).getModel();
 		datasource = new LevelsDataSource(this);
 		datasource.open();
-		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
-
 
 		// Home button
 		Button backbtn = (Button) findViewById(R.id.back_btn);
