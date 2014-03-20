@@ -1,6 +1,7 @@
 package se.kth.csc.iprog.matchme.android;
 
 import se.kth.csc.iprog.matchme.model.Level;
+import se.kth.csc.iprog.matchme.model.LevelsDataSource;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
@@ -13,10 +14,13 @@ import android.widget.TextView;
 public class EndActivity extends Activity {
 	private Level model_level;
 	private MatchModel model;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_end_view);
+		
 
 		final String lost = (getResources().getString(R.string.end_msg_lose));
 		final String win = (getResources().getString(R.string.end_msg_won));
@@ -26,6 +30,7 @@ public class EndActivity extends Activity {
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
+		
 		
 
 		//TODO: Score algorithm
@@ -39,7 +44,9 @@ public class EndActivity extends Activity {
 		if (score==0){
 			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
 			game_end_msg.setText(lost);
+			
 		}
+<<<<<<< HEAD
 		else if (score < model_level.getScore()) {
 			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
 			game_end_msg.setText(pass);
@@ -48,8 +55,22 @@ public class EndActivity extends Activity {
 			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
 			game_end_msg.setText(win);
 			model.setCurrentLevel(model.getCurrentLevel()+1);
+=======
+		else {
+			if (score < model_level.getScore()) {
+				TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
+				game_end_msg.setText(win);
+				model.setCurrentLevelStatus(true);
+			} else {
+				// TODO: Add new high score message
+				model.setCurrentLevelHighScore(score);
+				model.setCurrentLevelStatus(true);
+			}
+			
+>>>>>>> origin/DiffLevel
 		}
 
+	
 
 		//
 		//		if (score > 0){			
@@ -79,8 +100,13 @@ public class EndActivity extends Activity {
 		playbtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
+<<<<<<< HEAD
 				System.err.println(model_level.getStatus());
 				if (model_level.getStatus() == false)
+=======
+				
+				if (model_level.getStatus() == 1)
+>>>>>>> origin/DiffLevel
 				{
 					model.setCurrentLevel(model.getCurrentLevel()+1);
 					//Move to the next view!

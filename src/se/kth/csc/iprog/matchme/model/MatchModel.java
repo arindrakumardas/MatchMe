@@ -4,24 +4,27 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.widget.TextView;
 import se.kth.csc.iprog.matchme.android.EndActivity;
 import se.kth.csc.iprog.matchme.android.GameActivity;
+import se.kth.csc.iprog.matchme.android.MatchMeApplication;
 import se.kth.csc.iprog.matchme.android.R;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
 public class MatchModel extends Observable{
 	private ArrayList<MatchItem> matchItems;
-	private int currentLevel;
+	private Level currentLevel;
 	private long timeLeft; //In milliseconds.
+	private LevelsDataSource ds;
 	
-	public static int LEVEL = 1, TIMELEFT = 2;
+	public static int LEVEL = 1, TIMELEFT = 2, SCORE = 3, STATUS = 4;
 
 
-	public MatchModel(){
+	public MatchModel(Context context){
 		matchItems = new ArrayList<MatchItem>();
 		MatchItem matchItem1 = new MatchItem(1, "crayfish" , "crayfish_shadows");
 		MatchItem matchItem2 = new MatchItem(2, "fish" , "fish_shadows");
@@ -49,7 +52,15 @@ public class MatchModel extends Observable{
 		this.matchItems.add(matchItem11);
 		this.matchItems.add(matchItem12);
 
-		this.currentLevel = 1;
+		ds = new LevelsDataSource(context);
+		ds.open();
+		ds.createLevel(1);
+		ds.createLevel(2);
+		ds.createLevel(3);
+		ds.createLevel(4);
+		ds.createLevel(5);
+		ds.close();
+		setCurrentLevel(1); //Just to have some default level.. Should not be necessary.
 	}
 
 
@@ -81,12 +92,45 @@ public class MatchModel extends Observable{
 	}
 	
 	public void setCurrentLevel(int level) {
-		currentLevel = level;
+		ds.open();
+		currentLevel = ds.loadLevel(level);
+		ds.close();
 		notifyObservers(LEVEL);
 	}
 	
 	public int getCurrentLevel() {
-		return currentLevel;
+		return currentLevel.getId();
+	}
+	
+	public void setCurrentLevelHighScore(int score) {
+		currentLevel.setScore(score);
+		ds.open();
+		ds.updateLevel(currentLevel);
+		ds.close();
+		notifyObservers(SCORE);
+	}
+	
+	public int getCurrentLevelHighScore(int score) {
+		return currentLevel.getScore();
+	}
+	
+	public void setCurrentLevelStatus(boolean status) {
+		if(status == true) {
+			currentLevel.setStatus(1);
+		} else {
+			currentLevel.setStatus(0);
+		}
+		ds.open();
+		ds.updateLevel(currentLevel);
+		ds.close();
+		notifyObservers(STATUS);
+	}
+	
+	public boolean getCurrentLevelStatus() {
+		if(currentLevel.getStatus() == 0) {
+			return false;
+		}
+		return true;
 	}
 	
 	public void setTimeLeft(long timeLeft) {
