@@ -15,26 +15,6 @@
         android:src="@drawable/medusa" />
 
     <ImageView
-        android:id="@+id/level_3_image_3"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignTop="@+id/level_3_image_5"
-        android:layout_marginRight="17dp"
-        android:layout_toLeftOf="@+id/level_3_image_2"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/medusa" />
-
-    <ImageView
-        android:id="@+id/level_3_image_4"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/level_3_image_1"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/medusa" />
-
-    <ImageView
         android:id="@+id/level_3_image_1"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -47,10 +27,20 @@
         android:id="@+id/level_3_image_5"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="14dp"
-        android:layout_marginTop="34dp"
-        android:layout_toLeftOf="@+id/level_3_image_3"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/desc"
+        android:src="@drawable/medusa" />
+
+    <ImageView
+        android:id="@+id/level_3_image_3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@+id/level_3_image_5"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/level_3_image_2"
         android:contentDescription="@string/desc"
         android:src="@drawable/medusa" />
 
@@ -58,9 +48,18 @@
         android:id="@+id/level_3_image_6"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="24dp"
-        android:layout_toRightOf="@+id/level_3_image_4"
+        android:layout_marginRight="22dp"
+        android:contentDescription="@string/desc"
+        android:src="@drawable/medusa" />
+
+    <ImageView
+        android:id="@+id/level_3_image_4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:contentDescription="@string/desc"
         android:src="@drawable/medusa" />
 
