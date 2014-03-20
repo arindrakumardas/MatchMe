@@ -129,6 +129,7 @@ public class MatchModel extends Observable{
 	public boolean getStatus(int level) {
 		ds.open();
 		Level l = ds.loadLevel(level);
+		ds.close();
 		if(l.getStatus() == 0) {
 			return false;
 		}
