@@ -9,10 +9,15 @@ import se.kth.csc.iprog.matchme.model.MatchModel;
 
 public class MatchMeApplication extends Application {
 
-		private MatchModel model = new MatchModel(this);
+		private MatchModel model;
 		private Level model_level = new Level();
-		private LevelsDataSource ds = new LevelsDataSource(this);
 	
+		@Override
+		public void onCreate() {
+			super.onCreate();
+			model = new MatchModel(getApplicationContext());
+		}
+		
 		public MatchModel getModel() {
 			return model;
 		}
@@ -23,10 +28,6 @@ public class MatchMeApplication extends Application {
 		
 		public void setModel(MatchModel model) {
 			this.model = model;
-		}
-	
-		public LevelsDataSource getDatabase() {
-			return ds;
 		}
 	
 		public static int getImageResId(Context context, String name){

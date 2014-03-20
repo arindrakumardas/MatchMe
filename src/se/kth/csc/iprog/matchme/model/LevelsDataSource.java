@@ -39,29 +39,24 @@ public class LevelsDataSource extends Observable {
 //				values);
 
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_LEVELS, allColumns,
-				MySQLiteHelper.COLUMN_ID + " = " + id, null, null, null,
+				MySQLiteHelper.COLUMN_ID + "=" + id, null, null, null,
 				null);
-		if(cursor.moveToFirst()==false) { //The database is empty... Fill it with starting values!
-			createLevel(id);
-			cursor = database.query(MySQLiteHelper.TABLE_LEVELS, allColumns,
-					MySQLiteHelper.COLUMN_ID + " = " + id, null, null, null,
-					null);
-		}
-		Level level = new Level();
-		level.setId(id);
-		level.setScore(cursor.getInt(cursor.getColumnIndex(MySQLiteHelper.COLUMN_SCORE)));
-		level.setStatus(cursor.getInt(cursor.getColumnIndex(MySQLiteHelper.COLUMN_STATUS)));
-
-//		Level level = cursorToLevel(cursor);
+//		if(cursor.moveToFirst()==false) { //The database is empty... Fill it with starting values!
+//			createLevel(id);
+//			cursor = database.query(MySQLiteHelper.TABLE_LEVELS, allColumns,
+//					MySQLiteHelper.COLUMN_ID + " = " + id, null, null, null,
+//					null);
+//		}
+		System.err.println("Num Table Col: " + cursor.getColumnCount());
+		cursor.moveToFirst();
+		Level level = cursorToLevel(cursor);
 		cursor.close();
-		database.close();
 
 		// return level
 		return level;
 	}
 	
-	private void createLevel(int id) {
-
+	public void createLevel(int id) {
 		ContentValues values = new ContentValues();
 		values.put(MySQLiteHelper.COLUMN_ID, id);
 		values.put(MySQLiteHelper.COLUMN_SCORE, 0);
@@ -104,7 +99,7 @@ public class LevelsDataSource extends Observable {
 		Level level = new Level();
 		level.setId(cursor.getInt(0));
 		level.setScore(cursor.getInt(1));
-		level.setStatus(1);
+		level.setStatus(cursor.getInt(2));
 		return level;
 	}
 }

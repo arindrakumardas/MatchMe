@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
@@ -23,7 +24,7 @@ public class MatchModel extends Observable{
 	public static int LEVEL = 1, TIMELEFT = 2, SCORE = 3, STATUS = 4;
 
 
-	public MatchModel(MatchMeApplication app){
+	public MatchModel(Context context){
 		matchItems = new ArrayList<MatchItem>();
 		MatchItem matchItem1 = new MatchItem(1, "crayfish" , "crayfish_shadows");
 		MatchItem matchItem2 = new MatchItem(2, "fish" , "fish_shadows");
@@ -51,8 +52,15 @@ public class MatchModel extends Observable{
 		this.matchItems.add(matchItem11);
 		this.matchItems.add(matchItem12);
 
+		ds = new LevelsDataSource(context);
+		ds.open();
+		ds.createLevel(1);
+		ds.createLevel(2);
+		ds.createLevel(3);
+		ds.createLevel(4);
+		ds.createLevel(5);
+		ds.close();
 		setCurrentLevel(1); //Just to have some default level.. Should not be necessary.
-		ds = new LevelsDataSource(app);
 	}
 
 
@@ -84,7 +92,9 @@ public class MatchModel extends Observable{
 	}
 	
 	public void setCurrentLevel(int level) {
+		ds.open();
 		currentLevel = ds.loadLevel(level);
+		ds.close();
 		notifyObservers(LEVEL);
 	}
 	
@@ -94,7 +104,9 @@ public class MatchModel extends Observable{
 	
 	public void setCurrentLevelHighScore(int score) {
 		currentLevel.setScore(score);
+		ds.open();
 		ds.updateLevel(currentLevel);
+		ds.close();
 		notifyObservers(SCORE);
 	}
 	
@@ -108,7 +120,9 @@ public class MatchModel extends Observable{
 		} else {
 			currentLevel.setStatus(0);
 		}
+		ds.open();
 		ds.updateLevel(currentLevel);
+		ds.close();
 		notifyObservers(STATUS);
 	}
 	
