@@ -196,10 +196,12 @@ public class LevelActivity extends Activity implements OnClickListener {
 	}
 	
 	public void createButton(int level, int id) {
-		Button button = (Button) findViewById(R.id.level2_button);
+		Button button = (Button) findViewById(id);
 		button.setTag(level);
 		if(level == 1 || model.getStatus(level-1)) { 
 			button.setOnClickListener(this);
+		} else {
+			button.setBackground(getResources().getDrawable( R.drawable.locked_level));
 		}
 	}
 
