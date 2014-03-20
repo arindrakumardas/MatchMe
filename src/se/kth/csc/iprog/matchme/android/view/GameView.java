@@ -6,6 +6,7 @@ import java.util.Observer;
 import se.kth.csc.iprog.matchme.android.R;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -43,6 +44,8 @@ public class GameView implements Observer {
 		} else if(data.equals(MatchModel.TIMELEFT)){
 			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 			timeLeft.setText("" + model.getTimeLeft() / 1000);
+			ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
+			m_bar.setProgress ( (int) (model.getTimeLeft()/1000) );
 		}
 	}
 	

@@ -114,7 +114,7 @@ public class GameActivity extends Activity {
 		for(MatchItem item : images) {
 			itemList.add(item);
 		}
-		Collections.shuffle(itemList); //Maybe skip, it's already random.
+		Collections.shuffle(itemList);
 		Iterator<MatchItem> imgIt2 = itemList.iterator();
 		for(int i = 0; i < game_drag_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drag_view_include.getChildAt(i);
@@ -174,10 +174,10 @@ public class GameActivity extends Activity {
 	@Override
 	public void onResume() {
 		
-		final ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
+//		final ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
 
 		// Implements CountdownTimer
-		cdt = new CountDownTimer(millisInFuture, countDownInterval) {
+		cdt = new CountDownTimer(model.getTimeLeft(), countDownInterval) {
 //			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
 			public void onTick(long millisUntilFinished) {
@@ -187,7 +187,6 @@ public class GameActivity extends Activity {
 					//earcon.start();
 				}
 				model.setTimeLeft(millisUntilFinished);
-				m_bar.setProgress ( (int) (millisInFuture/1000) );
 			}
 		
 
