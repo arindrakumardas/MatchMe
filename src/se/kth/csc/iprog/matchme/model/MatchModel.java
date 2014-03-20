@@ -10,18 +10,20 @@ import android.os.CountDownTimer;
 import android.widget.TextView;
 import se.kth.csc.iprog.matchme.android.EndActivity;
 import se.kth.csc.iprog.matchme.android.GameActivity;
+import se.kth.csc.iprog.matchme.android.MatchMeApplication;
 import se.kth.csc.iprog.matchme.android.R;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
 public class MatchModel extends Observable{
 	private ArrayList<MatchItem> matchItems;
-	private int currentLevel;
+	private Level currentLevel;
 	private long timeLeft; //In milliseconds.
+	private LevelsDataSource ds;
 	
-	public static int LEVEL = 1, TIMELEFT = 2;
+	public static int LEVEL = 1, TIMELEFT = 2, SCORE = 3, STATUS = 4;
 
 
-	public MatchModel(){
+	public MatchModel(MatchMeApplication app){
 		matchItems = new ArrayList<MatchItem>();
 		MatchItem matchItem1 = new MatchItem(1, "crayfish" , "crayfish_shadows");
 		MatchItem matchItem2 = new MatchItem(2, "fish" , "fish_shadows");
@@ -49,7 +51,8 @@ public class MatchModel extends Observable{
 		this.matchItems.add(matchItem11);
 		this.matchItems.add(matchItem12);
 
-		this.currentLevel = 1;
+		setCurrentLevel(1); //Just to have some default level.. Should not be necessary.
+		ds = new LevelsDataSource(app);
 	}
 
 
@@ -81,12 +84,39 @@ public class MatchModel extends Observable{
 	}
 	
 	public void setCurrentLevel(int level) {
-		currentLevel = level;
+		currentLevel = ds.loadLevel(level);
 		notifyObservers(LEVEL);
 	}
 	
 	public int getCurrentLevel() {
-		return currentLevel;
+		return currentLevel.getId();
+	}
+	
+	public void setCurrentLevelHighScore(int score) {
+		currentLevel.setScore(score);
+		ds.updateLevel(currentLevel);
+		notifyObservers(SCORE);
+	}
+	
+	public int getCurrentLevelHighScore(int score) {
+		return currentLevel.getScore();
+	}
+	
+	public void setCurrentLevelStatus(boolean status) {
+		if(status == true) {
+			currentLevel.setStatus(1);
+		} else {
+			currentLevel.setStatus(0);
+		}
+		ds.updateLevel(currentLevel);
+		notifyObservers(STATUS);
+	}
+	
+	public boolean getCurrentLevelStatus() {
+		if(currentLevel.getStatus() == 0) {
+			return false;
+		}
+		return true;
 	}
 	
 	public void setTimeLeft(long timeLeft) {

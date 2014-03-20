@@ -77,7 +77,7 @@ public class EndActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				
-				if (model_level.getStatus() == true)
+				if (model_level.getStatus() == 1)
 				{
 					int level = model.getCurrentLevel();
 					//Move to the next view!

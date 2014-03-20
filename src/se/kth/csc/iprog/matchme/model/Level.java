@@ -2,7 +2,7 @@ package se.kth.csc.iprog.matchme.model;
 
 public class Level {
 	
-	private boolean status;
+	private int status;
 	private int id;
 	private int score;
 
@@ -23,12 +23,12 @@ public class Level {
 	}
 
 	// checks if level is completed or not
-	public boolean getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
 	// sets if level is completed or not
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 

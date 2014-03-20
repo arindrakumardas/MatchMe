@@ -200,7 +200,7 @@ public class GameActivity extends Activity {
 				//earcon.release();
 				// Display screen after finishing a level
 				model.setTimeLeft(0);
-				model_level.setStatus(false);
+				model_level.setStatus(0);
 				Intent i = new Intent(GameActivity.this, EndActivity.class);
 				//The extras should not be needed any more. Simply use the model to get the level and timeLeft.
 				i.putExtra("resumeTime", 30000);

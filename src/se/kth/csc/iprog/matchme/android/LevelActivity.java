@@ -12,16 +12,17 @@ import android.widget.Button;
 public class LevelActivity extends Activity implements OnClickListener {
 
 	private LevelsDataSource datasource;
-	
+	private MatchModel model;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.levels_view);
-		
-		final MatchModel model = ((MatchMeApplication) getApplication()).getModel();
+
+		model = ((MatchMeApplication) getApplication()).getModel();
 		datasource = new LevelsDataSource(this);
 		datasource.open();
-		
+
 
 		// Home button
 		Button backbtn = (Button) findViewById(R.id.back_btn);
@@ -58,19 +59,16 @@ public class LevelActivity extends Activity implements OnClickListener {
 		level5_button.setOnClickListener(this);
 	}
 
-		public void onClick(View view) {
-			// TODO: initialize id  
-			 
-			// add clicked level to database
-			datasource.loadLevel(id);
-			
-			Intent game = new Intent(LevelActivity.this, GameActivity.class);
-			model.setCurrentLevel(id);
-			startActivity(game);
+	public void onClick(View view) {
+		// add clicked level to database
+		int level = (Integer) view.getTag();
+		datasource.loadLevel(level);
 
-			finish(); // finish current activity
-		}
+		Intent game = new Intent(LevelActivity.this, GameActivity.class);
+		model.setCurrentLevel(level);
+		startActivity(game);
 
+		finish(); // finish current activity
 	}
 
 }
