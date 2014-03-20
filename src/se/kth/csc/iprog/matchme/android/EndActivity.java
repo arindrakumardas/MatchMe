@@ -14,13 +14,13 @@ import android.widget.TextView;
 public class EndActivity extends Activity {
 	private Level model_level;
 	private MatchModel model;
-	private LevelsDataSource datasource;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_end_view);
-		datasource.open();
+		
 
 	//	Intent intent = getIntent();
 	//	final String level = intent.getStringExtra("level_value");
@@ -34,8 +34,7 @@ public class EndActivity extends Activity {
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
 		
-		Level unlockLevel = new Level();
-		unlockLevel.setId(model_level.getId());
+		
 
 		//TODO: Score algorithm
 		int baseScoreValue = 100;
@@ -47,24 +46,22 @@ public class EndActivity extends Activity {
 		if (score==0){
 			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
 			game_end_msg.setText(lost);
-			unlockLevel.setStatus(false);
+			
 		}
 		else {
 			if (score < model_level.getScore()) {
 				TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
 				game_end_msg.setText(win);
-				unlockLevel.setStatus(true);
+				model.setCurrentLevelStatus(true);
 			} else {
 				// TODO: Add new high score message
-				unlockLevel.setScore(score);
-				unlockLevel.setStatus(true);
+				model.setCurrentLevelHighScore(score);
+				model.setCurrentLevelStatus(true);
 			}
 			
 		}
 
-		// update database
-		datasource.updateLevel(unlockLevel);
-		
+	
 
 		//
 		//		if (score > 0){			
