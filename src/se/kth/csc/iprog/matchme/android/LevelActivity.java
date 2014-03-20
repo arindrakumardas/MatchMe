@@ -1,5 +1,6 @@
 package se.kth.csc.iprog.matchme.android;
 
+import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ public class LevelActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.levels_view);
+		final MatchModel model = ((MatchMeApplication) getApplication()).getModel();
 
 		// Home button
 		Button backbtn = (Button) findViewById(R.id.back_btn);
@@ -31,7 +33,8 @@ public class LevelActivity extends Activity {
 			public void onClick(View arg0) {
 				
 				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-				i.putExtra("level_value", "1");	
+				i.putExtra("level_value", "1");
+				model.setCurrentLevel(1);
 				startActivity(i);
 			}
 		}); 
@@ -44,6 +47,7 @@ public class LevelActivity extends Activity {
 				
 				Intent i = new Intent(LevelActivity.this, GameActivity.class);
 				i.putExtra("level_value", "2");	
+				model.setCurrentLevel(2);
 				startActivity(i);
 			}
 		}); 
@@ -55,7 +59,8 @@ public class LevelActivity extends Activity {
 			public void onClick(View arg0) {
 				
 				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-				i.putExtra("level_value", "3");		
+				i.putExtra("level_value", "3");	
+				model.setCurrentLevel(3);	
 				startActivity(i);
 			}
 		}); 
@@ -67,7 +72,8 @@ public class LevelActivity extends Activity {
 			public void onClick(View arg0) {
 				
 				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-				i.putExtra("level_value", "4");		
+				i.putExtra("level_value", "4");	
+				model.setCurrentLevel(4);	
 				startActivity(i);
 			}
 		}); 
@@ -79,7 +85,8 @@ public class LevelActivity extends Activity {
 			public void onClick(View arg0) {
 				
 				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-				i.putExtra("level_value", "5");		
+				i.putExtra("level_value", "5");	
+				model.setCurrentLevel(5);	
 				startActivity(i);
 			}
 		}); 

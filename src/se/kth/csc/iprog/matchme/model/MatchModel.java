@@ -3,11 +3,22 @@ package se.kth.csc.iprog.matchme.model;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
+
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.CountDownTimer;
+import android.widget.TextView;
+import se.kth.csc.iprog.matchme.android.EndActivity;
+import se.kth.csc.iprog.matchme.android.GameActivity;
+import se.kth.csc.iprog.matchme.android.R;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
 public class MatchModel extends Observable{
-	ArrayList<MatchItem> matchItems;
-	int userLevel;
+	private ArrayList<MatchItem> matchItems;
+	private int currentLevel;
+	private long timeLeft; //In milliseconds.
+	
+	public static int LEVEL = 1, TIMELEFT = 2;
 
 
 	public MatchModel(){
@@ -38,7 +49,7 @@ public class MatchModel extends Observable{
 		this.matchItems.add(matchItem11);
 		this.matchItems.add(matchItem12);
 
-		this.userLevel = 1;
+		this.currentLevel = 1;
 	}
 
 
@@ -69,4 +80,22 @@ public class MatchModel extends Observable{
 		return result;
 	}
 	
+	public void setCurrentLevel(int level) {
+		currentLevel = level;
+		notifyObservers(LEVEL);
+	}
+	
+	public int getCurrentLevel() {
+		return currentLevel;
+	}
+	
+	public void setTimeLeft(long timeLeft) {
+		this.timeLeft = timeLeft;
+		setChanged();
+		notifyObservers(TIMELEFT);
+	}
+	
+	public long getTimeLeft() {
+		return timeLeft;
+	}
 }

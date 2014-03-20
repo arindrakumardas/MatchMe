@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+import se.kth.csc.iprog.matchme.android.view.GameView;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
@@ -35,61 +36,62 @@ public class GameActivity extends Activity {
 	int Win_Time = 0;
 	private CountDownTimer cdt;
 	private String level = "1"; //Default level.
-	private MediaPlayer earcon;
+	//private MediaPlayer earcon;
 	Intent intent;
+	private MatchModel model;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
 		intent = getIntent();
-		millisInFuture = 30000;
-		earcon = MediaPlayer.create(this, R.raw.timesup);
-		try {
-			earcon.prepare();
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//earcon = MediaPlayer.create(this, R.raw.timesup);
+//		try {
+//			earcon.prepare();
+//		} catch (IllegalStateException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
-		MatchModel model = ((MatchMeApplication) this.getApplication()).getModel();
+		model = ((MatchMeApplication) this.getApplication()).getModel();
+		model.setTimeLeft(30000);
+		GameView gameView = new GameView(findViewById(R.id.game_view), model);
 
-
-		//TODO: Add code for switching screens and starting a view and a controller.
-		TextView levelName = (TextView) findViewById(R.id.level_value);
+//		//TODO: Add code for switching screens and starting a view and a controller.
+//		TextView levelName = (TextView) findViewById(R.id.level_value);
 		ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
+//
+//		// Receiving the Data
+//		level = intent.getStringExtra("level_value");
+//
+//		// Setting the Data
+//		levelName.setText(level);
+//
+//		int vflevel = 0;
+//
+//		try {
+//			vflevel = Integer.parseInt(level);
+//		} catch(NumberFormatException nfe) {
+//			// Handle parse error.
+//		}
+//
+//		//int vflevel = Integer.parseInt(level);
+//		vf_drop.setDisplayedChild(vflevel-1);
+//		vf_drag.setDisplayedChild(vflevel-1);
 
-		// Receiving the Data
-		level = intent.getStringExtra("level_value");
 
-		// Setting the Data
-		levelName.setText(level);
-
-		int vflevel = 0;
-
-		try {
-			vflevel = Integer.parseInt(level);
-		} catch(NumberFormatException nfe) {
-			// Handle parse error.
-		}
-
-		//int vflevel = Integer.parseInt(level);
-		vf_drop.setDisplayedChild(vflevel-1);
-		vf_drag.setDisplayedChild(vflevel-1);
-
-
-		MatchItem[] images = model.getRandomMatchItems(vflevel);
+		MatchItem[] images = model.getRandomMatchItems(model.getCurrentLevel());
 
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
 		RelativeLayout game_drag_view_include = (RelativeLayout) vf_drag.getChildAt(vf_drag.getDisplayedChild());
-		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
-		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
+//		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
+//		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
 
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drop_view_include.getChildAt(i);
@@ -101,7 +103,6 @@ public class GameActivity extends Activity {
 			int imgResId = MatchMeApplication.getImageResId(this, matchItem.getImgShadow());
 			current.setImageResource(imgResId);
 			current.setTag(matchItem.getImgReal()); //So we can identify them later and check tags for matches.
-
 
 			current.setOnDragListener(new MyDragListener());
 		}
@@ -136,7 +137,7 @@ public class GameActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				cdt.cancel();
-				earcon.pause();
+				//earcon.pause();
 				// Show paused screen options
 				Intent i = new Intent(GameActivity.this, PauseActivity.class);
 				i.putExtra("resumeTime", (int) (millisInFuture));
@@ -149,11 +150,9 @@ public class GameActivity extends Activity {
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
 		if (requestCode == 1) {
-
 			if(resultCode == RESULT_OK){ //Symbolizes that we should keep running.
-				//Get the time left for the cooldown timer?
+				//Do nothing.
 			}
 			if (resultCode == RESULT_CANCELED) { //Symbolizes that we should finish the activity.
 				cdt.cancel(); //Just in case it restarted.
@@ -172,24 +171,22 @@ public class GameActivity extends Activity {
 	public void onResume() {
 
 		// Implements CountdownTimer
-//		millisInFuture = intent.getIntExtra("resumeTime", 30000);
-		cdt = new CountDownTimer(millisInFuture, countDownInterval) {
-			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+		cdt = new CountDownTimer(model.getTimeLeft(), countDownInterval) {
 
 			public void onTick(long millisUntilFinished) {
-				timeLeft.setText("" + millisUntilFinished / 1000);
-				millisInFuture = millisUntilFinished;
 				if (millisUntilFinished <= 10000) {
-					earcon.start();
+					//earcon.start();
 				}
-				System.err.println(timeLeft);
+				model.setTimeLeft(millisUntilFinished);
 			}
 
 
 			public void onFinish() {
-				earcon.release();
+				//earcon.release();
 				// Display screen after finishing a level
+				model.setTimeLeft(0);
 				Intent i = new Intent(GameActivity.this, EndActivity.class);
+				//The extras should not be needed any more. Simply use the model to get the level and timeLeft.
 				i.putExtra("resumeTime", 30000);
 				i.putExtra("level_value", level);
 				startActivity(i);
@@ -285,11 +282,6 @@ public class GameActivity extends Activity {
 			}
 			return true;
 		}
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
 	}
 
 }
