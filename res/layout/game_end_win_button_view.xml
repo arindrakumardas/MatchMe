@@ -22,12 +22,12 @@
         android:background="@drawable/refresh_button" />
 
     <Button
-        android:id="@+id/back_btn"
+        android:id="@+id/level_button"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="26dp"
         android:layout_toRightOf="@+id/restart_btn"
-        android:background="@drawable/backbtn" />
+        android:background="@drawable/level_button" />
 
 </RelativeLayout>

@@ -79,24 +79,7 @@ public class GameActivity extends Activity {
 		//		TextView levelName = (TextView) findViewById(R.id.level_value);
 		ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
-		//
-		//		// Receiving the Data
-		//		level = intent.getStringExtra("level_value");
-		//
-		//		// Setting the Data
-		//		levelName.setText(level);
-		//
-		//		int vflevel = 0;
-		//
-		//		try {
-		//			vflevel = Integer.parseInt(level);
-		//		} catch(NumberFormatException nfe) {
-		//			// Handle parse error.
-		//		}
-		//
-		//		//int vflevel = Integer.parseInt(level);
-		//		vf_drop.setDisplayedChild(vflevel-1);
-		//		vf_drag.setDisplayedChild(vflevel-1);
+		
 
 
 		MatchItem[] images = model.getRandomMatchItems(model.getCurrentLevel());
@@ -106,8 +89,7 @@ public class GameActivity extends Activity {
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
 		RelativeLayout game_drag_view_include = (RelativeLayout) vf_drag.getChildAt(vf_drag.getDisplayedChild());
-		//		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
-		//		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
+		
 
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drop_view_include.getChildAt(i);
