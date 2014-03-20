@@ -30,7 +30,7 @@ public class LevelsDataSource extends Observable {
 		dbHelper.close();
 	}
 
-	public Level loadLevel(int id) {
+	public long loadLevel(int id) {
 
 		// Adding information about the level and if it's completed
 		ContentValues values = new ContentValues();
@@ -43,11 +43,15 @@ public class LevelsDataSource extends Observable {
 				MySQLiteHelper.COLUMN_ID + " = " + insertId, null, null, null,
 				null);
 		cursor.moveToFirst();
-		Level level = cursorToLevel(cursor);
+		Level level = new Level();
+		level.setId(id);
+
+//		Level level = cursorToLevel(cursor);
 		cursor.close();
+		database.close();
 
 		// return level
-		return level;
+		return insertId;
 	}
 
 	// Getting all levels (could be used for LevelView)
