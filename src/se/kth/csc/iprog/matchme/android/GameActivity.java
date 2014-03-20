@@ -134,6 +134,7 @@ public class GameActivity extends Activity {
 				//finish(); // finish current activity
 			}
 		});  
+		
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -160,29 +161,21 @@ public class GameActivity extends Activity {
 	@Override
 	public void onResume() {
 		
+		
+			final ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
 
-		final ProgressBar mProgressBar;
-		int y=0;
 
-		mProgressBar=(ProgressBar)findViewById(R.id.progressbar);
-		mProgressBar.setProgress(y);
-		  
-		
-		
-		
-		// Implements CountdownTimer
-//		millisInFuture = intent.getIntExtra("resumeTime", 30000);
 		cdt = new CountDownTimer(millisInFuture, countDownInterval) {
 			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
 			public void onTick(long millisUntilFinished) {
 				timeLeft.setText("" + millisUntilFinished / 1000);
 				millisInFuture = millisUntilFinished;
-				 y++;
-		            mProgressBar.setProgress(y);
-				System.err.println(timeLeft);
+				
+			
+				m_bar.setProgress ( (int) (millisInFuture/1000) );
 			}
-
+		
 
 			public void onFinish() {
 				// Display screen after finishing a level
@@ -191,12 +184,11 @@ public class GameActivity extends Activity {
 				i.putExtra("level_value", level);
 				startActivity(i);
 				finish();
-				y++;
-	            mProgressBar.setProgress(y);
 			}
 		}.start();
 		super.onResume();
 	}
+		
 
 	private final class MyTouchListener implements OnTouchListener {
 		public boolean onTouch(View view, MotionEvent motionEvent) {

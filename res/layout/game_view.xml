@@ -126,7 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/time_left"
         android:layout_alignParentTop="true"
-        android:max="5"
+        android:max="30"
         android:progress="0" />
 
 </RelativeLayout>
