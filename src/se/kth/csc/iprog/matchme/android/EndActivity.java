@@ -76,24 +76,26 @@ public class EndActivity extends Activity {
 		playbtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				
-				if (model_level.getStatus() == true)
+				System.err.println(model_level.getStatus());
+				if (model_level.getStatus() == false)
 				{
-					int level = model.getCurrentLevel();
+					model.setCurrentLevel(model.getCurrentLevel()+1);
 					//Move to the next view!
 					Intent i = new Intent(EndActivity.this, GameActivity.class);
-					i.putExtra("resumeTime", 30000);	// reset timer
-					i.putExtra("level_value", level+1);
+//					i.putExtra("resumeTime", 30000);	// reset timer
+//					i.putExtra("level_value", level+1);
 					startActivity(i);
 					finish(); // finish current activity 	
 				}
 				
 				else{
-					int level = model.getCurrentLevel();
-					//Move to the next view!
+					model.setCurrentLevel(model.getCurrentLevel());
+					
+//					int level = model.getCurrentLevel();
+//					//Move to the next view!
 					Intent i = new Intent(EndActivity.this, GameActivity.class);
-					i.putExtra("resumeTime", 30000);	// reset timer
-					i.putExtra("level_value", level);
+//					i.putExtra("resumeTime", 30000);	// reset timer
+//					i.putExtra("level_value", level);
 					startActivity(i);
 					finish(); // finish current activity 	
 				}
