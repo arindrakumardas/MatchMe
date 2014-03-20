@@ -38,68 +38,78 @@ public class GameActivity extends Activity {
 	int Win_Time = 0;
 	private CountDownTimer cdt;
 	private String level = "1"; //Default level.
-	//private MediaPlayer earcon;
+	private MediaPlayer earcon;
 	Intent intent;
 	private MatchModel model;
 	private Level model_level;
-	
+	private MediaPlayer wrong_earcon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
 		intent = getIntent();
-		//earcon = MediaPlayer.create(this, R.raw.timesup);
-//		try {
-//			earcon.prepare();
-//		} catch (IllegalStateException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		earcon = MediaPlayer.create(this, R.raw.timesup);
+		try {
+			earcon.prepare();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		wrong_earcon = MediaPlayer.create(this, R.raw.wrong);
+		try {
+			wrong_earcon.prepare();
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model.setTimeLeft(30000);
 		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
-		
-		
+
+
 		GameView gameView = new GameView(findViewById(R.id.game_view), model);
 
-//		//TODO: Add code for switching screens and starting a view and a controller.
-//		TextView levelName = (TextView) findViewById(R.id.level_value);
+		//		//TODO: Add code for switching screens and starting a view and a controller.
+		//		TextView levelName = (TextView) findViewById(R.id.level_value);
 		ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
-//
-//		// Receiving the Data
-//		level = intent.getStringExtra("level_value");
-//
-//		// Setting the Data
-//		levelName.setText(level);
-//
-//		int vflevel = 0;
-//
-//		try {
-//			vflevel = Integer.parseInt(level);
-//		} catch(NumberFormatException nfe) {
-//			// Handle parse error.
-//		}
-//
-//		//int vflevel = Integer.parseInt(level);
-//		vf_drop.setDisplayedChild(vflevel-1);
-//		vf_drag.setDisplayedChild(vflevel-1);
+		//
+		//		// Receiving the Data
+		//		level = intent.getStringExtra("level_value");
+		//
+		//		// Setting the Data
+		//		levelName.setText(level);
+		//
+		//		int vflevel = 0;
+		//
+		//		try {
+		//			vflevel = Integer.parseInt(level);
+		//		} catch(NumberFormatException nfe) {
+		//			// Handle parse error.
+		//		}
+		//
+		//		//int vflevel = Integer.parseInt(level);
+		//		vf_drop.setDisplayedChild(vflevel-1);
+		//		vf_drag.setDisplayedChild(vflevel-1);
 
 
 		MatchItem[] images = model.getRandomMatchItems(model.getCurrentLevel());
 
-		
+
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
 		RelativeLayout game_drag_view_include = (RelativeLayout) vf_drag.getChildAt(vf_drag.getDisplayedChild());
-//		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
-//		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
+		//		System.err.println("CHILDCOUNT DROP: " + game_drop_view_include.getChildCount());
+		//		System.err.println("CHILDCOUNT DRAG: " + game_drag_view_include.getChildCount());
 
 		for(int i = 0; i < game_drop_view_include.getChildCount(); i++) {
 			ImageView current = (ImageView)game_drop_view_include.getChildAt(i);
@@ -145,7 +155,7 @@ public class GameActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				cdt.cancel();
-				//earcon.pause();
+				earcon.pause();
 				// Show paused screen options
 				Intent i = new Intent(GameActivity.this, PauseActivity.class);
 				i.putExtra("resumeTime", (int) (millisInFuture));
@@ -155,7 +165,7 @@ public class GameActivity extends Activity {
 				//finish(); // finish current activity
 			}
 		});  
-		
+
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -176,28 +186,28 @@ public class GameActivity extends Activity {
 		super.onPause();
 	}
 
-	
+
 	@Override
 	public void onResume() {
-		
-//		final ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
+
+		//		final ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
 
 		// Implements CountdownTimer
 		cdt = new CountDownTimer(model.getTimeLeft(), countDownInterval) {
-//			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
+			//			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
 			public void onTick(long millisUntilFinished) {
-//				timeLeft.setText("" + millisUntilFinished / 1000);
-//				millisInFuture = millisUntilFinished;
+				//				timeLeft.setText("" + millisUntilFinished / 1000);
+				//				millisInFuture = millisUntilFinished;
 				if (millisUntilFinished <= 10000) {
-					//earcon.start();
+					earcon.start();
 				}
 				model.setTimeLeft(millisUntilFinished);
 			}
-		
+
 
 			public void onFinish() {
-				//earcon.release();
+				earcon.release();
 				// Display screen after finishing a level
 				model.setTimeLeft(0);
 
@@ -210,10 +220,10 @@ public class GameActivity extends Activity {
 				finish();
 			}
 		}.start();
-		
+
 		super.onResume();
 	}
-		
+
 
 	private final class MyTouchListener implements OnTouchListener {
 		public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -259,6 +269,7 @@ public class GameActivity extends Activity {
 					dropped.setImageResource(MatchMeApplication.getImageResId(view.getContext(), dragged.getTag().toString()));
 					//					dropped.setBackground(dragged.getDrawable());
 					v.setTag(true); //symbolizes that the image is matched.
+					
 					if(isWin()) {
 
 						model_level.setStatus(0);
@@ -273,6 +284,7 @@ public class GameActivity extends Activity {
 						finish();
 					}
 				} else {
+					wrong_earcon.start();
 					view.setVisibility(View.VISIBLE);
 					return false;
 				}
