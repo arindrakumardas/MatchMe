@@ -1,10 +1,8 @@
 package se.kth.csc.iprog.matchme.android;
 
-<<<<<<< HEAD
+
 import se.kth.csc.iprog.matchme.model.Level;
-=======
 import se.kth.csc.iprog.matchme.model.LevelsDataSource;
->>>>>>> origin/DiffLevel
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,21 +18,16 @@ public class LevelActivity extends Activity implements OnClickListener {
 	private MatchModel model;
 
 	private Level model_level;
-	private MatchModel model;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.levels_view);
 
-<<<<<<< HEAD
-		model = ((MatchMeApplication) this.getApplication()).getModel();
-		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
-=======
 		model = ((MatchMeApplication) getApplication()).getModel();
 		datasource = new LevelsDataSource(this);
 		datasource.open();
->>>>>>> origin/DiffLevel
+		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
 
 
 		// Home button
@@ -48,7 +41,7 @@ public class LevelActivity extends Activity implements OnClickListener {
 
 		// Level 1 Button
 		Button level1_button = (Button) findViewById(R.id.level1_button);
-<<<<<<< HEAD
+
 		level1_button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -62,7 +55,7 @@ public class LevelActivity extends Activity implements OnClickListener {
 
 		// Level 2 Button
 
-		if (model.getCurrentLevel() > 1 && model_level.getStatus() ==false)
+		if (model.getCurrentLevel() > 1 && model_level.getStatus() ==0)
 		{
 			final Button level2_button = (Button) findViewById(R.id.level2_button);
 			Drawable locked = getResources().getDrawable( R.drawable.level2	);
@@ -96,7 +89,7 @@ public class LevelActivity extends Activity implements OnClickListener {
 
 
 		
-		if (model.getCurrentLevel() > 2 && model_level.getStatus() ==false)
+		if (model.getCurrentLevel() > 2 && model_level.getStatus() ==0)
 		{
 			final Button level3_button = (Button) findViewById(R.id.level3_button);
 			Drawable locked = getResources().getDrawable( R.drawable.level3	);
@@ -129,7 +122,7 @@ public class LevelActivity extends Activity implements OnClickListener {
 		}
 		
 		
-		if (model.getCurrentLevel() >3 && model_level.getStatus() ==false)
+		if (model.getCurrentLevel() >3 && model_level.getStatus() ==0)
 		{
 			final Button level4_button = (Button) findViewById(R.id.level4_button);
 			Drawable locked = getResources().getDrawable( R.drawable.level4	);
@@ -163,7 +156,7 @@ public class LevelActivity extends Activity implements OnClickListener {
 		
 		
 		
-		if (model.getCurrentLevel() > 4 && model_level.getStatus() ==false)
+		if (model.getCurrentLevel() > 4 && model_level.getStatus() ==0)
 		{
 			final Button level5_button = (Button) findViewById(R.id.level5_button);
 			Drawable locked = getResources().getDrawable( R.drawable.level5	);
@@ -236,7 +229,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 //				startActivity(i);
 //			}
 //		}); 
-=======
 		level1_button.setTag(1);
 		level1_button.setOnClickListener(this);
 
@@ -269,7 +261,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 		Intent game = new Intent(LevelActivity.this, GameActivity.class);
 		model.setCurrentLevel(level);
 		startActivity(game);
->>>>>>> origin/DiffLevel
 
 		finish(); // finish current activity
 	}

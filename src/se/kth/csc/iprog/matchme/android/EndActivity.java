@@ -46,16 +46,7 @@ public class EndActivity extends Activity {
 			game_end_msg.setText(lost);
 			
 		}
-<<<<<<< HEAD
-		else if (score < model_level.getScore()) {
-			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
-			game_end_msg.setText(pass);
-			model.setCurrentLevel(model.getCurrentLevel()+1);
-		}else{
-			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
-			game_end_msg.setText(win);
-			model.setCurrentLevel(model.getCurrentLevel()+1);
-=======
+
 		else {
 			if (score < model_level.getScore()) {
 				TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
@@ -63,11 +54,11 @@ public class EndActivity extends Activity {
 				model.setCurrentLevelStatus(true);
 			} else {
 				// TODO: Add new high score message
+				TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
+				game_end_msg.setText(pass);
 				model.setCurrentLevelHighScore(score);
 				model.setCurrentLevelStatus(true);
 			}
-			
->>>>>>> origin/DiffLevel
 		}
 
 	
@@ -100,13 +91,8 @@ public class EndActivity extends Activity {
 		playbtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-<<<<<<< HEAD
-				System.err.println(model_level.getStatus());
-				if (model_level.getStatus() == false)
-=======
-				
+	
 				if (model_level.getStatus() == 1)
->>>>>>> origin/DiffLevel
 				{
 					model.setCurrentLevel(model.getCurrentLevel()+1);
 					//Move to the next view!
