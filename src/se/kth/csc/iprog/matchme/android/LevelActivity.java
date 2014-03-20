@@ -38,179 +38,169 @@ public class LevelActivity extends Activity implements OnClickListener {
 				finish(); //Kill this activity and go to the parent, which is the StartActivity.
 			}
 		}); 
+//
+//		// Level 1 Button
+//		Button level1_button = (Button) findViewById(R.id.level1_button);
+//
+//		level1_button.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View arg0) {
+//
+//				Intent i = new Intent(LevelActivity.this, GameActivity.class);
+//				i.putExtra("level_value", "1");
+//				model.setCurrentLevel(1);
+//				startActivity(i);
+//			}
+//		}); 
+//
+//		// Level 2 Button
+//
+//		if (model.getCurrentLevel() > 1 && model_level.getStatus() ==0)
+//		{
+//			final Button level2_button = (Button) findViewById(R.id.level2_button);
+//			Drawable locked = getResources().getDrawable( R.drawable.level2	);
+//			level2_button.setBackground(locked);	
+//			level2_button.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//
+//					Intent i = new Intent(LevelActivity.this, GameActivity.class);
+//					i.putExtra("level_value", "2");	
+//					model.setCurrentLevel(2);
+//					startActivity(i);
+//				}
+//			}); 
+//		}
+//		else {
+//
+//			final Button level2_button_a = (Button) findViewById(R.id.level2_button);
+//			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
+//			level2_button_a.setBackground(locked1);
+//			level2_button_a.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//					System.err.println("HELLO");
+//
+//				}
+//
+//			}); 
+//
+//		}
+//
+//
+//		
+//		if (model.getCurrentLevel() > 2 && model_level.getStatus() ==0)
+//		{
+//			final Button level3_button = (Button) findViewById(R.id.level3_button);
+//			Drawable locked = getResources().getDrawable( R.drawable.level3	);
+//			level3_button.setBackground(locked);	
+//			level3_button.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//
+//					Intent i = new Intent(LevelActivity.this, GameActivity.class);
+//					i.putExtra("level_value", "3");	
+//					model.setCurrentLevel(3);
+//					startActivity(i);
+//				}
+//			}); 
+//		}
+//		else {
+//
+//			final Button level3_button_a = (Button) findViewById(R.id.level3_button);
+//			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
+//			level3_button_a.setBackground(locked1);
+//			level3_button_a.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//					System.err.println("HELLO");
+//
+//				}
+//
+//			}); 
+//
+//		}
+//		
+//		
+//		if (model.getCurrentLevel() >3 && model_level.getStatus() ==0)
+//		{
+//			final Button level4_button = (Button) findViewById(R.id.level4_button);
+//			Drawable locked = getResources().getDrawable( R.drawable.level4	);
+//			level4_button.setBackground(locked);	
+//			level4_button.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//
+//					Intent i = new Intent(LevelActivity.this, GameActivity.class);
+//					i.putExtra("level_value", "4");	
+//					model.setCurrentLevel(4);
+//					startActivity(i);
+//				}
+//			}); 
+//		}
+//		else {
+//
+//			final Button level4_button_a = (Button) findViewById(R.id.level4_button);
+//			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
+//			level4_button_a.setBackground(locked1);
+//			level4_button_a.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//					System.err.println("HELLO");
+//
+//				}
+//
+//			}); 
+//
+//		}
+//		
+//		
+//		
+//		if (model.getCurrentLevel() > 4 && model_level.getStatus() ==0)
+//		{
+//			final Button level5_button = (Button) findViewById(R.id.level5_button);
+//			Drawable locked = getResources().getDrawable( R.drawable.level5	);
+//			level5_button.setBackground(locked);	
+//			level5_button.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//
+//					Intent i = new Intent(LevelActivity.this, GameActivity.class);
+//					i.putExtra("level_value", "5");	
+//					model.setCurrentLevel(5);
+//					startActivity(i);
+//				}
+//			}); 
+//		}
+//		else {
+//
+//			final Button level5_button_a = (Button) findViewById(R.id.level5_button);
+//			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
+//			level5_button_a.setBackground(locked1);
+//			level5_button_a.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View arg0) {
+//					System.err.println("HELLO");
+//
+//				}
+//
+//			}); 
+//
+//		}
 
-		// Level 1 Button
-		Button level1_button = (Button) findViewById(R.id.level1_button);
-
-		level1_button.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-
-				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-				i.putExtra("level_value", "1");
-				model.setCurrentLevel(1);
-				startActivity(i);
-			}
-		}); 
-
-		// Level 2 Button
-
-		if (model.getCurrentLevel() > 1 && model_level.getStatus() ==0)
-		{
-			final Button level2_button = (Button) findViewById(R.id.level2_button);
-			Drawable locked = getResources().getDrawable( R.drawable.level2	);
-			level2_button.setBackground(locked);	
-			level2_button.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-
-					Intent i = new Intent(LevelActivity.this, GameActivity.class);
-					i.putExtra("level_value", "2");	
-					model.setCurrentLevel(2);
-					startActivity(i);
-				}
-			}); 
+		createButton(1, R.id.level1_button);
+		createButton(2, R.id.level2_button);
+		createButton(3, R.id.level3_button);
+		createButton(4, R.id.level4_button);
+		createButton(5, R.id.level5_button);
+	}
+	
+	public void createButton(int level, int id) {
+		Button button = (Button) findViewById(R.id.level2_button);
+		button.setTag(level);
+		if(level == 1 || model.getStatus(level-1)) { 
+			button.setOnClickListener(this);
 		}
-		else {
-
-			final Button level2_button_a = (Button) findViewById(R.id.level2_button);
-			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
-			level2_button_a.setBackground(locked1);
-			level2_button_a.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					System.err.println("HELLO");
-
-				}
-
-			}); 
-
-		}
-
-
-		
-		if (model.getCurrentLevel() > 2 && model_level.getStatus() ==0)
-		{
-			final Button level3_button = (Button) findViewById(R.id.level3_button);
-			Drawable locked = getResources().getDrawable( R.drawable.level3	);
-			level3_button.setBackground(locked);	
-			level3_button.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-
-					Intent i = new Intent(LevelActivity.this, GameActivity.class);
-					i.putExtra("level_value", "3");	
-					model.setCurrentLevel(3);
-					startActivity(i);
-				}
-			}); 
-		}
-		else {
-
-			final Button level3_button_a = (Button) findViewById(R.id.level3_button);
-			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
-			level3_button_a.setBackground(locked1);
-			level3_button_a.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					System.err.println("HELLO");
-
-				}
-
-			}); 
-
-		}
-		
-		
-		if (model.getCurrentLevel() >3 && model_level.getStatus() ==0)
-		{
-			final Button level4_button = (Button) findViewById(R.id.level4_button);
-			Drawable locked = getResources().getDrawable( R.drawable.level4	);
-			level4_button.setBackground(locked);	
-			level4_button.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-
-					Intent i = new Intent(LevelActivity.this, GameActivity.class);
-					i.putExtra("level_value", "4");	
-					model.setCurrentLevel(4);
-					startActivity(i);
-				}
-			}); 
-		}
-		else {
-
-			final Button level4_button_a = (Button) findViewById(R.id.level4_button);
-			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
-			level4_button_a.setBackground(locked1);
-			level4_button_a.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					System.err.println("HELLO");
-
-				}
-
-			}); 
-
-		}
-		
-		
-		
-		if (model.getCurrentLevel() > 4 && model_level.getStatus() ==0)
-		{
-			final Button level5_button = (Button) findViewById(R.id.level5_button);
-			Drawable locked = getResources().getDrawable( R.drawable.level5	);
-			level5_button.setBackground(locked);	
-			level5_button.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-
-					Intent i = new Intent(LevelActivity.this, GameActivity.class);
-					i.putExtra("level_value", "5");	
-					model.setCurrentLevel(5);
-					startActivity(i);
-				}
-			}); 
-		}
-		else {
-
-			final Button level5_button_a = (Button) findViewById(R.id.level5_button);
-			Drawable locked1 = getResources().getDrawable( R.drawable.locked_level);
-			level5_button_a.setBackground(locked1);
-			level5_button_a.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View arg0) {
-					System.err.println("HELLO");
-
-				}
-
-			}); 
-
-		}
-		
-
-		level1_button.setTag(1);
-		level1_button.setOnClickListener(this);
-
-		// Level 2 Button
-		Button level2_button = (Button) findViewById(R.id.level2_button);
-		level2_button.setTag(2);
-		level2_button.setOnClickListener(this);
-
-		// Level 3 Button
-		Button level3_button = (Button) findViewById(R.id.level3_button);
-		level3_button.setTag(3);
-		level3_button.setOnClickListener(this);
-
-		// Level 4 Button
-		Button level4_button = (Button) findViewById(R.id.level4_button);
-		level4_button.setTag(4);
-		level4_button.setOnClickListener(this);
-
-		// Level 5 Button
-		Button level5_button = (Button) findViewById(R.id.level5_button);
-		level5_button.setTag(5);
-		level5_button.setOnClickListener(this);
 	}
 
 	public void onClick(View view) {
