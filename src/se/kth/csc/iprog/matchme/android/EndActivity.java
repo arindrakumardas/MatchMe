@@ -45,6 +45,7 @@ public class EndActivity extends Activity {
 		else{
 			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
 			game_end_msg.setText(win);
+			model.setCurrentLevel(model.getCurrentLevel()+1);
 		}
 
 
