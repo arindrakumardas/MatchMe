@@ -256,7 +256,7 @@ public class GameActivity extends Activity {
 						Intent intent = getIntent();
 						final String level = intent.getStringExtra("level_value");
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
-						i.putExtra("Win_Time", (int) millisInFuture/1000);//Integer.parseInt(timeLeft.getText().toString()));
+						i.putExtra("Win_Time", (int) model.getTimeLeft()/1000);//Integer.parseInt(timeLeft.getText().toString()));
 						i.putExtra("level_value", level);
 						startActivity(i);
 						cdt.cancel();
