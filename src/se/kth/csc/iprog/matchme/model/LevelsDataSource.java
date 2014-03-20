@@ -1,11 +1,9 @@
-package se.kth.csc.iprog.matchme.android;
+package se.kth.csc.iprog.matchme.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import se.kth.csc.iprog.matchme.model.Level;
-import se.kth.csc.iprog.matchme.model.MySQLiteHelper;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

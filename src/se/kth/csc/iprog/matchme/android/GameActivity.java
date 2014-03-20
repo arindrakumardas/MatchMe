@@ -21,6 +21,7 @@ import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -86,6 +87,7 @@ public class GameActivity extends Activity {
 
 		MatchItem[] images = model.getRandomMatchItems(model.getCurrentLevel());
 
+		
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
@@ -147,6 +149,7 @@ public class GameActivity extends Activity {
 				//finish(); // finish current activity
 			}
 		});  
+		
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -167,19 +170,26 @@ public class GameActivity extends Activity {
 		super.onPause();
 	}
 
+	
 	@Override
 	public void onResume() {
+		
+		final ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
 
 		// Implements CountdownTimer
-		cdt = new CountDownTimer(model.getTimeLeft(), countDownInterval) {
+		cdt = new CountDownTimer(millisInFuture, countDownInterval) {
+//			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
 			public void onTick(long millisUntilFinished) {
+//				timeLeft.setText("" + millisUntilFinished / 1000);
+//				millisInFuture = millisUntilFinished;
 				if (millisUntilFinished <= 10000) {
 					//earcon.start();
 				}
 				model.setTimeLeft(millisUntilFinished);
+				m_bar.setProgress ( (int) (millisInFuture/1000) );
 			}
-
+		
 
 			public void onFinish() {
 				//earcon.release();
@@ -196,6 +206,7 @@ public class GameActivity extends Activity {
 		
 		super.onResume();
 	}
+		
 
 	private final class MyTouchListener implements OnTouchListener {
 		public boolean onTouch(View view, MotionEvent motionEvent) {
