@@ -189,46 +189,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 		}
 		
 
-//
-//
-//		// Level 3 Button
-//		Button level3_button = (Button) findViewById(R.id.level3_button);
-//		level3_button.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View arg0) {
-//
-//				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-//				i.putExtra("level_value", "3");	
-//				model.setCurrentLevel(3);	
-//				startActivity(i);
-//			}
-//		}); 
-//
-//		// Level 4 Button
-//		Button level4_button = (Button) findViewById(R.id.level4_button);
-//		level4_button.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View arg0) {
-//
-//				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-//				i.putExtra("level_value", "4");	
-//				model.setCurrentLevel(4);	
-//				startActivity(i);
-//			}
-//		}); 
-//
-//		// Level 5 Button
-//		Button level5_button = (Button) findViewById(R.id.level5_button);
-//		level5_button.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View arg0) {
-//
-//				Intent i = new Intent(LevelActivity.this, GameActivity.class);
-//				i.putExtra("level_value", "5");	
-//				model.setCurrentLevel(5);	
-//				startActivity(i);
-//			}
-//		}); 
 		level1_button.setTag(1);
 		level1_button.setOnClickListener(this);
 
