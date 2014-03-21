@@ -10,6 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+/**
+ * Updates the view of the game according to changes in the model.
+ */
 public class GameView implements Observer {
 
 	private View view;
@@ -17,7 +20,11 @@ public class GameView implements Observer {
 	private TextView levelName;
 	private ViewFlipper vf_drop;
 	private ViewFlipper vf_drag;
-
+	
+	/**
+	 * @param view The layout of the screen.
+	 * @param model The model of the application.
+	 */
 	public GameView(View view, MatchModel model) {
 		this.model = model;
 		// store in the class the reference to the Android View
@@ -49,6 +56,9 @@ public class GameView implements Observer {
 		}
 	}
 	
+	/**
+	 * Convenience method
+	 */
 	private View findViewById(int id) {
 		return view.findViewById(id);
 	}

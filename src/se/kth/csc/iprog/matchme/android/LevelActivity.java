@@ -12,6 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+/**
+ * Shows all of the levels of the game, and keeps track of which of the levels are locked
+ * and unlocked by checking their status in the model. The locked levels will be symbolized by 
+ * an image of a lock instead of a level number.
+ */
 public class LevelActivity extends Activity implements OnClickListener, Observer {
 
 	private MatchModel model;
@@ -35,6 +40,11 @@ public class LevelActivity extends Activity implements OnClickListener, Observer
 		update(null, MatchModel.STATUS); //Initiate the buttons
 	}
 	
+	/**
+	 * Creates the UI for the specified button depending on if the level is locked or not.
+	 * @param level The level
+	 * @param id The id of the button
+	 */
 	public void toggleUi(int level, int id) {
 		Button button = (Button) findViewById(id);
 		button.setTag(level);
@@ -82,6 +92,9 @@ public class LevelActivity extends Activity implements OnClickListener, Observer
 		}
 	}
 
+	/**
+	 * Called when a button is clicked. Will launch the corresponding level to the gameActivity.
+	 */
 	public void onClick(View view) {
 		// add clicked level to database
 		int level = (Integer) view.getTag();

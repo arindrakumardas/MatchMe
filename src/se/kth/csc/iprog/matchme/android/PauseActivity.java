@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+/**
+ * This activity controls the screen of a paused game. At this point,
+ * the user can either resume the game, restart the game, or go back to choose
+ * a new level.
+ */
 public class PauseActivity extends Activity {
 
 	@Override
@@ -58,10 +63,5 @@ public class PauseActivity extends Activity {
 				startActivity(i);
 			}
 		}); 
-	} 	
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
+	} 
 }

@@ -9,12 +9,20 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+/**
+ * Controls the screen viewed after a game is completed (win or lose).
+ * Updates the screen corresponding to changes in the observed model.
+ */
 public class EndView implements Observer {
 
 	public View view;
 	private MatchModel model;
 	ViewFlipper vf;
 
+	/**
+	 * @param view The layout of the screen.
+	 * @param model The model of the application.
+	 */
 	public EndView(View view, MatchModel model) {
 		this.model = model;
 		this.view = view;
@@ -42,6 +50,9 @@ public class EndView implements Observer {
 		}
 	}
 	
+	/**
+	 * Convenience method.
+	 */
 	private View findViewById(int id) {
 		return view.findViewById(id);
 	}

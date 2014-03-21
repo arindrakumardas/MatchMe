@@ -10,6 +10,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+/**
+ * Activity for the screen that is displayed after a game is ended. 
+ * Keeps track of the viewer and controller for the screen.
+ * Shows different screens depending on if the user completed the level or not,
+ * and if the highscore was beaten.
+ */
 public class EndActivity extends Activity {
 	private MatchModel model;
 

@@ -26,7 +26,10 @@ import se.kth.csc.iprog.matchme.android.view.GameView;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
-
+/**
+ * The activity that controls everything while playing the actual game.
+ * Keeps track of the sounds, the time, and updates the screen when an image is matched.
+ */
 public class GameActivity extends Activity {
 
 	private static long countDownInterval = 1000;

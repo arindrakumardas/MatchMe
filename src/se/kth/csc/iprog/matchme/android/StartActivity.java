@@ -14,16 +14,15 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 
+/**
+ * The home screen of the application. Plays a bit of sound, and holds
+ * a button to launch the level-choosing-screen {@link LevelActivity}
+ */
 public class StartActivity extends Activity {
 
 	private AudioManager mAudioManager;
 	private boolean mPhoneIsSilent;
 	private MediaPlayer mPlay;
-	private ImageView mScanner;
-	private ImageView mScanner_1;
-	private Animation mAnimation;
-	private Animation mAnimation_1;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,28 +41,7 @@ public class StartActivity extends Activity {
 		mAudioManager = (AudioManager)getSystemService(AUDIO_SERVICE);
 		checkIfPhoneIsSilent();
 
-		mScanner = (ImageView)findViewById(R.id.animate_bubble);
-		mScanner.setVisibility(View.VISIBLE);
-		mAnimation = new TranslateAnimation(0, 0, 200, 0);
-		mAnimation.setDuration(4000);
-		mAnimation.setStartOffset(100);
-		//mAnimation.setFillAfter(true);
-		mAnimation.setRepeatCount(20);
-		mAnimation.setRepeatMode(Animation.INFINITE);
-		mScanner.setAnimation(mAnimation);
-		mScanner.setVisibility(View.VISIBLE);
-
-
-		mScanner_1 = (ImageView)findViewById(R.id.animate_bubble_1);
-		mScanner_1.setVisibility(View.VISIBLE);
-		mAnimation_1 = new TranslateAnimation(0, 0, 400, 0);
-		mAnimation_1.setDuration(7000);
-		mAnimation_1.setStartOffset(8000);
-		//mAnimation_1.setFillAfter(true);
-		mAnimation_1.setRepeatCount(20);
-		mAnimation_1.setRepeatMode(Animation.INFINITE);
-		mScanner_1.setAnimation(mAnimation);
-		mScanner_1.setVisibility(View.VISIBLE);
+		
 		
 		// Creating the view class instance
 		StartView startView = new StartView(findViewById(R.id.start_view));
@@ -103,6 +81,10 @@ public class StartActivity extends Activity {
 		toggleUI();
 	}
 
+	/**
+	 * Check to see the mode of the phone. If the phone is set to silent mode, the app will also be silent.
+	 * Otherwise it will play a sound of bubbles popping on the home screen.
+	 */
 	private void checkIfPhoneIsSilent() {
 		int ringerMode = mAudioManager.getRingerMode();
 		if (ringerMode == AudioManager.RINGER_MODE_SILENT) {
@@ -120,7 +102,9 @@ public class StartActivity extends Activity {
 		super.onPause();
 	}
 
-	// Toggles the UI images from silent to normal and vice-versa
+	/**
+	 * Toggles the UI images from silent to normal and vice-versa
+	 */
 	private void toggleUI() {
 		Button imageView = (Button) findViewById(R.id.volume);
 		Drawable soundIcon;

@@ -6,6 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * Helper for the MySQLite database. 
+ * Handles the creation and upgrade of the database.
+ */
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
 	public static final String TABLE_LEVELS = "levels";

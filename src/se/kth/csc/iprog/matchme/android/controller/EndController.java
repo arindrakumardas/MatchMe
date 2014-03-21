@@ -6,6 +6,10 @@ import se.kth.csc.iprog.matchme.android.view.EndView;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.widget.TextView;
 
+/**
+ * Controls the {@link EndView}. Checks the score of the user and compares it to the highscore
+ * to determine what message to show on the screen.
+ */
 public class EndController {
 
 	EndView view;

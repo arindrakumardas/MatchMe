@@ -7,6 +7,12 @@ import java.util.Random;
 import android.content.Context;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
+/**
+ * Represents the model of the application.
+ * 
+ * This implementation connects the model with the database where needed, 
+ * so that the rest of the code does not need to interact with the database.
+ */
 public class MatchModel extends Observable{
 	private ArrayList<MatchItem> matchItems;
 	private Level currentLevel;
@@ -15,7 +21,9 @@ public class MatchModel extends Observable{
 	
 	public static int LEVEL = 1, TIMELEFT = 2, SCORE = 3, STATUS = 4;
 
-
+	/**
+	 * @param context The context of the application.
+	 */
 	public MatchModel(Context context){
 		matchItems = new ArrayList<MatchItem>();
 		MatchItem matchItem1 = new MatchItem(1, "crayfish" , "crayfish_shadows");
@@ -44,6 +52,7 @@ public class MatchModel extends Observable{
 		this.matchItems.add(matchItem11);
 		this.matchItems.add(matchItem12);
 
+		//Create the levels in the database.
 		ds = new LevelsDataSource(context);
 		ds.open();
 		ds.createLevel(1);
@@ -55,7 +64,13 @@ public class MatchModel extends Observable{
 		setCurrentLevel(1); //Just to have some default level.. Should not be necessary.
 	}
 
-
+	/**
+	 * Returns a list of random {@link MatchItem}s, 
+	 * so that the images gets placed randomly on the screen.
+	 * The size of the returned list is twice the level.
+	 * @param level The level to create the list for.
+	 * @return The list of level*2 random {@link MatchItem}s.
+	 */
 	public MatchItem[] getRandomMatchItems(int level){
 		int numOfItems = level *2;
 		MatchItem[] result = new MatchItem[numOfItems];
@@ -70,19 +85,17 @@ public class MatchModel extends Observable{
 				continue; //This number has already been used, roll a new random number.
 			}
 			result[k] = matchItems.get(i);
-			System.err.println("Insert: " + matchItems.get(i));
 			
 			used[i] = true;
 			k++;
 		}
-		ArrayList<MatchItem> printList = new ArrayList<MatchItem>();
-		for(MatchItem item : result) {
-			printList.add(item);
-		}
-		System.err.println(printList);
 		return result;
 	}
 	
+	/**
+	 * Loads the specified level to the database and sets it as the current level of the model.
+	 * @param level The new current level.
+	 */
 	public void setCurrentLevel(int level) {
 		ds.open();
 		currentLevel = ds.loadLevel(level);
@@ -91,10 +104,17 @@ public class MatchModel extends Observable{
 		notifyObservers(LEVEL);
 	}
 	
+	/**
+	 * @return The current level
+	 */
 	public int getCurrentLevel() {
 		return currentLevel.getId();
 	}
 	
+	/**
+	 * Sets the new high score of the current level
+	 * @param score The new high score
+	 */
 	public void setCurrentLevelHighScore(int score) {
 		currentLevel.setScore(score);
 		ds.open();
@@ -104,10 +124,17 @@ public class MatchModel extends Observable{
 		notifyObservers(SCORE);
 	}
 	
+	/**
+	 * @return The high score of the current level.
+	 */
 	public int getCurrentLevelHighScore() {
 		return currentLevel.getScore();
 	}
 	
+	/**
+	 * Updates the status of the current level in the model and the database.
+	 * @param status The new status.
+	 */
 	public void setCurrentLevelStatus(boolean status) {
 		if(status == true) {
 			currentLevel.setStatus(1);
@@ -121,6 +148,11 @@ public class MatchModel extends Observable{
 		notifyObservers(STATUS);
 	}
 	
+	/**
+	 * Returns the status of the specified level from the database.
+	 * @param level The specified level
+	 * @return The status of the specified level.
+	 */
 	public boolean getStatus(int level) {
 		ds.open();
 		Level l = ds.loadLevel(level);
@@ -131,6 +163,9 @@ public class MatchModel extends Observable{
 		return true;
 	}
 	
+	/**
+	 * @return The status of the current level
+	 */
 	public boolean getCurrentLevelStatus() {
 		if(currentLevel.getStatus() == 0) {
 			return false;
@@ -138,12 +173,20 @@ public class MatchModel extends Observable{
 		return true;
 	}
 	
+	/**
+	 * Sets the time left of the current game.
+	 * @param timeLeft The updated time left.
+	 */
 	public void setTimeLeft(long timeLeft) {
 		this.timeLeft = timeLeft;
 		setChanged();
 		notifyObservers(TIMELEFT);
 	}
 	
+	/**
+	 * 
+	 * @return The time left of the current game.
+	 */
 	public long getTimeLeft() {
 		return timeLeft;
 	}

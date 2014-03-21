@@ -5,9 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+/**
+ * The initial loading screen. Loads for three seconds and then launches the application.
+ */
 public class SplashScreen extends Activity {
 
-	// Splash screen timer
+	/**
+	 * The splash screen timer.
+	 */
 	private static int SPLASH_TIME_OUT = 3000;
 
 	@Override
