@@ -78,14 +78,21 @@ public class EndActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 
+				Intent i = new Intent();
 				if (model.getCurrentLevelStatus() == true)
 				{
+					 
 					//Move to the next level
-					model.setCurrentLevel(model.getCurrentLevel()+1);
+					if (model.getCurrentLevel() != 5) {
+						model.setCurrentLevel(model.getCurrentLevel()+1);
+						i = new Intent(EndActivity.this, GameActivity.class);
+					} else {
+						i = new Intent(EndActivity.this, StartActivity.class);
+					}
 				} 
 				//Move to the next view!
-				Intent i = new Intent(EndActivity.this, GameActivity.class);
 				startActivity(i);
+				
 				finish(); // finish current activity 	
 			}
 		});
