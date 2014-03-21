@@ -22,14 +22,13 @@ public class GameView implements Observer {
 		this.model = model;
 		// store in the class the reference to the Android View
 		this.view = view;
-//		TextView example = (TextView) view.findViewById(R.id.example_text);
+
 		model.addObserver(this);
 		
 		levelName = (TextView) findViewById(R.id.level_value);
 		vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
 		
-		// Setup the rest of the view layout
 		update(null, MatchModel.LEVEL); //Load the level from the model and update the view accordingly.
 		update(null, MatchModel.TIMELEFT); //Load the timeleft from the model and update the view accordingly.
 	}

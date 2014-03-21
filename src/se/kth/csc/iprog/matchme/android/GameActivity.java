@@ -33,7 +33,6 @@ public class GameActivity extends Activity {
 	long millisInFuture;
 	int Win_Time = 0;
 	private CountDownTimer cdt;
-//	Intent intent;
 	private MatchModel model;
 	
 	
@@ -117,11 +116,9 @@ public class GameActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				cdt.cancel();
+
 				// Show paused screen options
 				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-//				i.putExtra("resumeTime", (int) (millisInFuture));
-//				i.putExtra("level_value", level);
-//				i.putExtra("Win_Time", 0);
 				startActivityForResult(i, 1);
 				//finish(); // finish current activity
 			}
@@ -268,7 +265,9 @@ public class GameActivity extends Activity {
 	}
 	
 	private void releaseEarcons() {
+		correctEarcon.release();
 		earcon.release();
+		rightMatch.release();
 		wrongEarcon.release();
 	}
 	

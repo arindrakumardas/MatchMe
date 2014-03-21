@@ -6,7 +6,6 @@ import java.util.Observer;
 import se.kth.csc.iprog.matchme.android.R;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -23,7 +22,6 @@ public class EndView implements Observer {
 		
 		vf = (ViewFlipper)findViewById(R.id.game_end_view_flipper);
 		
-		// Setup the rest of the view layout
 		update(null, MatchModel.SCORE); //Load the score from the model and update the view accordingly.
 		update(null, MatchModel.STATUS); //Load the status from the model and update the view accordingly.
 	}

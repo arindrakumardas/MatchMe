@@ -5,14 +5,6 @@ import java.util.Observable;
 import java.util.Random;
 
 import android.content.Context;
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.CountDownTimer;
-import android.widget.TextView;
-import se.kth.csc.iprog.matchme.android.EndActivity;
-import se.kth.csc.iprog.matchme.android.GameActivity;
-import se.kth.csc.iprog.matchme.android.MatchMeApplication;
-import se.kth.csc.iprog.matchme.android.R;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
 public class MatchModel extends Observable{

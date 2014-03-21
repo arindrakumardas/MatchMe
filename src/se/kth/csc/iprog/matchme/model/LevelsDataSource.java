@@ -32,12 +32,6 @@ public class LevelsDataSource extends Observable {
 
 	public Level loadLevel(int id) {
 
-		// Adding information about the level and if it's completed
-//		values.put(MySQLiteHelper.COLUMN_ID, id);
-//
-//		long insertId = database.insert(MySQLiteHelper.TABLE_LEVELS, null,
-//				values);
-
 		Cursor cursor = database.query(MySQLiteHelper.TABLE_LEVELS, allColumns,
 				MySQLiteHelper.COLUMN_ID + "=" + id, null, null, null,
 				null);
