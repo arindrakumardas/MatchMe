@@ -15,14 +15,16 @@ public class StartActivity extends Activity {
 
 	private AudioManager mAudioManager;
 	private boolean mPhoneIsSilent;
-	public MediaPlayer mPlay;
+	private MediaPlayer mPlay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// Default call to load previous state
 		super.onCreate(savedInstanceState);
+		
 		//Play sound
-		mPlay = MediaPlayer.create(this, R.raw.audio_file);
+		mPlay = MatchMeApplication.getMediaPlayer(this, R.raw.audio_file);
+		//mPlay = MediaPlayer.create(this, R.raw.audio_file);
 
 		// Set the view for the main activity screen
 		// it must come before any call to findViewById method

@@ -36,31 +36,32 @@ public class GameActivity extends Activity {
 //	Intent intent;
 	private MatchModel model;
 	
+	
 	// MediaPlayer should have subtitle controller (NO FIXES REQUIRED FOR AUDIO FILES)
     // http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
-	private MediaPlayer earcon;
+	private boolean earconIsRunning;
 	private MediaPlayer correctEarcon;
+	private MediaPlayer earcon;
 	private MediaPlayer rightMatch;
 	private MediaPlayer wrongEarcon;
-	//TODO CORRECT EARCON
-	private boolean earconIsRunning;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
-		earcon = MediaPlayer.create(this, R.raw.timesup);
-		earconIsRunning = false;
-		correctEarcon = MediaPlayer.create(this, R.raw.correct);
-		rightMatch = MediaPlayer.create(this, R.raw.click);
-		wrongEarcon = MediaPlayer.create(this, R.raw.wrong);
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model.setTimeLeft(30000);
 		
 		GameView gameView = new GameView(findViewById(R.id.game_view), model);
 
-		//		//TODO: Add code for switching screens and starting a view and a controller.
+		// Set up sounds for the game
+		correctEarcon = MatchMeApplication.getMediaPlayer(this, R.raw.correct);
+		earcon = MatchMeApplication.getMediaPlayer(this, R.raw.timesup);
+		earconIsRunning = false;
+		rightMatch = MatchMeApplication.getMediaPlayer(this, R.raw.click);
+		wrongEarcon = MatchMeApplication.getMediaPlayer(this, R.raw.wrong);
+		
 		//		TextView levelName = (TextView) findViewById(R.id.level_value);
 		ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
