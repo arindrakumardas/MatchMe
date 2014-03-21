@@ -22,7 +22,7 @@ public class PauseActivity extends Activity {
 		setResult(RESULT_OK, returnIntent); //As default.
 
 		// Play (Resume) Button
-		Button playBtn = (Button) findViewById(R.id.play_btn);
+		Button playBtn = (Button) findViewById(R.id.next_button);
 		playBtn.setOnClickListener(new OnClickListener() {
 
 			@Override

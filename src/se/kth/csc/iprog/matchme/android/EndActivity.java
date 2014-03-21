@@ -73,7 +73,7 @@ public class EndActivity extends Activity {
 		});
 
 		// Next Button
-		Button nextBtn = (Button) findViewById(R.id.play_btn);
+		Button nextBtn = (Button) findViewById(R.id.next_button);
 		nextBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
