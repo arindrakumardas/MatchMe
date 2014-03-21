@@ -20,7 +20,9 @@ public class StartActivity extends Activity {
 	private boolean mPhoneIsSilent;
 	private MediaPlayer mPlay;
 	private ImageView mScanner;
+	private ImageView mScanner_1;
 	private Animation mAnimation;
+	private Animation mAnimation_1;
 
 
 	@Override
@@ -41,16 +43,28 @@ public class StartActivity extends Activity {
 		checkIfPhoneIsSilent();
 
 		mScanner = (ImageView)findViewById(R.id.animate_bubble);
-
-
 		mScanner.setVisibility(View.VISIBLE);
-		mAnimation = new TranslateAnimation(0, 0, 300, 0);
-		mAnimation.setDuration(5000);
-		mAnimation.setFillAfter(true);
+		mAnimation = new TranslateAnimation(0, 0, 200, 0);
+		mAnimation.setDuration(4000);
+		mAnimation.setStartOffset(100);
+		//mAnimation.setFillAfter(true);
 		mAnimation.setRepeatCount(20);
 		mAnimation.setRepeatMode(Animation.INFINITE);
 		mScanner.setAnimation(mAnimation);
 		mScanner.setVisibility(View.VISIBLE);
+
+
+		mScanner_1 = (ImageView)findViewById(R.id.animate_bubble_1);
+		mScanner_1.setVisibility(View.VISIBLE);
+		mAnimation_1 = new TranslateAnimation(0, 0, 400, 0);
+		mAnimation_1.setDuration(7000);
+		mAnimation_1.setStartOffset(8000);
+		//mAnimation_1.setFillAfter(true);
+		mAnimation_1.setRepeatCount(20);
+		mAnimation_1.setRepeatMode(Animation.INFINITE);
+		mScanner_1.setAnimation(mAnimation);
+		mScanner_1.setVisibility(View.VISIBLE);
+		
 		// Creating the view class instance
 		StartView startView = new StartView(findViewById(R.id.start_view));
 
@@ -99,7 +113,7 @@ public class StartActivity extends Activity {
 			mPlay.start();
 		}
 	}
-	
+
 	@Override
 	public void onPause() {
 		mPlay.pause();
