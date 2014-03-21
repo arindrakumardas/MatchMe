@@ -43,7 +43,7 @@ public class GameActivity extends Activity {
 	// MediaPlayer should have subtitle controller (NO FIXES REQUIRED FOR AUDIO FILES)
     // http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
 	private MediaPlayer earcon;	
-	private MediaPlayer wrong_earcon;
+	private MediaPlayer wrongEarcon;
 	//TODO CORRECT EARCON
 
 	@Override
@@ -61,9 +61,9 @@ public class GameActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		wrong_earcon = MediaPlayer.create(this, R.raw.wrong);
+		wrongEarcon = MediaPlayer.create(this, R.raw.wrong);
 		try {
-			wrong_earcon.prepare();
+			wrongEarcon.prepare();
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,7 +191,6 @@ public class GameActivity extends Activity {
 
 
 			public void onFinish() {
-				earcon.release();
 				// Display screen after finishing a level
 				model.setTimeLeft(0);
 
@@ -201,7 +200,7 @@ public class GameActivity extends Activity {
 				i.putExtra("resumeTime", 30000);
 				i.putExtra("level_value", level);
 				startActivity(i);
-				finish();
+				cleanUpAndFinish();
 			}
 		}.start();
 
@@ -264,11 +263,10 @@ public class GameActivity extends Activity {
 						//i.putExtra("Win_Time", (int) model.getTimeLeft()/1000);//Integer.parseInt(timeLeft.getText().toString()));
 						//i.putExtra("level_value", level);
 						startActivity(i);
-						cdt.cancel();
-						finish();
+						cleanUpAndFinish();
 					}
 				} else {
-					wrong_earcon.start();
+					wrongEarcon.start();
 					view.setVisibility(View.VISIBLE);
 					return false;
 				}
@@ -298,6 +296,13 @@ public class GameActivity extends Activity {
 			}
 			return true;
 		}
+	}
+	
+	private void cleanUpAndFinish() {
+		earcon.release();
+		wrongEarcon.release();
+		cdt.cancel();
+		finish();
 	}
 
 }

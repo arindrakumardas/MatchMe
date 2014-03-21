@@ -20,7 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@id/win_restart_btn"
         android:layout_marginRight="26dp"
-        android:background="@drawable/play_button" />
+        android:background="@drawable/next_button" />
 
     <Button
         android:id="@+id/win_level_button"
