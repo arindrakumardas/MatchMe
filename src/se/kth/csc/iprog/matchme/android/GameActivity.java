@@ -35,7 +35,6 @@ public class GameActivity extends Activity {
 	long millisInFuture;
 	int Win_Time = 0;
 	private CountDownTimer cdt;
-	private String level = "1"; //Default level.
 //	Intent intent;
 	private MatchModel model;
 	
@@ -44,6 +43,7 @@ public class GameActivity extends Activity {
 	private MediaPlayer earcon;	
 	private MediaPlayer wrongEarcon;
 	//TODO CORRECT EARCON
+	private boolean earconIsRunning;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,25 +51,26 @@ public class GameActivity extends Activity {
 		setContentView(R.layout.game_view);
 //		intent = getIntent();
 		earcon = MediaPlayer.create(this, R.raw.timesup);
-		try {
-			earcon.prepare();
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			earcon.prepare();
+//		} catch (IllegalStateException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		earconIsRunning = false;
 		wrongEarcon = MediaPlayer.create(this, R.raw.wrong);
-		try {
-			wrongEarcon.prepare();
-		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			wrongEarcon.prepare();
+//		} catch (IllegalStateException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model.setTimeLeft(30000);
@@ -132,7 +133,6 @@ public class GameActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				cdt.cancel();
-				earcon.pause();
 				// Show paused screen options
 				Intent i = new Intent(GameActivity.this, PauseActivity.class);
 //				i.putExtra("resumeTime", (int) (millisInFuture));
@@ -152,6 +152,7 @@ public class GameActivity extends Activity {
 			}
 			if (resultCode == RESULT_CANCELED) { //Symbolizes that we should finish the activity.
 				releaseEarcons();
+				finish();
 			}
 		}
 	}
@@ -159,6 +160,10 @@ public class GameActivity extends Activity {
 	@Override
 	public void onPause() {
 		cdt.cancel();
+		if(earconIsRunning) {
+			earcon.pause();
+			earconIsRunning = false;
+		}
 		super.onPause();
 	}
 
@@ -171,6 +176,7 @@ public class GameActivity extends Activity {
 			public void onTick(long millisUntilFinished) {
 				if (millisUntilFinished <= 10000) {
 					earcon.start();
+					earconIsRunning = true;
 				}
 				model.setTimeLeft(millisUntilFinished);
 			}
@@ -178,6 +184,7 @@ public class GameActivity extends Activity {
 			public void onFinish() {
 				// Display screen after finishing a level
 				model.setTimeLeft(0);
+				earconIsRunning = false;
 				Intent i = new Intent(GameActivity.this, EndActivity.class);
 				startActivity(i);
 				releaseEarcons();
@@ -236,10 +243,11 @@ public class GameActivity extends Activity {
 					
 					if(isWin()) {
 						//You win. Go to endActivity to show this.
+						earconIsRunning = false;
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
 						startActivity(i);
-						releaseEarcons();
 						cdt.cancel();
+						releaseEarcons();
 						finish();
 					}
 				} else {
