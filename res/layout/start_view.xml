@@ -26,5 +26,24 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="115dp"
         android:background="@drawable/startgame_button" />
+    
 
+      <ImageView
+          android:id="@+id/animate_bubble"
+          android:layout_width="wrap_content"
+          android:layout_height="200dp"
+          android:layout_alignLeft="@+id/volume"
+          android:layout_alignParentBottom="true"
+          android:contentDescription="@string/desc"
+          android:src="@drawable/background_bubble" />
+      
+  <!--      <ImageView
+          android:id="@+id/animate_bubble"
+          android:layout_width="wrap_content"
+          android:layout_height="200dp"
+          android:layout_alignLeft="@+id/volume"
+          android:layout_alignParentBottom="true"
+          android:contentDescription="@string/desc"
+          android:src="@drawable/background_bubble" />
+ -->
 </RelativeLayout>
