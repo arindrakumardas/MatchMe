@@ -95,6 +95,7 @@ public class MatchModel extends Observable{
 		ds.open();
 		currentLevel = ds.loadLevel(level);
 		ds.close();
+		setChanged();
 		notifyObservers(LEVEL);
 	}
 	
@@ -107,10 +108,11 @@ public class MatchModel extends Observable{
 		ds.open();
 		ds.updateLevel(currentLevel);
 		ds.close();
+		setChanged();
 		notifyObservers(SCORE);
 	}
 	
-	public int getCurrentLevelHighScore(int score) {
+	public int getCurrentLevelHighScore() {
 		return currentLevel.getScore();
 	}
 	
@@ -123,6 +125,7 @@ public class MatchModel extends Observable{
 		ds.open();
 		ds.updateLevel(currentLevel);
 		ds.close();
+		setChanged();
 		notifyObservers(STATUS);
 	}
 	
@@ -131,6 +134,13 @@ public class MatchModel extends Observable{
 		Level l = ds.loadLevel(level);
 		ds.close();
 		if(l.getStatus() == 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean getCurrentLevelStatus() {
+		if(currentLevel.getStatus() == 0) {
 			return false;
 		}
 		return true;

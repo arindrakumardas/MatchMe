@@ -95,8 +95,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 		Intent game = new Intent(LevelActivity.this, GameActivity.class);
 		model.setCurrentLevel(level);
 		startActivity(game);
-
-		finish(); // finish current activity
 	}
 
 }

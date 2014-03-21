@@ -1,5 +1,7 @@
 package se.kth.csc.iprog.matchme.android;
 
+import se.kth.csc.iprog.matchme.android.controller.EndController;
+import se.kth.csc.iprog.matchme.android.view.EndView;
 import se.kth.csc.iprog.matchme.model.Level;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
@@ -11,95 +13,81 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class EndActivity extends Activity {
-	private Level model_level;
 	private MatchModel model;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_end_view);
-		
-
-		final String lost = (getResources().getString(R.string.end_msg_lose));
-		final String win = (getResources().getString(R.string.end_msg_won));
-		final String pass = (getResources().getString(R.string.end_msg_pass));
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
-		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
 		
-		
+		EndView endView = new EndView(findViewById(R.id.game_end_view), model);
+		EndController endController = new EndController(endView, model);
 
-		//Score algorithm
-		int baseScoreValue = 100;
-		TextView scorevalue = (TextView) findViewById(R.id.scorevalue);
-		int score = (int) (baseScoreValue * (model.getTimeLeft()/1000) * model.getCurrentLevel()) ; 
-		String strI = String.valueOf(score);
-		scorevalue.setText(strI);
-		model_level.setScore(score);
-
-		if (score==0){
-			TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
-			game_end_msg.setText(lost);
-			
-		}
-
-		else {
-			if (score < model_level.getScore()) {
-				TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
-				game_end_msg.setText(win);
-				model.setCurrentLevelStatus(true);
-			} else {
-				// TODO: Add new high score message
-				TextView game_end_msg = (TextView)findViewById(R.id.game_end_msg);
-				game_end_msg.setText(pass);
-				model.setCurrentLevelHighScore(score);
-				model.setCurrentLevelStatus(true);
-			}
-		}
-
-		// Home Button
-		Button backBtn = (Button) findViewById(R.id.back_btn);
-		backBtn.setOnClickListener(new OnClickListener() {
+		// Level Button
+		Button winLevelBtn = (Button) findViewById(R.id.win_level_button);
+		winLevelBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				Intent i = new Intent(EndActivity.this, StartActivity.class);
-				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //Clear the activity stack and start from the StartActivity.
-				startActivity(i);
+				//				Intent i = new Intent(EndActivity.this, StartActivity.class);
+				//				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //Clear the activity stack and start from the StartActivity.
+				//				startActivity(i);
+				finish(); //Finish this activity to go back to the levels.
 			}
 		}); 
 
-
-
 		// Restart Button
-		Button playbtn = (Button) findViewById(R.id.play_btn);
-		playbtn.setOnClickListener(new OnClickListener() {
+		Button winRestartBtn = (Button) findViewById(R.id.win_restart_btn);
+		winRestartBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-	
-				if (model_level.getStatus() == 1)
-				{
-					model.setCurrentLevel(model.getCurrentLevel()+1);
-					//Move to the next view!
-					Intent i = new Intent(EndActivity.this, GameActivity.class);
-					startActivity(i);
-					finish(); // finish current activity 	
-				}
-				
-				else{
-					model.setCurrentLevel(model.getCurrentLevel());
-//					//Move to the next view!
-					Intent i = new Intent(EndActivity.this, GameActivity.class);
-					startActivity(i);
-					finish(); // finish current activity 	
-				}
-				
+				//Start a new game on the same level
+				Intent i = new Intent(EndActivity.this, GameActivity.class);
+				startActivity(i);
+				finish(); // finish current activity 	
 			}
 		});
-	}
+		
+		Button loseLevelBtn = (Button) findViewById(R.id.lose_level_button);
+		loseLevelBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				//				Intent i = new Intent(EndActivity.this, StartActivity.class);
+				//				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //Clear the activity stack and start from the StartActivity.
+				//				startActivity(i);
+				finish(); //Finish this activity to go back to the levels.
+			}
+		}); 
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
+		// Restart Button
+		Button loseRestartBtn = (Button) findViewById(R.id.lose_restart_btn);
+		loseRestartBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				//Start a new game on the same level
+				Intent i = new Intent(EndActivity.this, GameActivity.class);
+				startActivity(i);
+				finish(); // finish current activity 	
+			}
+		});
+
+		// Next Button
+		Button nextBtn = (Button) findViewById(R.id.play_btn);
+		nextBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+
+				if (model.getCurrentLevelStatus() == true)
+				{
+					//Move to the next level
+					model.setCurrentLevel(model.getCurrentLevel()+1);
+				} 
+				//Move to the next view!
+				Intent i = new Intent(EndActivity.this, GameActivity.class);
+				startActivity(i);
+				finish(); // finish current activity 	
+			}
+		});
 	}
 }

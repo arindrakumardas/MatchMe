@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/game_end_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_level" >
@@ -77,26 +78,23 @@
         android:textSize="24sp"
         android:typeface="sans" />
 
-    
     <ViewFlipper
-        android:id="@+id/game_end_view_include"
+        android:id="@+id/game_end_view_flipper"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginBottom="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" >
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="50dp" >
 
-         
-    <include
-        android:id="@+id/game_end_lost_button_view"
-        layout="@layout/game_end_lost_button_view" />
-    
-     <include
-        android:id="@+id/game_end_win_button_view"
-        layout="@layout/game_end_win_button_view" />
-     
+        <include
+            android:id="@+id/game_end_lost_button_view"
+            layout="@layout/game_end_lost_button_view" />
+
+        <include
+            android:id="@+id/game_end_win_button_view"
+            layout="@layout/game_end_win_button_view" />
     </ViewFlipper>
-    
+
     <!--
          <Button
         android:id="@+id/back_btn"

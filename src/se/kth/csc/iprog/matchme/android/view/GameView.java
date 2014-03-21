@@ -31,6 +31,7 @@ public class GameView implements Observer {
 		
 		// Setup the rest of the view layout
 		update(null, MatchModel.LEVEL); //Load the level from the model and update the view accordingly.
+		update(null, MatchModel.TIMELEFT); //Load the timeleft from the model and update the view accordingly.
 	}
 
 	@Override
