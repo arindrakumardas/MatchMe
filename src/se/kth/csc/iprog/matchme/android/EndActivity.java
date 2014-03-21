@@ -28,9 +28,6 @@ public class EndActivity extends Activity {
 		winLevelBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				//				Intent i = new Intent(EndActivity.this, StartActivity.class);
-				//				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //Clear the activity stack and start from the StartActivity.
-				//				startActivity(i);
 				finish(); //Finish this activity to go back to the levels.
 			}
 		}); 
@@ -43,6 +40,7 @@ public class EndActivity extends Activity {
 				//Start a new game on the same level
 				Intent i = new Intent(EndActivity.this, GameActivity.class);
 				startActivity(i);
+				
 				finish(); // finish current activity 	
 			}
 		});
@@ -51,9 +49,6 @@ public class EndActivity extends Activity {
 		loseLevelBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				//				Intent i = new Intent(EndActivity.this, StartActivity.class);
-				//				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); //Clear the activity stack and start from the StartActivity.
-				//				startActivity(i);
 				finish(); //Finish this activity to go back to the levels.
 			}
 		}); 
@@ -66,6 +61,7 @@ public class EndActivity extends Activity {
 				//Start a new game on the same level
 				Intent i = new Intent(EndActivity.this, GameActivity.class);
 				startActivity(i);
+				
 				finish(); // finish current activity 	
 			}
 		});

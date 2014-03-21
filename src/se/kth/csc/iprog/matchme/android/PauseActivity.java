@@ -28,11 +28,9 @@ public class PauseActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				//Simply kill this activity to go back to the game.
-				//				Intent i = new Intent(PauseActivity.this, GameActivity.class);
-				//				i.putExtra("resumeTime", resumeTime);		// start timer from where stopped
-				//				startActivity(i);
 				Intent returnIntent = new Intent();
 				setResult(RESULT_OK, returnIntent);
+				
 				finish(); // finish current activity
 			}
 		});

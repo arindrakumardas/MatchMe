@@ -36,8 +36,6 @@ public class StartActivity extends Activity {
 
 		// Creating the view class instance
 		StartView startView = new StartView(findViewById(R.id.start_view));
-		//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
-		// I think we need to delete the following line:
 /*		StartController startController = new StartController(startView);		*/
 		
 		//Buttons in start_view

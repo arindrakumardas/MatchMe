@@ -31,7 +31,6 @@ public class EndController {
 			if (score < model.getCurrentLevelHighScore()) {
 				game_end_msg.setText(pass);
 			} else {
-				// TODO: Add new high score message
 				model.setCurrentLevelHighScore(score);
 				game_end_msg.setText(win);
 			}
