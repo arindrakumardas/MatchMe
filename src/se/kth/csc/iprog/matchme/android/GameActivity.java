@@ -7,10 +7,12 @@ import java.util.Collections;
 
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Vibrator;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,7 +39,8 @@ public class GameActivity extends Activity {
 	int Win_Time = 0;
 	private CountDownTimer cdt;
 	private MatchModel model;
-	
+	private Vibrator viber;
+
 	
 	// MediaPlayer should have subtitle controller (NO FIXES REQUIRED FOR AUDIO FILES)
     // http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
@@ -63,7 +66,8 @@ public class GameActivity extends Activity {
 		earconIsRunning = false;
 		rightMatch = MatchMeApplication.getMediaPlayer(this, R.raw.click);
 		wrongEarcon = MatchMeApplication.getMediaPlayer(this, R.raw.wrong);
-		
+		viber = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
 		//		TextView levelName = (TextView) findViewById(R.id.level_value);
 		ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
@@ -229,6 +233,7 @@ public class GameActivity extends Activity {
 						//You win. Go to endActivity to show this.
 						correctEarcon.start();
 						earconIsRunning = false;
+					
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
 						startActivity(i);
 						cdt.cancel();
@@ -236,6 +241,7 @@ public class GameActivity extends Activity {
 					}
 				} else {
 					wrongEarcon.start();
+					viber.vibrate(50);
 					view.setVisibility(View.VISIBLE);
 					return false;
 				}
