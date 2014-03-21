@@ -36,11 +36,15 @@ public class GameActivity extends Activity {
 	int Win_Time = 0;
 	private CountDownTimer cdt;
 	private String level = "1"; //Default level.
-	private MediaPlayer earcon;
 	Intent intent;
 	private MatchModel model;
 	private Level model_level;
+	
+	// MediaPlayer should have subtitle controller (NO FIXES REQUIRED FOR AUDIO FILES)
+    // http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
+	private MediaPlayer earcon;	
 	private MediaPlayer wrong_earcon;
+	//TODO CORRECT EARCON
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

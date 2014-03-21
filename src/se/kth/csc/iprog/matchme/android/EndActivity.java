@@ -30,7 +30,7 @@ public class EndActivity extends Activity {
 		
 		
 
-		//TODO: Score algorithm
+		//Score algorithm
 		int baseScoreValue = 100;
 		TextView scorevalue = (TextView) findViewById(R.id.scorevalue);
 		int score = (int) (baseScoreValue * (model.getTimeLeft()/1000) * model.getCurrentLevel()) ; 
