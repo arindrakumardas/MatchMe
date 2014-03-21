@@ -5,14 +5,6 @@ MatchMe was developed as a part of the Interaction Programing (DH2641) course fi
 
 **MatchMe** is a game for Kids between the age of 3-7 years old. It is developed in the android platform. The main idea behind the game is matching the sea animal images with their shadows.
 
-Authors:
---------------
-- Arindra Kumar Das
-- Eirini Kolomvrezou
-- Magnus Gudmandsen
-- Panagiota Tziova
-
-
 TO DO:
 --------------
 - Add more levels
@@ -21,3 +13,17 @@ TO DO:
 
 Bug Report:
 --------------
+
+CREDITS:
+--------------
+Open Source community and StackOverflow :)
+
+
+Crafted with love by:
+--------------
+- Arindra Kumar Das
+- Eirini Kolomvrezou
+- Magnus Gudmandsen
+- Panagiota Tziova
+
+
