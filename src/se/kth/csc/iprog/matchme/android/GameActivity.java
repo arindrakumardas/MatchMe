@@ -1,6 +1,5 @@
 package se.kth.csc.iprog.matchme.android;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 import se.kth.csc.iprog.matchme.android.view.GameView;
-import se.kth.csc.iprog.matchme.model.Level;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import se.kth.csc.iprog.matchme.model.MatchItem;
 
@@ -40,7 +38,9 @@ public class GameActivity extends Activity {
 	
 	// MediaPlayer should have subtitle controller (NO FIXES REQUIRED FOR AUDIO FILES)
     // http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
-	private MediaPlayer earcon;	
+	private MediaPlayer earcon;
+	private MediaPlayer correctEarcon;
+	private MediaPlayer rightMatch;
 	private MediaPlayer wrongEarcon;
 	//TODO CORRECT EARCON
 	private boolean earconIsRunning;
@@ -51,6 +51,8 @@ public class GameActivity extends Activity {
 		setContentView(R.layout.game_view);
 		earcon = MediaPlayer.create(this, R.raw.timesup);
 		earconIsRunning = false;
+		correctEarcon = MediaPlayer.create(this, R.raw.correct);
+		rightMatch = MediaPlayer.create(this, R.raw.click);
 		wrongEarcon = MediaPlayer.create(this, R.raw.wrong);
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
@@ -222,8 +224,10 @@ public class GameActivity extends Activity {
 					//					dropped.setBackground(dragged.getDrawable());
 					v.setTag(true); //symbolizes that the image is matched.
 					
+					rightMatch.start();
 					if(isWin()) {
 						//You win. Go to endActivity to show this.
+						correctEarcon.start();
 						earconIsRunning = false;
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
 						startActivity(i);

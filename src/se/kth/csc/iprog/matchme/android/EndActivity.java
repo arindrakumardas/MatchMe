@@ -2,7 +2,6 @@ package se.kth.csc.iprog.matchme.android;
 
 import se.kth.csc.iprog.matchme.android.controller.EndController;
 import se.kth.csc.iprog.matchme.android.view.EndView;
-import se.kth.csc.iprog.matchme.model.Level;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class EndActivity extends Activity {
 	private MatchModel model;

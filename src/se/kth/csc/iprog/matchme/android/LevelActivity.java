@@ -1,7 +1,6 @@
 package se.kth.csc.iprog.matchme.android;
 
 
-import se.kth.csc.iprog.matchme.model.LevelsDataSource;
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
