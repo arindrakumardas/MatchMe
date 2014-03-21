@@ -3,7 +3,7 @@ MatchMe
 
 MatchMe was developed as a part of the Interaction Programing (DH2641) course final assignment.
 
-@Authors:
+Authors:
 --------------
 - Arindra Kumar Das
 - Eirini Kolomvrezou
