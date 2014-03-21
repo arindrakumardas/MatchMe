@@ -1,6 +1,9 @@
 package se.kth.csc.iprog.matchme.android;
 
 
+import java.util.Observable;
+import java.util.Observer;
+
 import se.kth.csc.iprog.matchme.model.MatchModel;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class LevelActivity extends Activity implements OnClickListener {
+public class LevelActivity extends Activity implements OnClickListener, Observer {
 
 	private MatchModel model;
 
@@ -19,7 +22,7 @@ public class LevelActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.levels_view);
 
 		model = ((MatchMeApplication) getApplication()).getModel();
-
+		model.addObserver(this);
 		// Home button
 		Button backbtn = (Button) findViewById(R.id.back_btn);
 		backbtn.setOnClickListener(new OnClickListener() {
@@ -29,14 +32,10 @@ public class LevelActivity extends Activity implements OnClickListener {
 			}
 		}); 
 
-		createButton(1, R.id.level1_button);
-		createButton(2, R.id.level2_button);
-		createButton(3, R.id.level3_button);
-		createButton(4, R.id.level4_button);
-		createButton(5, R.id.level5_button);
+		update(null, MatchModel.STATUS); //Initiate the buttons
 	}
 	
-	public void createButton(int level, int id) {
+	public void toggleUi(int level, int id) {
 		Button button = (Button) findViewById(id);
 		button.setTag(level);
 		if(level == 1 || model.getStatus(level-1) == true) {
@@ -90,6 +89,17 @@ public class LevelActivity extends Activity implements OnClickListener {
 		Intent game = new Intent(LevelActivity.this, GameActivity.class);
 		model.setCurrentLevel(level);
 		startActivity(game);
+	}
+
+	@Override
+	public void update(Observable arg0, Object data) {
+		if(data.equals(MatchModel.STATUS)){
+			toggleUi(1, R.id.level1_button);
+			toggleUi(2, R.id.level2_button);
+			toggleUi(3, R.id.level3_button);
+			toggleUi(4, R.id.level4_button);
+			toggleUi(5, R.id.level5_button);
+		}
 	}
 
 }
