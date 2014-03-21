@@ -12,7 +12,6 @@ import android.widget.Button;
 
 public class LevelActivity extends Activity implements OnClickListener {
 
-	private LevelsDataSource datasource;
 	private MatchModel model;
 
 	@Override
@@ -21,8 +20,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.levels_view);
 
 		model = ((MatchMeApplication) getApplication()).getModel();
-		datasource = new LevelsDataSource(this);
-		datasource.open();
 
 		// Home button
 		Button backbtn = (Button) findViewById(R.id.back_btn);
@@ -55,33 +52,33 @@ public class LevelActivity extends Activity implements OnClickListener {
 		case 2:
 			if(model.getStatus(level-1) == true) {
 				button.setOnClickListener(this);
-				button.setBackground(getResources().getDrawable( R.drawable.level2 ));
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.level2 ));
 			} else { 
-				button.setBackground(getResources().getDrawable( R.drawable.locked_level)); 
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.locked_level)); 
 			}
 			break;
 		case 3:
 			if(model.getStatus(level-1) == true) {
 				button.setOnClickListener(this);
-				button.setBackground(getResources().getDrawable( R.drawable.level3 ));
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.level3 ));
 			} else { 
-				button.setBackground(getResources().getDrawable( R.drawable.locked_level)); 
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.locked_level)); 
 			}
 			break;
 		case 4:
 			if(model.getStatus(level-1) == true) {
 				button.setOnClickListener(this);
-				button.setBackground(getResources().getDrawable( R.drawable.level4 ));
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.level4 ));
 			} else { 
-				button.setBackground(getResources().getDrawable( R.drawable.locked_level)); 
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.locked_level)); 
 			}
 			break;
 		case 5:
 			if(model.getStatus(level-1) == true) {
 				button.setOnClickListener(this);
-				button.setBackground(getResources().getDrawable( R.drawable.level5 ));
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.level5 ));
 			} else { 
-				button.setBackground(getResources().getDrawable( R.drawable.locked_level)); 
+				button.setBackgroundDrawable(getResources().getDrawable( R.drawable.locked_level)); 
 			}
 			break;
 		}
@@ -90,7 +87,6 @@ public class LevelActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		// add clicked level to database
 		int level = (Integer) view.getTag();
-		datasource.loadLevel(level);
 
 		Intent game = new Intent(LevelActivity.this, GameActivity.class);
 		model.setCurrentLevel(level);

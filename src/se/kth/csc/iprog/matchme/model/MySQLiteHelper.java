@@ -8,37 +8,37 @@ import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
-  public static final String TABLE_LEVELS = "levels";
-  public static final String COLUMN_ID = "_id";
-  public static final String COLUMN_SCORE = "score";
-  public static final String COLUMN_STATUS = "status";
+	public static final String TABLE_LEVELS = "levels";
+	public static final String COLUMN_ID = "_id";
+	public static final String COLUMN_SCORE = "score";
+	public static final String COLUMN_STATUS = "status";
 
-  private static final String DATABASE_NAME = "levels.db";
-  private static final int DATABASE_VERSION = 4;
+	private static final String DATABASE_NAME = "levels.db";
+	private static final int DATABASE_VERSION = 4;
 
-  // Database creation sql statement
-  private static final String DATABASE_CREATE = "CREATE TABLE "
-      + TABLE_LEVELS + "(" 
-      + COLUMN_ID + " INTEGER PRIMARY KEY NOT NULL, "
-      + COLUMN_SCORE + " INTEGER NOT NULL, " 
-      + COLUMN_STATUS + " INTEGER NOT NULL);";
+	// Database creation sql statement
+	private static final String DATABASE_CREATE = "CREATE TABLE "
+			+ TABLE_LEVELS + "(" 
+			+ COLUMN_ID + " INTEGER PRIMARY KEY NOT NULL, "
+			+ COLUMN_SCORE + " INTEGER NOT NULL, " 
+			+ COLUMN_STATUS + " INTEGER NOT NULL);";
 
-  public MySQLiteHelper(Context context) {
-    super(context, DATABASE_NAME, null, DATABASE_VERSION);
-  }
+	public MySQLiteHelper(Context context) {
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+	}
 
-  @Override
-  public void onCreate(SQLiteDatabase database) {
-    database.execSQL(DATABASE_CREATE);
-  }
+	@Override
+	public void onCreate(SQLiteDatabase database) {
+		database.execSQL(DATABASE_CREATE);
+	}
 
-  @Override
-  public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    Log.w(MySQLiteHelper.class.getName(),
-        "Upgrading database from version " + oldVersion + " to "
-            + newVersion + ", which will destroy all old data");
-    db.execSQL("DROP TABLE IF EXISTS " + TABLE_LEVELS);
-    onCreate(db);
-  }
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		Log.w(MySQLiteHelper.class.getName(),
+				"Upgrading database from version " + oldVersion + " to "
+						+ newVersion + ", which will destroy all old data");
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_LEVELS);
+		onCreate(db);
+	}
 
 } 
