@@ -167,6 +167,7 @@ public class GameActivity extends Activity {
 	@Override
 	public void onPause() {
 		cdt.cancel();
+		earcon.release();
 		super.onPause();
 	}
 
