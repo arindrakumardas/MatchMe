@@ -36,9 +36,8 @@ public class GameActivity extends Activity {
 	int Win_Time = 0;
 	private CountDownTimer cdt;
 	private String level = "1"; //Default level.
-	Intent intent;
+//	Intent intent;
 	private MatchModel model;
-	private Level model_level;
 	
 	// MediaPlayer should have subtitle controller (NO FIXES REQUIRED FOR AUDIO FILES)
     // http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
@@ -50,7 +49,7 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_view);
-		intent = getIntent();
+//		intent = getIntent();
 		earcon = MediaPlayer.create(this, R.raw.timesup);
 		try {
 			earcon.prepare();
@@ -74,9 +73,7 @@ public class GameActivity extends Activity {
 
 		model = ((MatchMeApplication) this.getApplication()).getModel();
 		model.setTimeLeft(30000);
-		model_level = ((MatchMeApplication) this.getApplication()).getLevel();
-
-
+		
 		GameView gameView = new GameView(findViewById(R.id.game_view), model);
 
 		//		//TODO: Add code for switching screens and starting a view and a controller.
@@ -84,11 +81,7 @@ public class GameActivity extends Activity {
 		ViewFlipper vf_drop = (ViewFlipper)findViewById(R.id.game_drop_view_include);
 		ViewFlipper vf_drag = (ViewFlipper)findViewById(R.id.game_drag_view_include);
 		
-
-
 		MatchItem[] images = model.getRandomMatchItems(model.getCurrentLevel());
-
-
 
 		//Load the correct level
 		RelativeLayout game_drop_view_include = (RelativeLayout) vf_drop.getChildAt(vf_drop.getDisplayedChild());
@@ -142,9 +135,9 @@ public class GameActivity extends Activity {
 				earcon.pause();
 				// Show paused screen options
 				Intent i = new Intent(GameActivity.this, PauseActivity.class);
-				i.putExtra("resumeTime", (int) (millisInFuture));
-				i.putExtra("level_value", level);
-				i.putExtra("Win_Time", 0);
+//				i.putExtra("resumeTime", (int) (millisInFuture));
+//				i.putExtra("level_value", level);
+//				i.putExtra("Win_Time", 0);
 				startActivityForResult(i, 1);
 				//finish(); // finish current activity
 			}
@@ -158,8 +151,7 @@ public class GameActivity extends Activity {
 				//Do nothing.
 			}
 			if (resultCode == RESULT_CANCELED) { //Symbolizes that we should finish the activity.
-				cdt.cancel(); //Just in case it restarted.
-				finish();
+				releaseEarcons();
 			}
 		}
 	}
@@ -167,41 +159,29 @@ public class GameActivity extends Activity {
 	@Override
 	public void onPause() {
 		cdt.cancel();
-		earcon.release();
 		super.onPause();
 	}
 
 
 	@Override
 	public void onResume() {
-
-		//		final ProgressBar m_bar = (ProgressBar) findViewById(R.id.progressbar);
-
 		// Implements CountdownTimer
 		cdt = new CountDownTimer(model.getTimeLeft(), countDownInterval) {
-			//			TextView timeLeft = (TextView) findViewById(R.id.time_left_value);
 
 			public void onTick(long millisUntilFinished) {
-				//				timeLeft.setText("" + millisUntilFinished / 1000);
-				//				millisInFuture = millisUntilFinished;
 				if (millisUntilFinished <= 10000) {
 					earcon.start();
 				}
 				model.setTimeLeft(millisUntilFinished);
 			}
 
-
 			public void onFinish() {
 				// Display screen after finishing a level
 				model.setTimeLeft(0);
-
-				model_level.setStatus(0);
 				Intent i = new Intent(GameActivity.this, EndActivity.class);
-				//The extras should not be needed any more. Simply use the model to get the level and timeLeft.
-				i.putExtra("resumeTime", 30000);
-				i.putExtra("level_value", level);
 				startActivity(i);
-				cleanUpAndFinish();
+				releaseEarcons();
+				finish();
 			}
 		}.start();
 
@@ -255,16 +235,12 @@ public class GameActivity extends Activity {
 					v.setTag(true); //symbolizes that the image is matched.
 					
 					if(isWin()) {
-
-						model_level.setStatus(0);
 						//You win. Go to endActivity to show this.
-						//Intent intent = getIntent();
-						//final String level = intent.getStringExtra("level_value");
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
-						//i.putExtra("Win_Time", (int) model.getTimeLeft()/1000);//Integer.parseInt(timeLeft.getText().toString()));
-						//i.putExtra("level_value", level);
 						startActivity(i);
-						cleanUpAndFinish();
+						releaseEarcons();
+						cdt.cancel();
+						finish();
 					}
 				} else {
 					wrongEarcon.start();
@@ -299,11 +275,9 @@ public class GameActivity extends Activity {
 		}
 	}
 	
-	private void cleanUpAndFinish() {
+	private void releaseEarcons() {
 		earcon.release();
 		wrongEarcon.release();
-		cdt.cancel();
-		finish();
 	}
 
 }
