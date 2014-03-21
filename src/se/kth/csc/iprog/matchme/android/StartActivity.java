@@ -53,15 +53,7 @@ public class StartActivity extends Activity {
 		mScanner.setVisibility(View.VISIBLE);
 		// Creating the view class instance
 		StartView startView = new StartView(findViewById(R.id.start_view));
-<<<<<<< HEAD
-/*		StartController startController = new StartController(startView);		*/
-		
-=======
-		//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
-		// I think we need to delete the following line:
-		/*		StartController startController = new StartController(startView);		*/
 
->>>>>>> animation_Branch
 		//Buttons in start_view
 		Button startButton = (Button) findViewById(R.id.start_game);
 		startButton.setOnClickListener(new OnClickListener() {
