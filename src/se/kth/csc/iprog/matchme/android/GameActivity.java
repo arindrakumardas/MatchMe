@@ -171,7 +171,6 @@ public class GameActivity extends Activity {
 				earconIsRunning = false;
 				Intent i = new Intent(GameActivity.this, EndActivity.class);
 				startActivity(i);
-				releaseEarcons();
 				finish();
 			}
 		}.start();
@@ -233,7 +232,6 @@ public class GameActivity extends Activity {
 						Intent i = new Intent(GameActivity.this, EndActivity.class);
 						startActivity(i);
 						cdt.cancel();
-						releaseEarcons();
 						finish();
 					}
 				} else {
@@ -272,6 +270,12 @@ public class GameActivity extends Activity {
 	private void releaseEarcons() {
 		earcon.release();
 		wrongEarcon.release();
+	}
+	
+	@Override
+	public void onDestroy() {
+		releaseEarcons();
+		super.onDestroy();
 	}
 
 }

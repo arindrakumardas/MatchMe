@@ -85,6 +85,12 @@ public class StartActivity extends Activity {
 			mPlay.start();
 		}
 	}
+	
+	@Override
+	public void onPause() {
+		mPlay.pause();
+		super.onPause();
+	}
 
 	// Toggles the UI images from silent to normal and vice-versa
 	private void toggleUI() {
@@ -103,8 +109,8 @@ public class StartActivity extends Activity {
 	
 	@Override
 	protected void onDestroy() {
-		super.onDestroy();
 		mPlay.release();
+		super.onDestroy();
 	}
 
 }

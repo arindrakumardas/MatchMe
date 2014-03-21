@@ -38,16 +38,6 @@ public class MatchMeApplication extends Application {
 		public static MediaPlayer getMediaPlayer(Context context, int audiofile) {
 			MediaPlayer sound = MediaPlayer.create(context, audiofile);
 			
-			try {
-				sound.prepare();
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
 			return sound;
 		}
 
