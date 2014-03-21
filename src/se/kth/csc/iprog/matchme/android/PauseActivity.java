@@ -45,8 +45,6 @@ public class PauseActivity extends Activity {
 				Intent returnIntent = new Intent();
 				setResult(RESULT_CANCELED, returnIntent);//Kill the previous game, and create a new game on the same level.
 				Intent i = new Intent(PauseActivity.this, GameActivity.class);
-				i.putExtra("resumeTime", 30000);	// reset timer
-				i.putExtra("level_value", level);
 				startActivity(i);
 				finish(); // finish current activity 
 			}
