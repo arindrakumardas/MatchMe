@@ -5,7 +5,10 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -16,12 +19,15 @@ public class StartActivity extends Activity {
 	private AudioManager mAudioManager;
 	private boolean mPhoneIsSilent;
 	private MediaPlayer mPlay;
+	private ImageView mScanner;
+	private Animation mAnimation;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// Default call to load previous state
 		super.onCreate(savedInstanceState);
-		
+
 		//Play sound
 		mPlay = MatchMeApplication.getMediaPlayer(this, R.raw.audio_file);
 		//mPlay = MediaPlayer.create(this, R.raw.audio_file);
@@ -34,10 +40,28 @@ public class StartActivity extends Activity {
 		mAudioManager = (AudioManager)getSystemService(AUDIO_SERVICE);
 		checkIfPhoneIsSilent();
 
+		mScanner = (ImageView)findViewById(R.id.animate_bubble);
+
+
+		mScanner.setVisibility(View.VISIBLE);
+		mAnimation = new TranslateAnimation(0, 0, 300, 0);
+		mAnimation.setDuration(5000);
+		mAnimation.setFillAfter(true);
+		mAnimation.setRepeatCount(20);
+		mAnimation.setRepeatMode(Animation.INFINITE);
+		mScanner.setAnimation(mAnimation);
+		mScanner.setVisibility(View.VISIBLE);
 		// Creating the view class instance
 		StartView startView = new StartView(findViewById(R.id.start_view));
+<<<<<<< HEAD
 /*		StartController startController = new StartController(startView);		*/
 		
+=======
+		//TODO: Add a controller for the startView if necessary (maybe to control the volume mute)
+		// I think we need to delete the following line:
+		/*		StartController startController = new StartController(startView);		*/
+
+>>>>>>> animation_Branch
 		//Buttons in start_view
 		Button startButton = (Button) findViewById(R.id.start_game);
 		startButton.setOnClickListener(new OnClickListener() {
@@ -104,7 +128,7 @@ public class StartActivity extends Activity {
 		imageView.setBackgroundDrawable(soundIcon);
 
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		mPlay.release();
