@@ -5,7 +5,6 @@ import se.kth.csc.iprog.matchme.android.R;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 
 public class StartView {

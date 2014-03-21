@@ -41,9 +41,6 @@ public class GameActivity extends Activity {
 	private MatchModel model;
 	private Vibrator viber;
 
-	
-	// MediaPlayer should have subtitle controller (NO FIXES REQUIRED FOR AUDIO FILES)
-    // http://stackoverflow.com/questions/20087804/should-have-subtitle-controller-already-set-mediaplayer-error-android
 	private boolean earconIsRunning;
 	private MediaPlayer correctEarcon;
 	private MediaPlayer earcon;
